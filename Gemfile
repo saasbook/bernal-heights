@@ -36,7 +36,6 @@ group :development, :test do
   gem 'byebug'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-  gem 'debugger'
   # For javascript/coffeescript
   gem 'jasmine-rails'
 end
@@ -54,7 +53,7 @@ group :test do
   gem 'simplecov', :require => false
   gem 'cucumber-rails' 
   gem 'cucumber-rails-training-wheels'
-  gem 'databse_cleaner'
+  gem 'database_cleaner'
   gem 'autotest-rails'
   gem 'factory_girl_rails'
   gem 'metric_fu'
