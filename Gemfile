@@ -50,13 +50,14 @@ end
 
 group :test do
   gem 'rspec-rails', '2.14'
-  gem 'simplecov', :require => false
   gem 'cucumber-rails' 
   gem 'cucumber-rails-training-wheels'
   gem 'database_cleaner'
   gem 'autotest-rails'
   gem 'factory_girl_rails'
   gem 'metric_fu'
+  gem "codeclimate-test-reporter", require: nil
+
 end
 
 group :production do
