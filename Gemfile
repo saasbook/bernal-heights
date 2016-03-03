@@ -55,7 +55,6 @@ group :test do
   gem 'database_cleaner'
   gem 'autotest-rails'
   gem 'factory_girl_rails'
-  gem 'metric_fu'
   gem "codeclimate-test-reporter", require: nil
 
 end
