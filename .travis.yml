@@ -7,3 +7,4 @@ addons:
         repo_token: 1006a5b7a57a9ddcc36e2845893488d3afd55689b182bdc3d1384214222a0062
 notifications:
   slack: derpydinosaurs:ns1o9ASkiSbiFPwHCBJHULaS
+cache: bundler
