@@ -50,12 +50,14 @@ end
 
 group :test do
   gem 'rspec-rails', '2.14'
-  gem 'cucumber-rails' 
+  gem 'cucumber-rails', require: false
   gem 'cucumber-rails-training-wheels'
   gem 'database_cleaner'
   gem 'autotest-rails'
   gem 'factory_girl_rails'
+  gem 'faker'
   gem "codeclimate-test-reporter", require: nil
+  gem 'test-unit'
 
 end
 
