@@ -1,0 +1,39 @@
+<h1>Events#new</h1>
+<p>Find me in app/views/events/new.html.haml</p>
+
+%h1 Create New Event
+
+= form_for @event do |event|
+
+  = event.label :name, 'Name'
+  = event.text_field 'name'
+  
+  = event.label :start_date, "Start Date"
+  = event.date_select 'start_date'
+  
+  = event.label :end_date, "End Date"
+  = event.date_select 'end_date'
+
+  = event.label :start_time, "Start Time"
+  = event.time_select 'start_time'
+  
+  = event.label :end_time, "End Time"
+  = event.time_select 'end_time'
+  
+  = event.label :location, "Location"
+  = event.text_area 'location'
+  
+  = event.label :description, "Description"
+  = event.text_area 'description'
+  
+  = event.label :creator_name, "Your Name"
+  = event.text_field 'creator_name'
+  
+  = event.label :creator_email, "Your E-mail"
+  = event.text_field 'creator_email'
+  
+  = event.label :event_organizer, "Organizer Name"
+  = event.text_field 'event_organizer'
+
+  = submit_tag 'Create Event'
+  
