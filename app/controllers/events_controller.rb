@@ -11,8 +11,15 @@ class EventsController < ApplicationController
   end
   
   def create
-    @event = Event.create!(event_params)
-    flash[:notice] = "#{@event.name} was successfully created."
-    redirect_to events_path
+    @event = Event.new(event_params)
+    if @event.save
+      flash[:notice] = "#{@event.name} was successfully created."
+      redirect_to events_path
+    else 
+      # flash[:error] = @event.errors
+      flash.now[:warning] = "You have not filled out all required fields."
+      render :new
+    end
   end
+    
 end
