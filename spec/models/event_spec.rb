@@ -1,5 +1,4 @@
 require 'spec_helper'
-
 # Schema
 
 # Table name: events
@@ -21,20 +20,59 @@ describe Event do
   
   subject { event }
   
-  it { is_expected.to respond_to(:name) }
-  it { is_expected.to respond_to(:start_date) }
-  it { is_expected.to respond_to(:start_time) }
-  it { is_expected.to respond_to(:end_date) }
-  it { is_expected.to respond_to(:end_time) }
-  it { is_expected.to respond_to(:location) }
-  it { is_expected.to respond_to(:description) }
-  it { is_expected.to respond_to(:creator_name) }
-  it { is_expected.to respond_to(:creator_email) }
-  it { is_expected.to respond_to(:event_organizer) }
-  it { is_expected.to respond_to(:approved) :pending => 'unimplemented' }
-  it { is_expected.to respond_to(:event_photo) :pending => 'unimplemented' }
+  it "has a name" do
+    expect(event).to respond_to(:name)
+  end
   
-  it "has a valid factory"
+  it "has a start date" do
+    expect(event).to respond_to(:start_date)
+  end
+  
+  it "has a start time" do
+    expect(event).to respond_to(:start_time)
+  end
+  
+  it "has an end date" do
+    expect(event).to respond_to(:end_date)
+  end
+  
+  it "has an end_time" do
+    expect(event).to respond_to(:end_time)
+  end
+  
+  it "has a location" do
+    expect(event).to respond_to(:location)
+  end
+  
+  it "has a description" do
+    expect(event).to respond_to(:description)
+  end
+  
+  it "has a creator name" do
+    expect(event).to respond_to(:creator_name)
+  end
+  
+  it "has a creator email" do
+    expect(event).to respond_to(:creator_email)
+  end
+  
+  it "has an event organizer" do
+    expect(event).to respond_to(:event_organizer)
+  end
+  
+  it "has an event photo", :pending => 'unimplemented' do
+    expect(event).to respond_to(:event_photo)
+  end
+  
+  it "can be approved", :pending => 'unimplemented' do
+    expect(event).to respond_to(:approved)
+  end
+
+  
+  it "has a valid factory" do
+    expect(FactoryGirl.create(:event)).to be_valid
+  end
+  
   it "is invalid without a name" do
     expect(FactoryGirl.build(:event, name: nil)).to be_invalid
   end

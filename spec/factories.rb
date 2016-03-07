@@ -11,6 +11,5 @@ FactoryGirl.define do
     creator_name    { Faker::Name.name }
     creator_email   { Faker::Internet.email }
     event_organizer { Faker::Name.name }
-    approved        { false }
   end
 end
