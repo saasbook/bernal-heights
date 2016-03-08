@@ -6,14 +6,14 @@ Feature: create a new community event
   
 Scenario: create a new event
   Given I am on the All Events page
-  And I press "Create new event"
+  And I follow "Create new event"
   Then I should be on the New Event page
   
 Scenario: all required fields filled out
   Given I am on the New Event page
   And I fill in "Name" with "Pottery Painting Night"
-  And I select "2016-03-08" from "Start Date"
-  And I select "2000-01-01 01:00:00" from "Start Time"
+  And I select start time 02 PM, 00
+  And I select start date 2013, December, 7
   And I fill in "Location" with "Brushstrokes Studio"
   And I fill in "Your Name" with "Tiffany"
   And I fill in "Your E-mail" with "thlam@berkeley"
