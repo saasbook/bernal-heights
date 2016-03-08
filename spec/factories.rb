@@ -12,4 +12,13 @@ FactoryGirl.define do
     creator_email   { Faker::Internet.email }
     event_organizer { Faker::Name.name }
   end
+  
+  factory :user do
+    name                    { Faker::Name.name }
+    provider                { "Facebook" }
+    uid                     { Faker::Number.number }
+    password                { "password" }
+    password_confirmation   { "password" }
+  end
+    
 end
