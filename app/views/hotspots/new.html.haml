@@ -1,0 +1,33 @@
+<h1>Hotspots#new</h1>
+<p>Find me in app/views/hotspots/new.html.haml</p>
+
+%h1 Create New Hotspot (Report)
+
+= form_for @hotspot do |hotspot|
+
+  = hotspot.label :issue_type, 'Type of Issue'
+  = hotspot.text_field 'issue_type'
+  
+  = hotspot.label :location, "Location"
+  = hotspot.text_area 'location'
+  
+  = hotspot.label :occurred_time, "Discovery Date"
+  = hotspot.date_select 'occurred_time'
+
+  = hotspot.label :details, "Details"
+  = hotspot.text_area 'details'
+  
+  = hotspot.label :to_share, "Can we share your info?"
+  = hotspot.text_field 'to_share'
+  
+  = hotspot.label :creator_name, "Your Name"
+  = hotspot.text_field 'creator_name'
+  
+  = hotspot.label :creator_email, "Your Email"
+  = hotspot.text_field 'creator_email'
+  
+  = hotspot.label :creator_number, "Your Number"
+  = hotspot.text_field 'creator_number'
+
+  = submit_tag 'Report Hotspot Issue'
+  
