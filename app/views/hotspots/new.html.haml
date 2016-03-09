@@ -17,7 +17,10 @@
   = hotspot.label :details, "Details"
   = hotspot.text_area 'details'
   
-  = hotspot.label :to_share, "Can we share your info?"
+  = hotspot.label :report_num, "Police report number (if applicable)"
+  = hotspot.number_field 'report_num'
+  
+  = hotspot.label :to_share, "Can we share info with SFPD?"
   = hotspot.text_field 'to_share'
   
   = hotspot.label :creator_name, "Your Name"
