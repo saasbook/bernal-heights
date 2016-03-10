@@ -1,6 +1,17 @@
 require 'spec_helper'
 
 describe UserController do
+  login_admin
+
+  it "should have a current_user" do
+    expect(subject.current_user).to_not eq(nil)
+  end
+
+  it "should get index" do
+    get 'index'
+    expect(response).to be_success
+  end
+  
   describe "GET new" do
     it "renders the login template", :pending => 'unimplemented' do
       get :new

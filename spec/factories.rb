@@ -14,11 +14,14 @@ FactoryGirl.define do
   end
   
   factory :user do
-    name                    { Faker::Name.name }
-    provider                { "Facebook" }
-    uid                     { Faker::Number.number }
-    password                { "password" }
-    password_confirmation   { "password" }
-  end
+    email                   { Faker::Internet.email }
+    password                "password"
+    password_confirmation   "password"
+    confirmed_at            Date.today
     
+    factory :admin do
+    admin                   true
+    end
+  end
+
 end
