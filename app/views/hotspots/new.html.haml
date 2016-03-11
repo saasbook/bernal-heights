@@ -19,9 +19,12 @@
   
   = hotspot.label :report_num, "Police report number (if applicable)"
   = hotspot.number_field 'report_num'
-  
-  = hotspot.label :to_share, "Can we share info with SFPD?"
-  = hotspot.text_field 'to_share'
+
+  = hotspot.label 'to_share', "Can we share your info with the SFPD?"
+  = hotspot.label 'label_to_share_yes', 'Yes'
+  = hotspot.radio_button :to_share, true
+  = hotspot.label 'label_to_share_no', 'No'
+  = hotspot.radio_button :to_share, false
   
   = hotspot.label :creator_name, "Your Name"
   = hotspot.text_field 'creator_name'
@@ -29,7 +32,7 @@
   = hotspot.label :creator_email, "Your Email"
   = hotspot.text_field 'creator_email'
   
-  = hotspot.label :creator_number, "Your Number"
+  = hotspot.label :creator_number, "Your Phone Number"
   = hotspot.text_field 'creator_number'
 
   = submit_tag 'Report Hotspot Issue'
