@@ -4,41 +4,36 @@ Feature: report an issue as a resident of bernal heights
   I want to report that the street light near my house is broken
   so it can be fixed by the appropriate city department and it would be safe for me and my fellow neighbors to get around after sunset.
 
-Background: go to the form page
-  # write steps here to navigate to the form page
-  # And I am on the HotSpot Form page
+Background: go to the Hotspot form page
+  Given I am on the Hotspot form page
+  Then I should see "Hotspots#new"
 
-Scenario: reporting an issue with all fields filled
-  # your steps here // edit here
-  Given I select "Street Light"
-  And I check "burned out"
-  Then I fill in "Address" with "245 College Ave, San Francisco, CA 94112"
-  And I fill in "Time of occurence" with "2:45PM on 02/05/2016"
-  And I fill "Other details" with "None"
-  And I fill "Reported to Police" with "N/A"
-  Then I select "no" to "sharing my information"
-  And When I press "submit_form"
-  Then I should see "Issue has been submitted. Thank you!"
+Scenario: reporting an issue with all required fields filled (type of issue and location)
+  When I fill in "Type of Issue" with "Street Light"
+  And I fill in "Location" with "245 College Ave, San Francisco, CA 94112"
+  And I press "Report Hotspot Issue"
+  Then I should see "You have successfully reported an issue. Thank you!"
+  
+Scenario: missing required fields
+  When I press "Report Hotspot Issue"
+  Then I should see "You have not filled out all required fields."
+  
+Scenario: reporting an issue with detailed information
+  Given I fill in "Type of Issue" with "Illegal drug transactions" 
+  And I fill in "Location" with "123 Cortland Ave"
+  And I select date 2016, March, 2
+  And I fill in "Details" with "I have seen groups of people going around vandlizing homes on Cortland."
+  And I choose "hotspot_to_share_true"
+  And I fill in "Your Name" with "John Smith"
+  And I fill in "Your Email" with "johnsmith@gmail.com"
+  And I fill in "Your Phone Number" with "(415)123-4567"
+  Then I press "Report Hotspot Issue"
+  Then I should see "You have successfully reported an issue. Thank you!"
 
-
-Scenario: reporting an issue missing some mandatory fields (i.e. other details)
-  # your steps here 
-  Given I select "Street Light"
-  And I check "burned out"
-  Then I fill in "Address" with "245 College Ave, San Francisco, CA 94112"
-  And I fill in "Time of occurence" with "2:45PM on 02/05/2016"
-  Then I select "yes" to "sharing my information"
-  And I fill in "User_Name" with "John Smith"
-  And I fill in "User_Add" with "123 College Ave, SF, CA 94112"
-  And I fill in "User_Number" with "(415)-123-4567"
-  And I fill in "User_Email" with "johnsmith@gmail.com"
-  And I fill in "Time to contact" with "Evening by phone"
-  And When I press "submit_form"
-  Then I should see "Issue has been submitted. Thank you!"
-
-# Following secanaris may be added in the future
+# Following scenariosmay be added in the future
 # Scenario: reporting an issue via geotags
   # write your steps here
+  #And I fill in "Can we share your info with the SFPD?" with "yes"
 
 # Scenario: reporting an issue via clicking on map coordinates/dropping pin
   # write your steps here

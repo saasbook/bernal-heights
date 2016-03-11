@@ -115,27 +115,6 @@ Scenario: Wrong password during login
   Then I should be on the sign in page
   #And I should see "Email and password don't match record."
 
-Scenario: User login through facebook
-
-  Given I am on the sign in page
-  When I follow "Sign in with Facebook"
-  Then I should see "Log into Facebook"
-  When I fill in "Email" with "user1@cucumbertest.com"
-  And I fill in "Password" with "12345678"
-  And I press "Log In"
-  Then I should be on the events page
-  And I should see "Bernal Heights App Thingy!"
-
-Scenario: Wrong password during login through facebook
-
-  Given I am on the sign in page
-  When I follow "Sign in with Facebook"
-  Then I should be on the Facebook sign in page
-  When I fill in "Email" with "user1@cucumbertest.com"
-  And I fill in "Password" with "1234"
-  And I press "Log In"
-  Then I should see "The password you've entered is incorrect."
-
 Scenario: User can't login without creating an account first
   
   Given I am on the sign in page
@@ -144,3 +123,14 @@ Scenario: User can't login without creating an account first
   And I press "Log in"
   Then I should be on the sign in page
   #And I should see "No account found with this email."
+  
+
+#-------------------OmniAuth-------------------------------
+# @omniauth_test
+# Scenario: User login through facebook
+
+#   Given I am on the sign in page
+#   When I follow "Sign in with Facebook"
+#   Then I am signed in with provider "Facebook"
+#   And I should be on the events page
+#   And I should see "Bernal Heights App Thingy!"
