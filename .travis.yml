@@ -1,7 +1,7 @@
 language: ruby
 rvm:
  - "2.2.2"
-before_script: echo $SUPER_SECRET_PASSWORD | gpg --passphrase-fd 0 application.yml.gpg
+before_script: echo $SUPER_SECRET_PASSWORD | gpg --passphrase-fd 0 config/application.yml.gpg
 
 script: 
 - bundle exec rake db:test:prepare
