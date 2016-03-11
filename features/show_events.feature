@@ -19,7 +19,7 @@ Background: events have been added to database
   And I am on the home page
 
 Scenario: sort movies in chronological order
-  Given that I am on the home page
+  Given I am on the home page
   When I click on "Events Calendar"
   Then I should see "Library Movie Night" before "Neighborhood Pool Party"
   And I should see "Neighborhood Pool Party" before "Park Cleanup"
