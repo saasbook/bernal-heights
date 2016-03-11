@@ -73,3 +73,11 @@ end
 After('@omniauth_test') do
   OmniAuth.config.test_mode = false
 end
+
+Before('@noauth') do
+  $disable_authentication = true
+end
+ 
+After('@noauth') do
+  $disable_authentication = false
+end

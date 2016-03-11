@@ -1,3 +1,4 @@
+@noauth
 Feature: create a new community event 
  
   As a Bernal Heights community member

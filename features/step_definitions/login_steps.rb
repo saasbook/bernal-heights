@@ -7,4 +7,5 @@ Given /^I am signed in$/ do
   visit path_to("the sign in page")
   step "I fill in \"Email\" with \"test@test.com\""
   step "I fill in \"Password\" with \"password\""
+  step "I should be on the events page"
 end

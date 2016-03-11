@@ -1,3 +1,4 @@
+@noauth
 Feature: display all events 
  
   As a Bernal Heights community member,
