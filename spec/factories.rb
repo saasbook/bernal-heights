@@ -12,4 +12,15 @@ FactoryGirl.define do
     creator_email   { Faker::Internet.email }
     event_organizer { Faker::Name.name }
   end
+  
+  factory :user do
+    email                   { Faker::Internet.email }
+    password                "password"
+    password_confirmation   "password"
+    
+    factory :admin do
+    admin                   true
+    end
+  end
+
 end

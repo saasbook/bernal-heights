@@ -1,3 +1,4 @@
+@noauth
 Feature: report an issue as a resident of bernal heights
 
   As a resident of the bernal heights neighborhood
@@ -5,7 +6,7 @@ Feature: report an issue as a resident of bernal heights
   so it can be fixed by the appropriate city department and it would be safe for me and my fellow neighbors to get around after sunset.
 
 Background: go to the Hotspot form page
-  Given I am on the Hotspot form page
+  And I am on the Hotspot form page
   Then I should see "Hotspots#new"
 
 Scenario: reporting an issue with all required fields filled (type of issue and location)
