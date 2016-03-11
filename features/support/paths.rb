@@ -21,7 +21,15 @@ module NavigationHelpers
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
-
+    when /^the sign in page$/
+      '/users/sign_in'
+    
+    when /^the sign up page$/
+      '/users/sign_up'
+      
+    when /^the events page$/
+      '/events'
+    
     else
       begin
         page_name =~ /^the (.*) page$/

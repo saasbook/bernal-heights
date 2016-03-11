@@ -36,4 +36,6 @@
   = event.text_field 'event_organizer'
 
   = submit_tag 'Create Event'
+
+= button_to "Log out", destroy_user_session_path, :method => :delete
   

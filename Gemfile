@@ -69,3 +69,7 @@ end
 
 gem 'haml'
 
+gem 'therubyracer'
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
