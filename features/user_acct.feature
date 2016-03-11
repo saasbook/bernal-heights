@@ -92,6 +92,14 @@ Scenario: Email already in use during account creation
 Scenario: User login to website
 
   Given I am on the sign in page
+  When I follow "Sign up"
+  Then I should be on the sign up page
+  When I fill in "Email" with "user1@cucumbertest.com"
+  And I fill in "Password" with "12345678"
+  And I fill in "Password confirmation" with "12345678"
+  And I press "Sign up"
+  And I press "Log out"
+  Then I go to the sign in page
   When I fill in "Email" with "user1@cucumbertest.com"
   And I fill in "Password" with "12345678"
   And I press "Log in"
@@ -111,12 +119,12 @@ Scenario: User login through facebook
 
   Given I am on the sign in page
   When I follow "Sign in with Facebook"
-  Then I should be on the Facebook sign in page
+  Then I should see "Log into Facebook"
   When I fill in "Email" with "user1@cucumbertest.com"
   And I fill in "Password" with "12345678"
   And I press "Log In"
   Then I should be on the events page
-  And I should see "Signed in successfully."
+  And I should see "Bernal Heights App Thingy!"
 
 Scenario: Wrong password during login through facebook
 
