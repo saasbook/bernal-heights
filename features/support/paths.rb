@@ -15,6 +15,8 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
+    when /^the All Events page$/ then '/events'
+    when /^the New Event page$/ then '/events/new'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
