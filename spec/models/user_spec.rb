@@ -14,8 +14,8 @@ describe User do
     end
   end
   
-  it "has a name", :pending => 'unimplemented' do
-    expect(user).to respond_to(:name)
+  it "has an email", :pending => 'unimplemented' do
+    expect(user).to respond_to(:email)
   end
   
   it "has a password", :pending => 'unimplemented' do
@@ -24,11 +24,6 @@ describe User do
   
   it "has a password confirmation", :pending => 'unimplemented' do
     expect(user).to respond_to(:password_confirmation)
-  end
-  
-  
-  it "is invalid without a name", :pending => 'unimplemented' do
-    expect(FactoryGirl.build(:user, name: nil)).to be_invalid
   end
   
 end
