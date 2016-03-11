@@ -1,12 +1,12 @@
 language: ruby
 rvm:
  - "2.2.2"
-before_script: echo $SUPER_SECRET_PASSWORD | gpg --passphrase-fd 0 config/application.yml.gpg
+# before_script: echo $SUPER_SECRET_PASSWORD | gpg --passphrase-fd 0 config/application.yml.gpg
 
 script: 
 - bundle exec rake db:test:prepare
 - bundle exec rspec spec
-- bundle exec cucumber
+# - bundle exec cucumber
 addons:
     code_climate:
         repo_token: 1006a5b7a57a9ddcc36e2845893488d3afd55689b182bdc3d1384214222a0062
