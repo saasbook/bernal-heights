@@ -15,10 +15,10 @@
   = event.date_select 'end_date'
 
   = event.label :start_time, "Start Time"
-  = event.time_select 'start_time'
+  = event.time_select 'start_time', {ampm: true}
   
   = event.label :end_time, "End Time"
-  = event.time_select 'end_time'
+  = event.time_select 'end_time', {ampm: true}
   
   = event.label :location, "Location"
   = event.text_area 'location'

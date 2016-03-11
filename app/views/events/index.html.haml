@@ -1,1 +1,16 @@
-= link_to 'create new event', new_event_path
+-#  This file is app/views/events/index.html.haml
+%h1 All Events
+
+%table#events
+  %thead
+    %tr
+      %th Event Name
+      %th More Info
+  %tbody
+    - @events.each do |event|
+      %tr
+        %td= event.name
+        //%td= link_to "More about #{event.name}", event_path(event)
+        %td Show event details will be here
+
+= link_to 'Create new event', new_event_path
