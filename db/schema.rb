@@ -48,4 +48,17 @@ ActiveRecord::Schema.define(version: 20160309223712) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
+  create_table "hotspots", force: :cascade do |t|
+    t.string   "issue_type"
+    t.string   "location"
+    t.datetime "occurred_time"
+    t.string   "details"
+    t.integer  "report_num"
+    t.string   "to_share"
+    t.string   "creator_name"
+    t.string   "creator_email"
+    t.string   "creator_number"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 end

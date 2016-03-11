@@ -30,6 +30,9 @@ module NavigationHelpers
     when /^the events page$/
       '/events'
     
+    when /^the Hotspot form page$/
+      '/hotspots/new'
+
     else
       begin
         page_name =~ /^the (.*) page$/
