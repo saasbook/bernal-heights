@@ -4,6 +4,7 @@ rvm:
 script: 
 - bundle exec rake db:test:prepare
 - bundle exec rspec spec
+- bundle exec cucumber
 addons:
     code_climate:
         repo_token: 1006a5b7a57a9ddcc36e2845893488d3afd55689b182bdc3d1384214222a0062
