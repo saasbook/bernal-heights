@@ -23,10 +23,10 @@ We're using the [figaro] (https://github.com/laserlemon/figaro "Link to Figaro")
 Make sure all API keys and other secrets are stored in config/application.yml.
 Push the **ENCRYPTED** version, config/application.yml.gpg whenever you make edits. Everyone else should be able to pull and decrypt to get application.yml.
 
-Make sure the team knows what password was used to encrypt so they can decrypt.
+Make sure the team knows what password was used to encrypt so we can decrypt.
 
 In config/application.yml, you set variables like this:
-    THE_SECRET = "some secret"
+    THE_SECRET: "some secret"
 To reference it elsewhere in the app use 
     ENV["THE_SECRET"]
     
@@ -43,7 +43,10 @@ Bernal Heights is the main app, the one we're using for production. The Website 
 #### bh_testing
 bh_testing is a "test app" (look in the left column menu) for development and testing. Testing with cloud9 is irritating because we can't just use localhost:3000 as our development URL.
 
-In Settings:
+You will need to change 3 things in settings:
+* App Domain
+* Website URL
+* Valid OAuth Redirect URL
 
 For the App Domain and the Website URL, you want to use the cloud9 url that you get when you run
     $ rails s -p $PORT -b $IP
