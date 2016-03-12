@@ -3,10 +3,7 @@
 [![Code Climate](https://codeclimate.com/github/candychang/bernal-heights/badges/gpa.svg)](https://codeclimate.com/github/candychang/bernal-heights)
 [![Build Status](https://travis-ci.org/candychang/bernal-heights.svg?branch=master)](https://travis-ci.org/candychang/bernal-heights)
 
-Bernal Heights App
-
-Pivotal Tracker: https://www.pivotaltracker.com/n/projects/1543993
-
+This is a web app for the Bernal Heights Neighborhood Center. To follow our progress, check out our [Pivotal Tracker] (https://www.pivotaltracker.com/n/projects/1543993).
 
 ## Testing Notes
 
@@ -26,8 +23,11 @@ Push the **ENCRYPTED** version, config/application.yml.gpg whenever you make edi
 Make sure the team knows what password was used to encrypt so we can decrypt.
 
 In config/application.yml, you set variables like this:
+
     THE_SECRET: "some secret"
+    
 To reference it elsewhere in the app use 
+
     ENV["THE_SECRET"]
     
 ## Omniauth Notes
@@ -49,8 +49,11 @@ You will need to change 3 things in settings:
 * Valid OAuth Redirect URL
 
 For the App Domain and the Website URL, you want to use the cloud9 url that you get when you run
+
     $ rails s -p $PORT -b $IP
+    
 Under 'Advanced', the Valid OAuth Redirect URI should be
+
     [the cloud9 url]/users/auth/facebook/callback
 
 We _could_ probably figure something out where we create a test app for each person's development url but that doesn't exist right now.
@@ -59,12 +62,15 @@ We _could_ probably figure something out where we create a test app for each per
 
 ### Private data and other environment vars
 If you've changed anything in config/application.yml then make sure to update heroku's environment variables:
+
     $ figaro heroku:set -e production
 
 You can check a list of all the variables to make sure they got set correctly:
+
     $ heroku config -s
 
 ### Deploy
+
     $ git push heroku master
     $ heroku run rake db:migrate
     $ heroku run rake db:seed
