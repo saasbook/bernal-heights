@@ -19,8 +19,9 @@ We're using the [figaro] (https://github.com/laserlemon/figaro "Link to Figaro")
 
 Make sure all API keys and other secrets are stored in config/application.yml.
 Push the **ENCRYPTED** version, config/application.yml.gpg whenever you make edits. Everyone else should be able to pull and decrypt to get application.yml.
-
 Make sure the team knows what password was used to encrypt so we can decrypt.
+
+If you need help setting up gpg, [this guide] (https://kb.iu.edu/d/awio) was pretty useful.
 
 In config/application.yml, you set variables like this:
 
