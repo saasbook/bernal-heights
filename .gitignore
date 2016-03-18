@@ -15,3 +15,9 @@
 /log/*
 !/log/.keep
 /tmp
+
+spring-1000/*
+
+/config/secrets.yml
+# Ignore application configuration
+/config/application.yml

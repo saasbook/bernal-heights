@@ -23,6 +23,26 @@ module NavigationHelpers
     #
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
+    when /^the sign in page$/
+      '/users/sign_in'
+    
+    when /^the sign up page$/
+      '/users/sign_up'
+      
+    when /^the events page$/
+      '/events'
+    
+    when /^the Hotspot form page$/
+      '/hotspots/new'
+    
+    when /^the approve events page$/
+      '/events/approve'
+      
+    when /^the sign out page$/
+      destroy_user_session_path
+      
+    when /^the admin home page$/
+      '/admin'
 
     else
       begin
