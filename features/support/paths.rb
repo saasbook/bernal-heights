@@ -34,6 +34,9 @@ module NavigationHelpers
     
     when /^the Hotspot form page$/
       '/hotspots/new'
+      
+    when /^the my events page$/
+      'users/my_events'
 
     else
       begin
