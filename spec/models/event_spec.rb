@@ -64,7 +64,7 @@ describe Event do
     expect(event).to respond_to(:event_photo)
   end
   
-  it "can be approved", :pending => 'unimplemented' do
+  it "needs to be approved", :pending => 'unimplemented' do
     expect(event).to respond_to(:approved)
   end
 
@@ -97,9 +97,18 @@ describe Event do
     expect(FactoryGirl.build(:event, creator_email: nil)).to be_invalid
   end
   
+  context "admin user creates event" do
+    it "starts out as confirmed"
+  end
+  
+  context "non-admin user creates event" do
+    it "starts out as unconfirmed"
+  end
+  
   describe "#confirm_event" do
     context "admin user" do
       it "gets approved"
+      
     end
     
     context "non-admin user" do
