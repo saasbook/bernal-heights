@@ -40,4 +40,26 @@ describe User do
     expect(user).to respond_to(:admin)
   end
   
+  describe "#favorite_event" do
+    context "The user hasn't saved this event yet" do
+      it "adds event to user's saved events"
+    end
+    
+    context "The user has already saved this event before" do
+      it "does not add the event twice"
+    end
+  end
+  
+  describe "#unfavorite_event" do
+    context "favorited event" do
+      it "removes the event from user's saved list"
+    end
+    context "unfavorited event" do
+      it "changes nothing"
+    end
+  end
+    
+      
+    
+  
 end
