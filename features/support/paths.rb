@@ -34,9 +34,18 @@ module NavigationHelpers
     
     when /^the Hotspot form page$/
       '/hotspots/new'
-      
+
     when /^the my events page$/
       'users/my_events'
+    
+    when /^the approve events page$/
+      '/events/approve'
+      
+    when /^the sign out page$/
+      destroy_user_session_path
+      
+    when /^the admin home page$/
+      '/admin'
 
     else
       begin
