@@ -1,16 +1,18 @@
 language: ruby
 rvm:
- - "2.2.2"
-# before_script: echo $SUPER_SECRET_PASSWORD | gpg --passphrase-fd 0 config/application.yml.gpg
-
-script: 
+- 2.2.2
+before_install:
+  - echo $super_secret_password | gpg --pass-phrase-fd 0 config/application.yml.gpg
+script:
 - bundle exec rake db:test:prepare
 - bundle exec rspec spec
-# - bundle exec cucumber
+- bundle exec cucumber
 addons:
-    code_climate:
-        repo_token: 1006a5b7a57a9ddcc36e2845893488d3afd55689b182bdc3d1384214222a0062
+  code_climate:
+    repo_token: 1006a5b7a57a9ddcc36e2845893488d3afd55689b182bdc3d1384214222a0062
 notifications:
   slack: derpydinosaurs:ns1o9ASkiSbiFPwHCBJHULaS
-#should cache gems
 cache: bundler
+env:
+  global:
+    secure: bx2EK+DNhcLDt+UDh49XFjO1eh2Zxx7VtVbwl7cItctdI1PcwQiaWAX0cPywgYeHodbooENbHKABYeWTIy25ws2V5gSwNJEOvd08edDFHvrm2NJrbJs1k0Js4EL0S9m82awO7ZlX8EIe3JFbwOItGX7oWSNs5mArZWY5VVEuirRwv+8TbCIVYFXDaFCssCKe2IZvFt+B2NMdnqABpk6JQXm2vvRKO5ESpg1hECCkgMrjwsFCsnAifQXa0MRF2IluOYnkQEyMMskr6gJIO70hz5HjiZFD/V+++Rb/TwgGIgNOmrBsP956UuhSWblpYcxqc4BqnsRROIp13U9AyH9Ah6tZFof5DM9y6nnKYNfBo6iM+exQoEoHHYfTmXgm2ZfJyQV3jB6Uh60KcJg2tGNFjfSttmsLfdnvV6vXlcqS65Fpet2ZdEG6/CI6wksj3eCWvI1Rdr8QYior9cY2mQjDKjwIaa3CE18uyZkAls8cfXBRSaQrbroWqhjTw8wOBz5iTWo9VqUwTtclYPIFNHmIqdxgoBPbvOMz/kZoMC/9d1PzzdKluiPOa+wA2fJlm82nxGd0V12JIR8Z9mTzBeXXApfucpRladJLBrv/C+bnNHDRBQmV+KBp1qlxRbnXQmCP3JxJ7IWuUHEoEwkiQOgmDhi+TyrGPvPXSx+licwxSTU=
