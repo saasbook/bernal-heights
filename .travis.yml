@@ -2,7 +2,7 @@ language: ruby
 rvm:
 - 2.2.2
 before_install:
-  - echo $super_secret_password | gpg --pass-phrase-fd 0 config/application.yml.gpg
+  - echo $CONFIG_PASSWORD | gpg --passphrase-fd 0 config/application.yml.gpg
 script:
 - bundle exec rake db:test:prepare
 - bundle exec rspec spec
