@@ -21,3 +21,4 @@ spring-1000/*
 /config/secrets.yml
 # Ignore application configuration
 /config/application.yml
+public_keys/password.txt
