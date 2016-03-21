@@ -6,11 +6,11 @@ so that I can have a personalized agenda.
 
 Background: 
   Given the following events exist:
-  | title                   | date          | time      | location         | creator_name     | creator_email     | approved   | 
-  | Neighborhood Pool Party | 15-June-2016  | 14:00:00  | 1234 First Ave.  | Test             | test@test.com     | true       |
-  | Library Movie Night     | 10-June-2016  | 20:00:00  | 5678 Reading St. | Test             | test@test.com     | true       |
-  | Park Cleanup            | 20-June-2016  | 08:00:00  | 9876 Rose Dr.    | Test             | test@test.com     | true       |
-  | Community Carnival      | 27-June-2016  | 11:00:00  | 9876 Rose Dr.    | Test             | test@test.com     | true       |
+  | name                    | start_date    | start_time | location         | creator_name     | creator_email     | approved  |
+  | Neighborhood Pool Party | 15-June-2016  | 14:00:00   | 1234 First Ave.  | Test             | test@test.com     | true      |
+  | Library Movie Night     | 10-June-2016  | 20:00:00   | 5678 Reading St. | Admin            | admin@test.com    | true      |
+  | Park Cleanup            | 20-June-2016  | 08:00:00   | 9876 Rose Dr.    | Admin2           | admin2@test.com   | true      |
+  | Community Carnival      | 27-June-2016  | 11:00:00   | 9876 Rose Dr.    | Test             | test@test.com     | true      |
 
 Scenario: Save an event
   Given I am on the events page
