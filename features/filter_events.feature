@@ -7,11 +7,11 @@ Feature: filtering events
 Background: events have been added to database
 
   Given the following events exist:
-  | title                   | date          | time      | location         | category      |
-  | Neighborhood Pool Party | 15-June-2016  | 14:00:00  | 1234 First Ave.  | Social        |
-  | Library Movie Night     | 10-June-2016  | 20:00:00  | 5678 Reading St. | Social        |
-  | Park Cleanup            | 20-June-2016  | 08:00:00  | 9876 Rose Dr.    | Volunteer     |
-  | Community Carnival      | 27-June-2016  | 11:00:00  | 9876 Rose Dr.    | Social        |
+  | name                    | start_date    | start_time | location         | category      | creator_name     | creator_email     | approved  |
+  | Neighborhood Pool Party | 15-June-2016  | 14:00:00   | 1234 First Ave.  | Social        | Test             | test@test.com     | true      |
+  | Library Movie Night     | 10-June-2016  | 20:00:00   | 5678 Reading St. | Social        | Admin            | admin@test.com    | true      |
+  | Park Cleanup            | 20-June-2016  | 08:00:00   | 9876 Rose Dr.    | Volunteer     | Admin2           | admin2@test.com   | true      |
+  | Community Carnival      | 27-June-2016  | 11:00:00   | 9876 Rose Dr.    | Social        | Test             | test@test.com     | true      |
 
 
   And I am on the All Events page
