@@ -74,3 +74,7 @@ gem 'therubyracer'
 gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
+
+gem 'underscore-rails'
+gem 'geocoder'
+gem 'gmaps4rails', '2.0.3'
