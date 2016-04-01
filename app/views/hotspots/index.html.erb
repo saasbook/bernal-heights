@@ -7,12 +7,12 @@
 
 <!--This creates the map and iterates through the hotspot locations in the db to create the markers.-->
 <script type="text/javascript">
+
     handler = Gmaps.build('Google');
     handler.buildMap({
     provider: {
-      disableDefaultUI: false,
+      disableDefaultUI: false //this option sets map style
       // pass in other Google Maps API options here
-      clusterer_gridSize: 2
     },
     internal: {
       id: 'map'
@@ -27,3 +27,4 @@
 );
 
 </script>
+
