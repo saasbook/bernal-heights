@@ -46,7 +46,7 @@ module NavigationHelpers
       destroy_user_session_path
       
     when /^the admin home page$/
-      '/admin'
+      '/admin/dashboard'
   
     when /^the admin dashboard page$/
       '/admin/dashboard'
