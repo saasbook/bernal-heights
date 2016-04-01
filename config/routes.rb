@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root :to => redirect('/events')
+   # currently putting admin dashboard route under app controller // FIX
+   get 'admin/dashboard' => 'application#admin_dashboard', as: :admin_dashboard
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
