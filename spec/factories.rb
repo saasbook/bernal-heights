@@ -22,5 +22,16 @@ FactoryGirl.define do
     admin                   true
     end
   end
+  
+  factory :hotspot do
+    issue_type      "Littering"
+    location        "Cortland Ave and Andover St, San Francisco"
+    occurred_time   "2016-04-01 00:00:00"
+    details         "Scrap metals and glass on the sidewalk"
+    report_num      "12345"
+    creator_name    { Faker::Name.name }
+    creator_email   { Faker::Internet.email }
+    creator_number  { Faker::PhoneNumber.phone_number }
+  end
 
 end
