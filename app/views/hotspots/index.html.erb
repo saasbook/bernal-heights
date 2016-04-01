@@ -1,0 +1,30 @@
+<script src="//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="></script> 
+<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
+
+<div class="map-container">
+  <div class="map-canvas" id="map" ></div>
+</div>
+
+<!--This creates the map and iterates through the hotspot locations in the db to create the markers.-->
+<script type="text/javascript">
+
+    handler = Gmaps.build('Google');
+    handler.buildMap({
+    provider: {
+      disableDefaultUI: false //this option sets map style
+      // pass in other Google Maps API options here
+    },
+    internal: {
+      id: 'map'
+    }
+  },
+  function(){
+    markers = handler.addMarkers(<%=raw @hash.to_json %>);
+    handler.bounds.extendWith(markers);
+    handler.fitMapToBounds();
+    handler.getMap().setZoom(15);
+  }
+);
+
+</script>
+

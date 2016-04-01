@@ -10,6 +10,15 @@ class HotspotsController < ApplicationController
   def new
     @hotspot = Hotspot.new
   end
+  
+  def index
+    @hotspots = Hotspot.all
+    @hash = Gmaps4rails.build_markers(@hotspots) do |hotspot, marker|
+      marker.lat hotspot.latitude
+      marker.lng hotspot.longitude
+      marker.infowindow hotspot.issue_type
+    end
+  end
 
   def create
     @hotspot = Hotspot.new(hotspot_params)
@@ -21,4 +30,5 @@ class HotspotsController < ApplicationController
         render :new
     end
   end
+  
 end
