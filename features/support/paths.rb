@@ -17,6 +17,7 @@ module NavigationHelpers
       '/'
     when /^the All Events page$/ then '/events'
     when /^the New Event page$/ then '/events/new'
+    
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
@@ -46,7 +47,10 @@ module NavigationHelpers
       
     when /^the admin home page$/
       '/admin'
-
+  
+    when /^the admin dashboard page$/
+      '/admin/dashboard'
+  
     else
       begin
         page_name =~ /^the (.*) page$/

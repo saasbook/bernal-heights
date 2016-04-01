@@ -17,7 +17,7 @@ Given /^I am signed in as an admin$/ do
   step %Q{I fill in "Email" with "#{admin.email}"}
   step %Q{I fill in "Password" with "#{admin.password}"}
   step %Q{I press "Log in"}
-  step "I should be on the events page"
+  step "I should be on the admin dashboard page"
 end
 
 Given /^I am signed out$/ do
