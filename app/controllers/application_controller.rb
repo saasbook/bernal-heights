@@ -7,4 +7,16 @@ class ApplicationController < ActionController::Base
   def authenticate_user!
     super unless $disable_authentication
   end
+  
+  def after_sign_in_path_for(resource)
+    if current_user.admin?
+      admin_dashboard_path
+    else
+      events_path
+    end
+  end
+
+# Fix: ??
+  def admin_dashboard
+  end
 end

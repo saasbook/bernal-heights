@@ -3,6 +3,10 @@ class HotspotsController < ApplicationController
     params.require(:hotspot).permit(:issue_type, :location, :occurred_time, :details, :report_num, :to_share, :creator_name, :creator_email, :creator_number)
   end
   
+  def index
+    @hotspots = Hotspot.all
+  end
+  
   def new
     @hotspot = Hotspot.new
   end

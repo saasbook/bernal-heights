@@ -1,0 +1,17 @@
+-#  This file is app/views/hotspots/index.html.haml
+%h1 All Hotspots
+
+%table#hotspots
+  %thead
+    %tr
+      %th Issue Type
+      %th Location
+      %th Details
+  %tbody
+    - @hotspots.each do |hotspot|
+      %tr
+        %td= hotspot.issue_type
+        %td= hotspot.location
+        %td= hotspot.details
+
+= link_to 'Create new hotspot', new_hotspot_path
