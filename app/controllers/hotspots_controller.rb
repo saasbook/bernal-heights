@@ -12,7 +12,7 @@ class HotspotsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@hotspots) do |hotspot, marker|
       marker.lat hotspot.latitude
       marker.lng hotspot.longitude
-      marker.infowindow hotspot.details
+      marker.infowindow hotspot.issue_type
     end
   end
 
