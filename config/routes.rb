@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root :to => redirect('/hotspots')
+   root :to => redirect('/events')
    # currently putting admin dashboard route under app controller // FIX
   # get 'admin/dashboard' => 'application#admin_dashboard', as: :admin_dashboard
 
