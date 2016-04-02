@@ -10,6 +10,8 @@
 
   %body
     %h1.title Bernal Heights App Thingy!
+    = link_to "Events", events_path
+    = link_to "Hotspots", hotspots_path
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]
