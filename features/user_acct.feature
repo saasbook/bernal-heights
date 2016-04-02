@@ -1,136 +1,126 @@
-# Feature:
+Feature:
 
-#   As a Bernal Heights community member,
-#   I want to create an account and login
-#   So that I can favorite events and view the events I submitted.
+  As a Bernal Heights community member,
+  I want to create an account and login
+  So that I can favorite events and view the events I submitted.
 
-# Scenario: User successfully create an account
+Scenario: User successfully create an account
   
-#   Given I am on the sign in page
-#   When I follow "Sign up"
-#   Then I should be on the sign up page
-#   When I fill in "Email" with "user1@cucumbertest.com"
-#   And I fill in "Password" with "12345678"
-#   And I fill in "Password confirmation" with "12345678"
-#   And I press "Sign up"
-#   Then I should see "Welcome! You have signed up successfully."
-#   And I should be on the events page
+  Given I am on the sign in page
+  When I follow "Sign up"
+  Then I should be on the sign up page
+  When I fill in "Email" with "user1@cucumbertest.com"
+  And I fill in "Password" with "12345678"
+  And I fill in "Password confirmation" with "12345678"
+  And I press "Sign up"
+  Then I should see "Welcome! You have signed up successfully."
+  # And I should be on the events page
 
-# Scenario: Missing email during account creation
+Scenario: Missing email during account creation
 
-#   Given I am on the sign in page
-#   When I follow "Sign up"
-#   Then I should be on the sign up page
-#   When I fill in "Password" with "12345678"
-#   And I fill in "Password confirmation" with "12345678"
-#   And I press "Sign up"
-#   Then I should see "Email can't be blank"
+  Given I am on the sign in page
+  When I follow "Sign up"
+  Then I should be on the sign up page
+  When I fill in "Password" with "12345678"
+  And I fill in "Password confirmation" with "12345678"
+  And I press "Sign up"
+  Then I should see "Email can't be blank"
   
-# Scenario: Missing password during account creation
+Scenario: Missing password during account creation
 
-#   Given I am on the sign in page
-#   When I follow "Sign up"
-#   Then I should be on the sign up page
-#   When I fill in "Email" with "user1@cucumbertest.com"
-#   And I press "Sign up"
-#   Then I should see "Password can't be blank"
+  Given I am on the sign in page
+  When I follow "Sign up"
+  Then I should be on the sign up page
+  When I fill in "Email" with "user1@cucumbertest.com"
+  And I press "Sign up"
+  Then I should see "Password can't be blank"
 
-# Scenario: Unmatched passwords during account creation
+Scenario: Unmatched passwords during account creation
 
-#   Given I am on the sign in page
-#   When I follow "Sign up"
-#   Then I should be on the sign up page
-#   When I fill in "Email" with "user1@cucumbertest.com"
-#   And I fill in "Password" with "12345678"
-#   And I fill in "Password confirmation" with "12345679"
-#   And I press "Sign up"
-#   Then I should see "Password confirmation doesn't match Password"
+  Given I am on the sign in page
+  When I follow "Sign up"
+  Then I should be on the sign up page
+  When I fill in "Email" with "user1@cucumbertest.com"
+  And I fill in "Password" with "12345678"
+  And I fill in "Password confirmation" with "12345679"
+  And I press "Sign up"
+  Then I should see "Password confirmation doesn't match Password"
 
-# Scenario: Password too short during account creation
+Scenario: Password too short during account creation
 
-#   Given I am on the sign in page
-#   When I follow "Sign up"
-#   Then I should be on the sign up page
-#   When I fill in "Email" with "user1@cucumbertest.com"
-#   And I fill in "Password" with "1234"
-#   And I fill in "Password confirmation" with "1234"
-#   And I press "Sign up"
-#   Then I should see "Password is too short"
+  Given I am on the sign in page
+  When I follow "Sign up"
+  Then I should be on the sign up page
+  When I fill in "Email" with "user1@cucumbertest.com"
+  And I fill in "Password" with "1234"
+  And I fill in "Password confirmation" with "1234"
+  And I press "Sign up"
+  Then I should see "Password is too short"
 
-# Scenario: Invalid email format during account creation
+Scenario: Invalid email format during account creation
   
-#   Given I am on the sign in page
-#   When I follow "Sign up"
-#   Then I should be on the sign up page
-#   When I fill in "Email" with "user1@cucumbertest"
-#   And I fill in "Password" with "12345678"
-#   And I fill in "Password confirmation" with "12345678"
-#   And I press "Sign up"
-#   Then I should see "Email is invalid"
+  Given I am on the sign in page
+  When I follow "Sign up"
+  Then I should be on the sign up page
+  When I fill in "Email" with "user1@cucumbertest"
+  And I fill in "Password" with "12345678"
+  And I fill in "Password confirmation" with "12345678"
+  And I press "Sign up"
+  Then I should see "Email is invalid"
   
-# Scenario: Email already in use during account creation
+Scenario: Email already in use during account creation
 
-#   Given I am on the sign in page
-#   When I follow "Sign up"
-#   Then I should be on the sign up page
-#   When I fill in "Email" with "user1@cucumbertest.com"
-#   And I fill in "Password" with "12345678"
-#   And I fill in "Password confirmation" with "12345678"
-#   And I press "Sign up"
-#   Then I press "Log out"
-#   When I go to the sign in page
-#   When I follow "Sign up"
-#   Then I should be on the sign up page
-#   When I fill in "Email" with "user1@cucumbertest.com"
-#   And I fill in "Password" with "12345678"
-#   And I fill in "Password confirmation" with "12345678"
-#   And I press "Sign up"
-#   Then I should see "Email has already been taken"
+  Given I am on the sign in page
+  When I follow "Sign up"
+  Then I should be on the sign up page
+  When I fill in "Email" with "user1@cucumbertest.com"
+  And I fill in "Password" with "12345678"
+  And I fill in "Password confirmation" with "12345678"
+  And I press "Sign up"
+  Then I press "Log out"
+  When I go to the sign in page
+  When I follow "Sign up"
+  Then I should be on the sign up page
+  When I fill in "Email" with "user1@cucumbertest.com"
+  And I fill in "Password" with "12345678"
+  And I fill in "Password confirmation" with "12345678"
+  And I press "Sign up"
+  Then I should see "Email has already been taken"
   
-# #---------------------Login---------------------------------
+#---------------------Login---------------------------------
   
-# Scenario: User login to website
+Scenario: User login to website
 
-#   Given I am on the sign in page
-#   When I follow "Sign up"
-#   Then I should be on the sign up page
-#   When I fill in "Email" with "user1@cucumbertest.com"
-#   And I fill in "Password" with "12345678"
-#   And I fill in "Password confirmation" with "12345678"
-#   And I press "Sign up"
-#   And I press "Log out"
-#   Then I go to the sign in page
-#   When I fill in "Email" with "user1@cucumbertest.com"
-#   And I fill in "Password" with "12345678"
-#   And I press "Log in"
-#   Then I should see "Signed in successfully."
-#   And I should be on the events page
+  Given I am on the sign in page
+  When I follow "Sign up"
+  Then I should be on the sign up page
+  When I fill in "Email" with "user1@cucumbertest.com"
+  And I fill in "Password" with "12345678"
+  And I fill in "Password confirmation" with "12345678"
+  And I press "Sign up"
+  And I press "Log out"
+  Then I go to the sign in page
+  When I fill in "Email" with "user1@cucumbertest.com"
+  And I fill in "Password" with "12345678"
+  And I press "Log in"
+  Then I should see "Signed in successfully."
+  # And I should be on the events page
 
-# Scenario: Wrong password during login
+Scenario: Wrong password during login
 
-#   Given I am on the sign in page
-#   When I fill in "Email" with "user1@cucumbertest.com"
-#   And I fill in "Password" with "12345679"
-#   And I press "Log in"
-#   Then I should be on the sign in page
-#   #And I should see "Email and password don't match record."
+  Given I am on the sign in page
+  When I fill in "Email" with "user1@cucumbertest.com"
+  And I fill in "Password" with "12345679"
+  And I press "Log in"
+  Then I should be on the sign in page
+  #And I should see "Email and password don't match record."
 
-# Scenario: User can't login without creating an account first
+Scenario: User can't login without creating an account first
   
-#   Given I am on the sign in page
-#   When I fill in "Email" with "unregistereduser@cucumbertest.com"
-#   And I fill in "Password" with "12345678"
-#   And I press "Log in"
-#   Then I should be on the sign in page
-#   #And I should see "No account found with this email."
+  Given I am on the sign in page
+  When I fill in "Email" with "unregistereduser@cucumbertest.com"
+  And I fill in "Password" with "12345678"
+  And I press "Log in"
+  Then I should be on the sign in page
+  #And I should see "No account found with this email."
   
-
-# #-------------------OmniAuth-------------------------------
-# # @omniauth_test
-# # Scenario: User login through facebook
-
-# #   Given I am on the sign in page
-# #   When I follow "Sign in with Facebook"
-# #   Then I am signed in with provider "Facebook"
-# #   And I should be on the events page
-# #   And I should see "Bernal Heights App Thingy!"

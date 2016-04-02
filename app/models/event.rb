@@ -6,7 +6,12 @@ class Event < ActiveRecord::Base
     validates :creator_name, presence: true
     validates :creator_email, presence: true
     
-    def get_all_unconfirmed
+    def self.get_all_unconfirmed
         return Event.where(approved: false)
+    end
+
+    def confirm
+        self.approved = true
+        self.save
     end
 end

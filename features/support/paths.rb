@@ -25,10 +25,10 @@ module NavigationHelpers
     #   when /^(.*)'s profile page$/i
     #     user_profile_path(User.find_by_login($1))
     when /^the sign in page$/
-      '/users/sign_in'
+      '/admin/sign_in'
     
     when /^the sign up page$/
-      '/users/sign_up'
+      '/admin/sign_up'
       
     when /^the events page$/
       '/events'
@@ -40,10 +40,10 @@ module NavigationHelpers
       'users/my_events'
     
     when /^the approve events page$/
-      '/events/approve'
+      '/admin/events'
       
     when /^the sign out page$/
-      destroy_user_session_path
+      sign_out_path
       
     when /^the admin home page$/
       '/admin/dashboard'
