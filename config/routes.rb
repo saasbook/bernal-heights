@@ -7,6 +7,13 @@ Rails.application.routes.draw do
   devise_for :controllers => { :omniauth_callbacks => "callbacks" }
   resources :events
   resources :hotspots
+  
+  namespace :admin do
+    # Directs /admin/products/* to Admin::ProductsController
+    # (app/controllers/admin/products_controller.rb)
+    resources :events
+    resources :hotspots
+  end
 
   #mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   # The priority is based upon order of creation: first created -> highest priority.

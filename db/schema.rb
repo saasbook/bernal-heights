@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329022045) do
+ActiveRecord::Schema.define(version: 20160401213806) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -24,8 +24,9 @@ ActiveRecord::Schema.define(version: 20160329022045) do
     t.string   "creator_name"
     t.string   "creator_email"
     t.string   "event_organizer"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "approved",        default: false
   end
 
   create_table "hotspots", force: :cascade do |t|
