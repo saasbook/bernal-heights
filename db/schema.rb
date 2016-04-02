@@ -11,40 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160329022045) do
+ActiveRecord::Schema.define(version: 20160402015426) do
 
-  create_table "events", force: :cascade do |t|
-    t.string   "name"
-    t.date     "start_date"
-    t.time     "start_time"
-    t.date     "end_date"
-    t.time     "end_time"
-    t.string   "location"
-    t.text     "description"
-    t.string   "creator_name"
-    t.string   "creator_email"
-    t.string   "event_organizer"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-  end
-
-  create_table "hotspots", force: :cascade do |t|
-    t.string   "issue_type"
-    t.string   "location"
-    t.datetime "occurred_time"
-    t.string   "details"
-    t.integer  "report_num"
-    t.string   "to_share"
-    t.string   "creator_name"
-    t.string   "creator_email"
-    t.string   "creator_number"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.float    "latitude"
-    t.float    "longitude"
-  end
-
-  create_table "users", force: :cascade do |t|
+  create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
     t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
@@ -62,7 +31,39 @@ ActiveRecord::Schema.define(version: 20160329022045) do
     t.boolean  "admin",                  default: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "admins", ["email"], name: "index_admins_on_email", unique: true
+  add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
+
+  create_table "events", force: :cascade do |t|
+    t.string   "name"
+    t.date     "start_date"
+    t.time     "start_time"
+    t.date     "end_date"
+    t.time     "end_time"
+    t.string   "location"
+    t.text     "description"
+    t.string   "creator_name"
+    t.string   "creator_email"
+    t.string   "event_organizer"
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.boolean  "approved",        default: false
+  end
+
+  create_table "hotspots", force: :cascade do |t|
+    t.string   "issue_type"
+    t.string   "location"
+    t.datetime "occurred_time"
+    t.string   "details"
+    t.integer  "report_num"
+    t.boolean  "to_share"
+    t.string   "creator_name"
+    t.string   "creator_email"
+    t.string   "creator_number"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.float    "latitude"
+    t.float    "longitude"
+  end
 
 end

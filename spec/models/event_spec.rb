@@ -64,7 +64,7 @@ describe Event do
     expect(event).to respond_to(:event_photo)
   end
   
-  it "needs to be approved", :pending => 'unimplemented' do
+  it "can be marked as approved" do
     expect(event).to respond_to(:approved)
   end
 
@@ -105,15 +105,27 @@ describe Event do
     it "starts out as unconfirmed"
   end
   
-  describe "#confirm_event" do
-    context "admin user" do
-      it "gets approved"
-      
-    end
-    
-    context "non-admin user" do
-      it "does not get approved"
+  describe "#confirm" do
+    before { @event_a = FactoryGirl.create(:event, approved: false)}
+    it "confirms event" do
+      @event_a.confirm
+      expect(@event_a.approved).to be true
     end
   end
   
+  describe "@@get_all_unconfirmed" do
+    before do
+      @event_a = FactoryGirl.create(:event, approved: false)
+      @event_b = FactoryGirl.create(:event, approved: false)
+      @event_c = FactoryGirl.create(:event, approved: true)
+    end
+    
+    it "returns all unapproved events" do
+      expect(Event.get_all_unconfirmed).to include(@event_a, @event_b)
+    end
+    
+    it "does not return approved events" do
+      expect(Event.get_all_unconfirmed).to_not include(@event_c)
+    end
+  end
 end

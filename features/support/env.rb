@@ -59,15 +59,12 @@ World(FactoryGirl::Syntax::Methods)
 
 Before('@omniauth_test') do
   OmniAuth.config.test_mode = true
-  Capybara.default_host = 'http://example.com'
-
   OmniAuth.config.add_mock(:facebook, {
-    :uid => '12345',
-    :info => {
-      :name => 'facebookuser',
-      :email => 'email@email.com'
-    }
-  })
+  'info' => {
+    'email' => 'example@xample.com' },
+  'uid' => '123545',
+  'provider' => 'Facebook'
+})
 end
 
 After('@omniauth_test') do

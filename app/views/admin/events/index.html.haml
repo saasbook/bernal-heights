@@ -1,0 +1,15 @@
+%h1 Unapproved Events
+
+%table#events
+  %thead
+    %tr
+      %th Event Name
+      %th More Info
+  %tbody
+    - @events.each do |event|
+      %tr
+        %td= event.name
+        //%td= link_to "More about #{event.name}", event_path(event)
+        %td= button_to "Approve Event",  admin_event_confirm_path(event_id: event.id)
+
+= link_to 'Create new event', new_event_path

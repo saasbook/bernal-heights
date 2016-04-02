@@ -14,7 +14,7 @@ Scenario: User successfully create an account
   And I fill in "Password confirmation" with "12345678"
   And I press "Sign up"
   Then I should see "Welcome! You have signed up successfully."
-  And I should be on the events page
+  # And I should be on the events page
 
 Scenario: Missing email during account creation
 
@@ -104,7 +104,7 @@ Scenario: User login to website
   And I fill in "Password" with "12345678"
   And I press "Log in"
   Then I should see "Signed in successfully."
-  And I should be on the events page
+  # And I should be on the events page
 
 Scenario: Wrong password during login
 
@@ -124,13 +124,3 @@ Scenario: User can't login without creating an account first
   Then I should be on the sign in page
   #And I should see "No account found with this email."
   
-
-#-------------------OmniAuth-------------------------------
-# @omniauth_test
-# Scenario: User login through facebook
-
-#   Given I am on the sign in page
-#   When I follow "Sign in with Facebook"
-#   Then I am signed in with provider "Facebook"
-#   And I should be on the events page
-#   And I should see "Bernal Heights App Thingy!"

@@ -1,12 +1,22 @@
 Rails.application.routes.draw do
-  devise_for :users do
-    get '/users/sign_out' => 'devise/sessions#destroy',
-    :omniauth_callbacks => "callbacks"
+  devise_for :admins, path: "admin", singular: :admin, module: "admin"
+  
+  devise_scope :admin do
+    get "/auth/facebook"  => "admin/omniauth_callbacks#facebook", as: :fb_omniauth
+    get '/sign_out' => 'admin/sessions#destroy', as: :sign_out
+    get 'admin/dashboard' => 'admin/sessions#admin_dashboard', as: :admin_dashboard
   end
-    
-  devise_for :controllers => { :omniauth_callbacks => "callbacks" }
   resources :events
   resources :hotspots
+  
+  namespace :admin do
+    # Directs /admin/products/* to Admin::ProductsController
+    # (app/controllers/admin/products_controller.rb)
+    resources :events do
+      post 'confirm'
+    end
+    resources :hotspots
+  end
 
   #mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   # The priority is based upon order of creation: first created -> highest priority.
@@ -15,7 +25,7 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
    root :to => redirect('/events')
    # currently putting admin dashboard route under app controller // FIX
-   get 'admin/dashboard' => 'application#admin_dashboard', as: :admin_dashboard
+  # get 'admin/dashboard' => 'application#admin_dashboard', as: :admin_dashboard
 
   # Example of named route that can be invoked with purchase_url(id: product.id)
   #   get 'products/:id/purchase' => 'catalog#purchase', as: :purchase
