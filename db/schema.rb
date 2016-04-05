@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 20160402015426) do
     t.datetime "occurred_time"
     t.string   "details"
     t.integer  "report_num"
-    t.boolean  "to_share"
+    t.string   "to_share"
     t.string   "creator_name"
     t.string   "creator_email"
     t.string   "creator_number"
