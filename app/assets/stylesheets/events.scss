@@ -1,3 +1,20 @@
 // Place all the styles related to the events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//colors
+$orange-primary: #FF9F27;
+
+.fixed-width {
+    width: 750 px;
+}
+
+.form-heading {
+    border-color: $orange-primary;
+    background-color: $orange-primary;
+    color: white;
+}
+
+.form-border {
+    border-color: $orange-primary;
+}
