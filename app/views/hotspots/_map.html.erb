@@ -19,10 +19,15 @@
     }
   },
   function(){
-    markers = handler.addMarkers(<%=raw @hash.to_json %>);
-    handler.bounds.extendWith(markers);
-    handler.fitMapToBounds();
-    handler.getMap().setZoom(15);
+    <% if @hotspots.count == 0 %>
+      handler.getMap().setCenter({lat: 37.744385, lng: -122.417046});
+      handler.getMap().setZoom(15);
+    <% else %>
+      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(15);
+    <% end %>
   }
 );
 
