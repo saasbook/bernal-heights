@@ -1,39 +1,33 @@
-<h1>Events#new</h1>
-<p>Find me in app/views/events/new.html.haml</p>
+%h2 Create New Event
 
-%h1 Create New Event
+%div{:class => "container fixed-width"}
+  .row
+    %div{:class => "col-md-6"}
+      %div{:class => "form-border panel"}
+        %div{:class => "form-heading panel-heading"} New Event Form
+        %div{:class => "panel-body"}
+          = simple_form_for(@event, html: { class: '' }) do |event|
+            = event.input :name, label: "Event Name", error: "A name for the event is required."
+      
+            = event.input :start_date, as: :date, label: "Start Date"
+      
+            = event.input :end_date, as: :date, label: 'End Date'
+          
+            = event.input :start_time, as: :time, label: "Start Time", ampm: true
+            
+            = event.label :end_time, "End Time"
+            = event.time_select 'end_time', {ampm: true}
+            
+            = event.input :location, as: :text, label: "Location", hint: "Please type an address or the street intersection, e.g. Andover St and Cortland Ave.", error: "A location is required."
+            
+            = event.input :description, as: :text, label: "Description"
+            
+            = event.input :creator_name, label: "Your Name", error: "Your name is required."
+            
+            = event.input :creator_email, label: "Your E-mail", error: "Your e-mail is required."
+            
+            = event.input :event_organizer, label: "Organizer Name"
+          
+            = event.submit 'Create Event', :class => 'btn btn-primary'
 
-= form_for @event do |event|
-
-  = event.label :name, 'Name'
-  = event.text_field 'name'
-  
-  = event.label :start_date, "Start Date"
-  = event.date_select 'start_date'
-  
-  = event.label :end_date, "End Date"
-  = event.date_select 'end_date'
-
-  = event.label :start_time, "Start Time"
-  = event.time_select 'start_time', {ampm: true}
-  
-  = event.label :end_time, "End Time"
-  = event.time_select 'end_time', {ampm: true}
-  
-  = event.label :location, "Location"
-  = event.text_area 'location'
-  
-  = event.label :description, "Description"
-  = event.text_area 'description'
-  
-  = event.label :creator_name, "Your Name"
-  = event.text_field 'creator_name'
-  
-  = event.label :creator_email, "Your E-mail"
-  = event.text_field 'creator_email'
-  
-  = event.label :event_organizer, "Organizer Name"
-  = event.text_field 'event_organizer'
-
-  = submit_tag 'Create Event'
   

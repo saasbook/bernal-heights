@@ -12,7 +12,7 @@ Scenario: create a new event
   
 Scenario: all required fields filled out
   Given I am on the New Event page
-  And I fill in "Name" with "Pottery Painting Night"
+  And I fill in "Event Name" with "Pottery Painting Night"
   And I select start time 02 PM, 00
   And I select start date 2013, December, 7
   And I fill in "Location" with "Bernal Heights Public Library"

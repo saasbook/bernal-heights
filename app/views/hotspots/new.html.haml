@@ -2,12 +2,13 @@
 <p>Find me in app/views/hotspots/new.html.haml</p>
 
 %h1 Create New Hotspot (Report)
-
-= form_for @hotspot do |hotspot|
+//  = form_for @hotspot do |hotspot|
+= simple_form_for(@hotspot, html => { class => 'form-horizontal center' }) do |hotspot|
 
   = hotspot.label :issue_type, 'Type of Issue'
   = hotspot.text_field 'issue_type'
-  
+  = hotspot.input :latitude, label: 'Your Latitude'
+          
   = hotspot.label :location, "Location"
   = hotspot.text_area 'location'
   = hotspot.button 'Use my current location', :type => 'button', :onclick => 'getLocation()'
