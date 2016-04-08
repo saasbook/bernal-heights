@@ -8,12 +8,30 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
     
-  %body
-    %h1.title Bernal Heights App
-    
-    = link_to "Events", events_path
-    = link_to "Hotspots", hotspots_path
-    
+  %body.container-fluid
+    %nav.navbar.navbar-default
+      .container-fluid
+        / Brand and toggle get grouped for better mobile display
+        .navbar-header
+          %button.navbar-toggle.collapsed{"aria-expanded" => "false", "data-target" => "#to-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          = link_to "Bernal Heights App", root_path, :class => "navbar-brand"
+        / Collect the nav links, forms, and other content for toggling
+        #to-collapse.collapse.navbar-collapse
+          %ul.nav.navbar-nav
+            %li= link_to "Events", events_path
+            %li= link_to "Hotspots", hotspots_path
+          %ul.nav.navbar-nav.navbar-right
+            - if current_admin
+              %li= link_to "Log out", destroy_admin_session_path, :method => :delete
+            - else
+              %li= link_to "Admin Panel", new_admin_session_path
+        / /.navbar-collapse
+      / /.container-fluid
+      
     #main
       - if flash[:notice]
         #notice.message= flash[:notice]
@@ -22,10 +40,3 @@
 
       = yield
   %foot
-  
-  %p
-  %p
-  %p
-
-  %p= button_to "Admin Sign In", new_admin_session_path
-  %p= button_to "Log out", destroy_admin_session_path, :method => :delete
