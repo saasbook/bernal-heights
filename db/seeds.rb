@@ -5,7 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Admin.destroy_all
 admin = CreateAdminService.new.call
 puts 'CREATED ADMIN USER: ' << admin.email
 
@@ -18,3 +17,5 @@ end
 if observer
   puts 'CREATED OBSERVER ACCT ' << observer.name
 end
+
+Hotspot.destroy_all
