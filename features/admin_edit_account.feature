@@ -60,12 +60,12 @@ Scenario: Update password successfully
 Scenario: Update name successfully
   Given I am signed in with email: "izayaaakun@drrr.com" and password: "peacefulisland"
   When I go to the admin dashboard page
-  Then I should see "Welcome, Heiwajima Shizuo"
+  Then I should see "Welcome back, Heiwajima Shizuo"
   
   When I update my name to "Shizu-chan"
   Then I should see "Name updated to Shizu-chan"
   
   When I go to the admin dashboard page
-  Then I should see "Welcome, Shizu-chan"
+  Then I should see "Welcome back, Shizu-chan"
   And I should not see "Heiwajima Shizuo"
   
