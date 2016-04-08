@@ -2,16 +2,6 @@ require 'spec_helper'
 
 describe Admin do 
   let(:admin) { FactoryGirl.build(:admin) }
-
-  describe "it supports omniauth login" do
-    it "has a uid" do
-      expect(admin).to respond_to(:uid)
-    end
-    
-    it "has a provider" do
-      expect(admin).to respond_to(:provider)
-    end
-  end
   
   it "has a name" do
     expect(admin).to respond_to(:name)
@@ -32,5 +22,15 @@ describe Admin do
   it "has an admin field" do
     expect(admin).to respond_to(:admin)
   end
+  
+  # describe "it supports omniauth login" do
+  #   it "has a uid" do
+  #     expect(admin).to respond_to(:uid)
+  #   end
+    
+  #   it "has a provider" do
+  #     expect(admin).to respond_to(:provider)
+  #   end
+  # end
   
 end
