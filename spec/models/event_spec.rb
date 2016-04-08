@@ -97,12 +97,8 @@ describe Event do
     expect(FactoryGirl.build(:event, creator_email: nil)).to be_invalid
   end
   
-  context "admin user creates event" do
-    it "starts out as confirmed"
-  end
-  
-  context "non-admin user creates event" do
-    it "starts out as unconfirmed"
+  it "starts out as unapproved" do
+    expect(event.approved).to be_false
   end
   
   describe "#confirm" do

@@ -4,26 +4,37 @@ Given /^I am signed in with provider "(.*)"$/ do |provider|
   step "I am signed in as an admin"
 end
 
-Given /^I am signed in(?:| as a non-admin)$/ do
-  user = FactoryGirl.create(:admin)
-  visit path_to("the sign in page")
-  step %Q{I fill in "Email" with "#{user.email}"}
-  step %Q{I fill in "Password" with "#{user.password}"}
-  step %Q{I press "Log in"}
-  # step "I should be on the events page"
-end
-
 Given /^I am signed in as an admin$/ do
   admin = FactoryGirl.create(:admin)
-  visit path_to("the sign in page")
-  step %Q{I fill in "Email" with "#{admin.email}"}
-  step %Q{I fill in "Password" with "#{admin.password}"}
-  step %Q{I press "Log in"}
+  step %Q{I am signed in with email: "#{admin.email}" and password: "#{admin.password}"}
+end
+
+Given /^I am signed in with email: "([^"]*)" and password: "([^"]*)"$/ do |email, password|
+  step %Q{I sign in with email: "#{email}" and password: "#{password}"}
   step "I should be on the admin dashboard page"
 end
 
 Given /^I am signed out$/ do
   visit path_to("the sign out page")
+end
+
+Then /^I can log in with email: "([^"]*)" and password: "([^"]*)"$/ do |email, password|
+  step %Q{I am signed in with email: "#{email}" and password: "#{password}"}
+end
+
+Then /^I cannot log in with email: "([^"]*)" and password: "([^"]*)"$/ do |email, password|
+  step %Q{I sign in with email: "#{email}" and password: "#{password}"}
+  step %Q{I should not see "Welcome back,"}
+  step %Q{I should see "Log in"}
+  step %Q{I should see "Invalid Email or Password"}
+end
+
+When /I sign in with email: "([^"]*)" and password: "([^"]*)"$/ do |email, password|
+  step "I am signed out"
+  visit path_to("the sign in page")
+  step %Q{I fill in "Email" with "#{email}"}
+  step %Q{I fill in "Password" with "#{password}"}
+  step %Q{I press "Log in"}
 end
   
   
