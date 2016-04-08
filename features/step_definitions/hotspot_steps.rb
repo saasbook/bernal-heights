@@ -9,3 +9,12 @@ Given /the following hotspots exist/ do |hotspots_table|
     new_hotspot = Hotspot.create!(hotspot)
   end
 end
+
+Then /I should only see unique hotspots/ do
+    num_markers = Hotspot.uniq.pluck(:location, :issue_type).count
+    expect(page).to have_selector('#markers img', count: num_markers)
+end
+
+Then /I should see overlapping hotspots as one hotspot/ do
+  pending # Write code here that determines hotspots within one block radius of each other
+end
