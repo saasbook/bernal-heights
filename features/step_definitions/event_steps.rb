@@ -26,3 +26,12 @@ When /I (un)?check the following categories: (.*)/ do |uncheck, category_list|
     end
   end
 end
+
+When /^I create an event with name "([^"]*)" as an admin$/ do |name|
+  visit path_to("the admin create event page")
+  step %Q{I fill in "Event Name" with "#{name}"}
+  step %Q{I select start time 02 PM, 00}
+  step %Q{I select start date 2016, December, 7}
+  step %Q{I fill in "Location" with "Bernal Heights Public Library"}
+  step %Q{I press "Create Event"}
+end
