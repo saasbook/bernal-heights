@@ -1,4 +1,4 @@
-<h1>Hotspots#new</h1>
+<h1>New Hotspot Form</h1>
 <p>Find me in app/views/hotspots/new.html.haml</p>
 
 %h1 Create New Hotspot (Report)
@@ -13,8 +13,11 @@
   = hotspot.button 'Use my current location', :type => 'button', :onclick => 'getLocation()'
   = hotspot.label "(if location services is turned on)"
   
-  = hotspot.label :occurred_time, "Discovery Date"
+  = hotspot.label :occurred_time, "Date Occurred"
   = hotspot.date_select 'occurred_time'
+  
+  = hotspot.label :time, "Time Occurred"
+  = hotspot.time_select 'time', {ampm: true}
 
   = hotspot.label :details, "Details"
   = hotspot.text_area 'details'
@@ -37,7 +40,7 @@
   = hotspot.label :creator_number, "Your Phone Number"
   = hotspot.text_field 'creator_number'
 
-  = submit_tag 'Report Hotspot Issue'
+  = submit_tag 'Submit Hotspot Form'
 
 :javascript
   var x = document.getElementById("hotspot_location");
