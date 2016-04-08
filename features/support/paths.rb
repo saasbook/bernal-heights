@@ -35,9 +35,9 @@ module NavigationHelpers
     
     when /^the Hotspot form page$/
       '/hotspots/new'
-
-    when /^the my events page$/
-      'users/my_events'
+    
+    when /^the home page$/
+      '/events'
     
     when /^the approve events page$/
       '/admin/events'
@@ -50,7 +50,10 @@ module NavigationHelpers
   
     when /^the admin dashboard page$/
       '/admin/dashboard'
-  
+      
+    when /^the edit account info page$/
+      '/admin/edit'
+      
     else
       begin
         page_name =~ /^the (.*) page$/
