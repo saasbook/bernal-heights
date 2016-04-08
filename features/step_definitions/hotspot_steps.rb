@@ -11,6 +11,7 @@ end
 
 Then /I should see overlapping hotspots as one hotspot/ do
   pending # Write code here that determines hotspots within one block radius of each other
+end
 
 When /^(?:|I )select occurred time ([0-9 ]+[A|P]M), ([0-9]{2})$/ do |hour, minutes|
   select(hour, :from => "hotspot_time_4i")
