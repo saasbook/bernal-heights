@@ -4,6 +4,7 @@ class CreateAdminService
         user.password = ENV['ADMIN_PASSWORD']
         user.password_confirmation = ENV['ADMIN_PASSWORD']
         user.admin = true
+        user.name = ENV['ADMIN_NAME']
       end
   end
 end
