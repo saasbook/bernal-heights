@@ -5,7 +5,6 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Admin.destroy_all
 admin = CreateAdminService.new.call(ENV['ADMIN_EMAIL'], ENV['ADMIN_PASSWORD'], ENV['ADMIN_NAME'])
 if admin
   puts 'CREATED ADMIN USER: ' << admin.name
