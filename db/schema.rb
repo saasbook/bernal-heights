@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160402015426) do
+ActiveRecord::Schema.define(version: 20160408001601) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20160402015426) do
     t.string   "provider"
     t.string   "uid"
     t.boolean  "admin",                  default: false
+    t.string   "name"
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true
@@ -56,7 +57,7 @@ ActiveRecord::Schema.define(version: 20160402015426) do
     t.datetime "occurred_time"
     t.string   "details"
     t.integer  "report_num"
-    t.string   "to_share"
+    t.boolean  "to_share"
     t.string   "creator_name"
     t.string   "creator_email"
     t.string   "creator_number"
