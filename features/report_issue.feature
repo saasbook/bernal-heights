@@ -4,37 +4,41 @@ Feature: report an issue as a resident of bernal heights
   As a resident of the bernal heights neighborhood
   I want to report that the street light near my house is broken
   so it can be fixed by the appropriate city department and it would be safe for me and my fellow neighbors to get around after sunset.
-
-Background: go to the Hotspot form page
-  And I am on the Hotspot form page
-  Then I should see "Hotspots#new"
-
-Scenario: reporting an issue with all required fields filled (type of issue and location)
-  When I fill in "Type of Issue" with "Street Light"
-  And I fill in "Location" with "245 College Ave, San Francisco, CA 94112"
-  And I press "Report Hotspot Issue"
+  
+Scenario: go to hotspot form page
+  Given I am on the Hotspot form page
+  Then I should see "New Hotspot Form"
+ 
+Scenario: reporting an issue with all required fields filled 
+  Given I am on the Hotspot form page
+  When I select "Street Light" from "Type of Issue" 
+  And I fill in "Location" with "266 Winfield St, San Francisco, CA 94110"
+  And I select occurred time 09 PM, 30
+  And I select occurred date 2016, March, 7
+  And I fill in "Details" with "There is a broken light on Winfield St. which is a problem at night because it makes the street very dimly lit."
+  And I fill in "Your Name" with "Joyce Toh"
+  And I fill in "Your Email" with "joycetoh@berkeley.edu"
+  And I fill in "Your Phone Number" with "123-456-7890"
+  And I press "Submit Hotspot Form"
+  And I check "Will you walk with us?"
   Then I should see "You have successfully reported an issue. Thank you!"
   
 Scenario: missing required fields
-  When I press "Report Hotspot Issue"
+  Given I am on the Hotspot form page
+  When I press "Submit Hotspot Form"
   Then I should see "You have not filled out all required fields."
   
-Scenario: reporting an issue with detailed information
-  Given I fill in "Type of Issue" with "Illegal drug transactions" 
-  And I fill in "Location" with "123 Cortland Ave"
-  And I select date 2016, March, 2
-  And I fill in "Details" with "I have seen groups of people going around vandlizing homes on Cortland."
-  And I choose "hotspot_to_share_true"
-  And I fill in "Your Name" with "John Smith"
-  And I fill in "Your Email" with "johnsmith@gmail.com"
-  And I fill in "Your Phone Number" with "(415)123-4567"
-  Then I press "Report Hotspot Issue"
-  Then I should see "You have successfully reported an issue. Thank you!"
-
-# Following scenariosmay be added in the future
-# Scenario: reporting an issue via geotags
-  # write your steps here
-  #And I fill in "Can we share your info with the SFPD?" with "yes"
-
-# Scenario: reporting an issue via clicking on map coordinates/dropping pin
-  # write your steps here
+Scenario: location not in Bernal Heights Neighborhood
+  Given I am on the Hotspot form page
+  Given I am on the Hotspot form page
+  When I select "Car Break-In" from "Type of Issue" 
+  And I fill in "Location" with "1988 Martin Luther King Jr. Way, Berkeley, CA 94704"
+  And I select occurred time 09 PM, 30
+  And I select occurred date 2016, March, 7
+  And I fill in "Details" with "A car parked in front of the Trader Joe's has been broken into. Their windows are shattered and things stolen."
+  And I fill in "Your Name" with "Joyce Toh"
+  And I fill in "Your Email" with "joycetoh@berkeley.edu"
+  And I fill in "Your Phone Number" with "123-456-7890"
+  And I press "Submit Hotspot Form"
+  And I check "Will you walk with us?"
+  Then I should see "The location is not in Bernal Heights. Please provide an issue that is located in Bernal Heights."
