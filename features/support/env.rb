@@ -57,19 +57,19 @@ end
 Cucumber::Rails::Database.javascript_strategy = :truncation
 World(FactoryGirl::Syntax::Methods)
 
-Before('@omniauth_test') do
-  OmniAuth.config.test_mode = true
-  OmniAuth.config.add_mock(:facebook, {
-  'info' => {
-    'email' => 'example@xample.com' },
-  'uid' => '123545',
-  'provider' => 'Facebook'
-})
-end
+# Before('@omniauth_test') do
+#   OmniAuth.config.test_mode = true
+#   OmniAuth.config.add_mock(:facebook, {
+#   'info' => {
+#     'email' => 'example@xample.com' },
+#   'uid' => '123545',
+#   'provider' => 'Facebook'
+# })
+# end
 
-After('@omniauth_test') do
-  OmniAuth.config.test_mode = false
-end
+# After('@omniauth_test') do
+#   OmniAuth.config.test_mode = false
+# end
 
 Before('@noauth') do
   $disable_authentication = true
