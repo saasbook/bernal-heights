@@ -16,7 +16,7 @@ Scenario: See one hotspot marker for hotspot forms with the exact same location 
   And I follow "View Hotspot Forms"
   Then I should only see unique hotspots
   
-# Scenario: See one hotspot marker for hotspot forms within one block radius from each other and have same issue type
+Scenario: See one hotspot marker for hotspot forms within one block radius from each other and have same issue type
   When I am on the admin dashboard page
   And I follow "View Hotspot Forms"
   Then I should see overlapping hotspots as one hotspot
