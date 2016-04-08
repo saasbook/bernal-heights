@@ -59,6 +59,9 @@ module NavigationHelpers
     
     when /^the view all admins page$/
       '/admin/accounts'
+    
+    when /^the admin create event page$/
+      '/admin/events/new'
       
     else
       begin
