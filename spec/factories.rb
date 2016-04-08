@@ -14,10 +14,10 @@ FactoryGirl.define do
   end
   
   factory :admin do
+    name                    { Faker::Name.name }
     email                   { Faker::Internet.email }
     password                "password"
     password_confirmation   "password"
-    
     admin                   true
   end
 

@@ -13,6 +13,10 @@ describe Admin do
     end
   end
   
+  it "has a name" do
+    expect(admin).to respond_to(:name)
+  end
+  
   it "has an email" do
     expect(admin).to respond_to(:email)
   end
