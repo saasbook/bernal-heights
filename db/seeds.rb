@@ -5,17 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-admin = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << admin.email
-
-observer = Admin.find_or_create_by!(email: "dluu@berkeley.edu") do |observer|
-  observer.name = "Dorthy Luu"
-  observer.password = "12345678"
-  observer.password_confirmation = "12345678"
-  observer.admin = true
+Admin.destroy_all
+admin = CreateAdminService.new.call(ENV['ADMIN_EMAIL'], ENV['ADMIN_PASSWORD'], ENV['ADMIN_NAME'])
+if admin
+  puts 'CREATED ADMIN USER: ' << admin.name
 end
+
+observer = CreateAdminService.new.call(ENV['OBSERVER_EMAIL'], ENV['OBSERVER_PASSWORD'], ENV['OBSERVER_NAME'])
 if observer
   puts 'CREATED OBSERVER ACCT ' << observer.name
 end
-
-Hotspot.destroy_all
