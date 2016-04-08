@@ -14,3 +14,8 @@ observer = CreateAdminService.new.call(ENV['OBSERVER_EMAIL'], ENV['OBSERVER_PASS
 if observer
   puts 'CREATED OBSERVER ACCT ' << observer.name
 end
+
+bh_admin = CreateAdminService.new.call(ENV['BH_EMAIL'], ENV['BH_PASSWORD'], ENV['BH_NAME'])
+if bh_admin
+  puts 'CREATED BHNC ACCT ' << bh_admin.name
+end
