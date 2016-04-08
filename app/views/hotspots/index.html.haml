@@ -1,6 +1,6 @@
 %h1 All Hotspots
 
-= render 'map'
+= render 'layouts/map'
 
 %table#hotspots
   %thead
@@ -9,10 +9,13 @@
       %th Location
       %th Details
   %tbody
-    - @hotspots.each do |hotspot|
-      %tr
-        %td= hotspot.issue_type
-        %td= hotspot.location
-        %td= hotspot.details
-
+    - if @hotspots
+      - @hotspots.each do |hotspot|
+        %tr
+          %td= hotspot.issue_type
+          %td= hotspot.location
+          %td= hotspot.details
+          - if admin_signed_in?
+            %td= link_to "Delete Hotspot", hotspot_path(hotspot.id), { method: :delete }
+          
 = button_to 'Create new hotspot', new_hotspot_path, { method: :get }

@@ -16,7 +16,7 @@
     }
   },
   function(){
-    <% if @hotspots.count == 0 %>
+    <% if @hotspots == nil || @hotspots.count == 0 %>
       handler.getMap().setCenter({lat: 37.744385, lng: -122.417046});
       handler.getMap().setZoom(15);
     <% else %>
