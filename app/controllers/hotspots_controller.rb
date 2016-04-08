@@ -34,6 +34,6 @@ class HotspotsController < ApplicationController
   def destroy
     @hotspot = Hotspot.find(params[:id])
     @hotspot.destroy
-    render :index
+    redirect_to hotspots_path
   end
 end
