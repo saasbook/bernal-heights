@@ -35,9 +35,7 @@ Scenario: Invalid email
   
   When I go to the view all admins page
   Then I should not see "Sugawara Koushi"
-  
-  Given I am signed out
-  Then I cannot log in with email: "notanemail" and password: "vicecaptain"
+  And I cannot log in with email: "notanemail" and password: "vicecaptain"
   
 Scenario: Invalid password
   Given I am signed in as an admin
@@ -46,9 +44,7 @@ Scenario: Invalid password
   
   When I go to the view all admins page
   Then I should not see "Sugawara Koushi"
-  
-  Given I am signed out
-  Then I cannot log in with email: "vicecaptain@karasuno.org" and password: "fail"
+  And I cannot log in with email: "vicecaptain@karasuno.org" and password: "fail"
 
 Scenario: Account with registered email already exists
   Given I am signed in as an admin
@@ -56,7 +52,7 @@ Scenario: Account with registered email already exists
   When I register an admin with name: "Second Suga", email: "vicecaptain@karasuno.org" and password: "setterforlife"
   Then I should see "Account for vicecaptain@karasuno.org already created"
   
-  When I go to the view all admins page
-  Then I should not see "vicecaptain@karasuno.org" two times
-end
+  And I can log in with email: "vicecaptain@karasuno.org" and password: "teammother"
+  And I cannot log in with email: "vicecaptain@karasuno.org" and password: "setterforlife"
+
   

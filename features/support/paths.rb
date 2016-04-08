@@ -54,6 +54,12 @@ module NavigationHelpers
     when /^the edit account info page$/
       '/admin/edit'
       
+    when /^the add new admin page$/
+      '/admin/accounts/new'
+    
+    when /^the view all admins page$/
+      '/admin/accounts'
+      
     else
       begin
         page_name =~ /^the (.*) page$/
