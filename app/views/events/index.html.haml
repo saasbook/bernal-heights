@@ -1,6 +1,12 @@
 -#  This file is app/views/events/index.html.haml
 %h1 All Events
 
+= month_calendar(attribute: :start_date, events: @events) do |date, acts|
+  = date
+  - acts.each do |event|
+    %div
+      = event.name
+
 %table#events
   %thead
     %tr
