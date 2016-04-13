@@ -1,6 +1,6 @@
 class HotspotsController < ApplicationController
   def hotspot_params
-    params.require(:hotspot).permit(:issue_type, :location, :occurred_time, :details, :report_num, :to_share, :creator_name, :creator_email, :creator_number)
+    params.require(:hotspot).permit(:issue_type, :location, :occurred_time, :occurred_date, :details, :report_num, :to_share, :creator_name, :creator_email, :creator_number, :walk)
   end
   
   def index
