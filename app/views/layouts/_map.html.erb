@@ -1,4 +1,6 @@
 <div class="map-container">
+  <input id="searchbar" class="controls" type="text" placeholder="Search Box">
+  <input id = "searchbtn" type="button" value="Search" />
   <div class="map-canvas" id="map" ></div>
 </div>
 
@@ -28,5 +30,55 @@
   }
 );
 
+    $('#searchbar').keypress(function (e) {
+      var key = e.which;
+      if(key == 13)  // the enter key code
+      {
+        var coord = Geocoder.coordinates($('#searchbar').val());
+        alert("enter pressed");
+        //handler.getMap().setCenter(coord);
+      }
+    });
+    
+    var search_marker = new google.maps.Marker();
+    var infowindow = new google.maps.InfoWindow();
+    $('#searchbtn').click( function() {
+    $.ajax({
+                 url: "<%= gps_hotspot_path(@hotspots) %>", // Route to the Hotspot Controller gps method
+                type: "GET",
+            dataType: "json",
+                data: { coords: $('#searchbar').val() }, // This goes to Controller in params hash, i.e. params[:file_name]
+            complete: function() {},
+             success: function(data, textStatus, xhr) {
+                        // Do something with the response here
+                        var myLatLng = {lat: data.lat, lng: data.lng};
+                        // clear out marker from previous search
+                        search_marker.setMap(null);
+                        infowindow.close();
+                        
+                        // marker appears with infowindow
+                        var contentString = '<%= link_to "Report Issue", new_hotspot_path %>';
+                        infowindow = new google.maps.InfoWindow({
+                          content: contentString
+                        });
+                        search_marker = new google.maps.Marker({
+                            position: myLatLng,
+                            map: handler.getMap(),
+                            title: 'Report Issue',
+                            animation: google.maps.Animation.DROP
+                        });
+                        infowindow.open(handler.getMap(), search_marker);
+                        search_marker.addListener('click', function() {
+                          infowindow.open(handler.getMap(), search_marker);
+                        });
+                        handler.getMap().setCenter(myLatLng);
+                      },
+               error: function() {
+                        alert("ajax error");
+                      }
+    });
+});
+
 </script>
+
 

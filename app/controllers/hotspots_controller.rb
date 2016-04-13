@@ -7,6 +7,17 @@ class HotspotsController < ApplicationController
     @hotspots = Hotspot.all
   end
   
+  def gps
+    if request.xhr?
+        @coordinates = Geocoder.coordinates(params[:coords])
+        @lat = @coordinates[0]
+        @lng = @coordinates[1]
+        render :json => {
+                            :lat => @lat, :lng => @lng
+                        }
+    end
+  end
+  
   def new
     @hotspot = Hotspot.new
   end
