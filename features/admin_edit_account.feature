@@ -13,7 +13,7 @@ Background:
 Scenario: Admin can reach edit account info from admin dashboard
   Given I am signed in as an admin
   When I am on the admin dashboard page
-  And I follow "Edit Account Information"
+  And I follow "Edit Account"
   Then I should be on the edit account info page
 
 Scenario: Non-admins cannot reach edit account info

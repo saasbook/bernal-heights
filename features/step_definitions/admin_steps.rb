@@ -9,7 +9,7 @@ When /^I provide old password "([^"]*)" to update my password to "([^"]*)"$/ do 
   step %Q{I fill in "Password" with "#{new_password}"}
   step %Q{I fill in "Password confirmation" with "#{new_password}"}
   step %Q{I fill in "Current password" with "#{old_password}"}
-  step %Q{I press "Update"}
+  step %Q{I press "Change Password"}
 end
 
 When /^I update my name to "([^"]*)"$/ do |name|
