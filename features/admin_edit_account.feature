@@ -19,7 +19,7 @@ Scenario: Admin can reach edit account info from admin home page
 Scenario: Non-admins cannot reach edit account info
   Given I am signed out
   When I go to the edit account info page
-  Then I should see "You must sign in as an administrator to see this page"
+  Then I should see "You must be an administrator to see this page"
   And I should be on the sign in page
 
 Scenario: Invalid email

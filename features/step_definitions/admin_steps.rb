@@ -6,9 +6,9 @@ end
 
 When /^I provide old password "([^"]*)" to update my password to "([^"]*)"$/ do |old_password, new_password|
   visit path_to("the edit account info page")
-  step %Q{I fill in "Password" with "#{new_password}"}
-  step %Q{I fill in "Password confirmation" with "#{new_password}"}
-  step %Q{I fill in "Current password" with "#{old_password}"}
+  fill_in('Password', with: new_password, :match => :prefer_exact)
+  fill_in('Password confirmation', with: new_password, :match => :prefer_exact)
+  fill_in('Current password', with: old_password)
   step %Q{I press "Change Password"}
 end
 

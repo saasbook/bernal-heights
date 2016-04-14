@@ -59,6 +59,10 @@ before_filter :is_admin, prepend: true
   end
   
   def update_resource(resource, params)
-    resource.update(params)
+    if params.include?(:password)
+      resource.update_with_password(params)
+    else
+      resource.update(params)
+    end
   end
 end
