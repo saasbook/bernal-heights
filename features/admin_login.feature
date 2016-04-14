@@ -7,7 +7,7 @@ Feature: administrator login
 # Successful log in as an admin and see the admin-control actions on dashboard
 Scenario: Successfully logged on as an administrator
   Given I am signed in as an admin
-  Then I should be on the admin home page page
+  Then I should be on the admin home page
   And I should see "Confirm New Events"
   And I should see "View Hotspot Forms"
   

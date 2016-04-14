@@ -46,7 +46,7 @@ module NavigationHelpers
       sign_out_path
       
     when /^the admin home page$/
-      '/admin/'
+      '/admin'
       
     when /^the edit account info page$/
       '/admin/edit'

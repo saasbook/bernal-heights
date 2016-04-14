@@ -12,7 +12,7 @@ Background:
   | Library Movie Night     | 10-June-2016  | 20:00:00   | Bernal Heights Public Library    | Admin            | admin@test.com    | true      |
   | Park Cleanup            | 20-June-2016  | 08:00:00   | Bernal Heights Park              | Admin2           | admin2@test.com   | true      |
   | Fiesta on the Hill      | 27-June-2016  | 11:00:00   | Bernal Heights Park              | Test             | test@test.com     | false     |
-  Given I am on the admin home page page
+  Given I am on the admin home page
   
 Scenario: See all unapproved events
   When I follow "Confirm New Events"

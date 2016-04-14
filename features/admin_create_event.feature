@@ -5,7 +5,7 @@ Feature:
 
 Scenario: Can access event form from admin home page
   Given I am signed in as an admin
-  When I am on the admin home page page
+  When I am on the admin home page
   And I follow "Create New Event"
   Then I should be on the admin create event page
 

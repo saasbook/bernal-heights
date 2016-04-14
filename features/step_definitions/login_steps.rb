@@ -11,7 +11,7 @@ end
 
 Given /^I am signed in with email: "([^"]*)" and password: "([^"]*)"$/ do |email, password|
   step %Q{I sign in with email: "#{email}" and password: "#{password}"}
-  step "I should be on the admin home page page"
+  step "I should be on the admin home page"
 end
 
 Given /^I am signed out$/ do
@@ -26,7 +26,7 @@ Then /^I cannot log in with email: "([^"]*)" and password: "([^"]*)"$/ do |email
   step %Q{I sign in with email: "#{email}" and password: "#{password}"}
   step %Q{I should not see "Welcome back,"}
   step %Q{I should see "Log in"}
-  step %Q{I should see "Invalid Email or Password"}
+  step %Q{I should see "Invalid email or password"}
 end
 
 When /I sign in with email: "([^"]*)" and password: "([^"]*)"$/ do |email, password|

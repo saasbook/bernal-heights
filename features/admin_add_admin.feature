@@ -5,7 +5,7 @@ Feature:
 
 Scenario: Admin can reach add new admin
   Given I am signed in as an admin
-  When I am on the admin home page page
+  When I am on the admin home page
   And I follow "Manage Admin Accounts"
   Then I should be on the view all admins page
   When I press "Add New Admin"
