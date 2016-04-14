@@ -11,17 +11,16 @@ This is a web app for the Bernal Heights Neighborhood Center. To follow our prog
 
 To avoid having to manually simulate login in cucumber each time, make sure to tag your features/scenarios with @noauth when needed.
 
+### Travis CI
+
+Find the configuration for travis in .travis.yml.
+Refer to [the documentation] (https://docs.travis-ci.com/user/customizing-the-build/) if you need to change it.
+
+Currently it runs the full suite of rspec and cucumber tests, and there integrations with Code Climate and Slack.
+
 ## Development Notes
 
 ### Private data
-
-We're using the [figaro] (https://github.com/laserlemon/figaro "Link to Figaro") gem to help manage our secrets.
-
-Make sure all API keys and other secrets are stored in config/application.yml.
-Push the **ENCRYPTED** version, config/application.yml.gpg whenever you make edits. Everyone else should be able to pull and decrypt to get application.yml.
-Make sure the team knows what password was used to encrypt so we can decrypt.
-
-If you need help setting up gpg, [this guide] (https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages-on-an-ubuntu-12-04-vps) was pretty useful.
 
 In config/application.yml, you set variables like this:
 
@@ -30,38 +29,45 @@ In config/application.yml, you set variables like this:
 To reference it elsewhere in the app use 
 
     ENV["THE_SECRET"]
+
+Make sure all API keys and other secrets are stored in config/application.yml. This file should never be pushed to git - only its encrypted version, config/application.yml.gpg should be.
+
+We're using gpg to encrypt things. If you need help setting up gpg, [this guide] (https://www.digitalocean.com/community/tutorials/how-to-use-gpg-to-encrypt-and-sign-messages-on-an-ubuntu-12-04-vps) was pretty useful.
+
+The file is asymmetrically encrypted, with a password, because Travis CI was being difficult about public/private key encryption. However, the password file itself is able to be encrypted with public/private. Make sure your public key is pushed to the public_keys folder.
+As long as the person encrypting the password file encrypts it for your public key, you should be able to decrypt the password.txt.gpg file to get the password you'll use on config/application.yml.
+
+To decrypt the password.txt.gpg file:
+
+    $ gpg public_keys/password.txt.gpg
+
+And give it the password you created during gpg secret key setup.
+
+Note: If for some reason we need to change the password again, make sure Travis CI also gets updated, or else it won't be able to run any of the tests. Refer to [the documentation] (https://docs.travis-ci.com/user/encrypting-files/#Manual-Encryption) for more details.
+
+#### If someone pushes updated config/application.yml.gpg
+
+Make sure to update your local config/application.yml file!
+To do this, run
+
+    $ gpg config/application.yml.gpg
     
-## Omniauth Notes
-Troublesome enough to get its own section.
+And give it the password in the password.txt.gpg file -- you should have the decrypted version if you followed the instructions above.
 
-### Facebook
-To manage FB login, make sure you're registered as a developer with Facebook and that you've got access to the [app for Bernal Heights] (https://developers.facebook.com/apps/1648142592105446/).
-We'll also have to give our clients Testing roles at least in order for them to be able to log in, since we're in development mode.
+#### If you modify config/application.yml
 
-#### Bernal Heights
-Bernal Heights is the main app, the one we're using for production. The Website URL, App domain, and Valid OAuth Redirects are all set for production, so don't edit those.
+Encrypt the file asymmetrically (overwriting the old config/application.yml.gpg) and push that in your commit:
 
-#### bh_testing
-bh_testing is a "test app" (look in the left column menu) for development and testing. Testing with cloud9 is irritating because we can't just use localhost:3000 as our development URL.
+    $ gpg -c config/application.yml.gpg
 
-You will need to change 3 things in settings:
-* App Domain
-* Website URL
-* Valid OAuth Redirect URL
-
-For the App Domain and the Website URL, you want to use the cloud9 url that you get when you run
-
-    $ rails s -p $PORT -b $IP
-    
-Under 'Advanced', the Valid OAuth Redirect URI should be
-
-    [the cloud9 url]/users/auth/facebook/callback
-
-We _could_ probably figure something out where we create a test app for each person's development url but that doesn't exist right now.
+Give it the password you decrypted from public_keys/password.txt.gpg.
+Everyone else should be able to pull and decrypt to get the updated environment variables.
 
 ## Production
 
 ### Private data and other environment vars
+We're using the [figaro] (https://github.com/laserlemon/figaro "Link to Figaro") gem to help manage our environment variables on production.
+
 If you've changed anything in config/application.yml then make sure to update heroku's environment variables:
 
     $ figaro heroku:set -e production
@@ -76,7 +82,11 @@ You can check a list of all the variables to make sure they got set correctly:
     $ heroku run rake db:migrate
     $ heroku run rake db:seed
 
-...for now.
+Sometimes with javascript/bootstrap changes, you will want to recompile the assets. Try this if it works on the dev environment, but somehow it fails in production.
+
+    $ heroku run rake assets:clean
+    $ heroku run rake assets:precompile
+
 
 
 
