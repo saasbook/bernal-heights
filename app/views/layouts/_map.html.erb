@@ -30,15 +30,14 @@
   }
 );
 
-    $('#searchbar').keypress(function (e) {
-      var key = e.which;
-      if(key == 13)  // the enter key code
-      {
-        var coord = Geocoder.coordinates($('#searchbar').val());
-        alert("enter pressed");
-        //handler.getMap().setCenter(coord);
-      }
-    });
+    // $('#searchbar').keypress(function (e) {
+    //   var key = e.which;
+    //   if(key == 13)  // the enter key code
+    //   {
+    //     var coord = Geocoder.coordinates($('#searchbar').val());
+    //     alert("enter pressed");
+    //   }
+    // });
     
     var search_marker = new google.maps.Marker();
     var infowindow = new google.maps.InfoWindow();
@@ -51,15 +50,19 @@
             complete: function() {},
              success: function(data, textStatus, xhr) {
                         // Do something with the response here
+                        
                         var myLatLng = {lat: data.lat, lng: data.lng};
                         // clear out marker from previous search
                         search_marker.setMap(null);
                         infowindow.close();
                         
                         // marker appears with infowindow
-                        var contentString = '<%= link_to "Report Issue", new_hotspot_path %>';
+                        var location_str = "" + data.lat + ', ' + data.lng;
+                        // have to use String.replace to insert actual value of location_str into erb
+                        var reportIssueLink = '<%= link_to 'Report Issue', new_hotspot_path(:location => 'location_str') %>';
+                        reportIssueLink = reportIssueLink.replace('location_str', location_str);
                         infowindow = new google.maps.InfoWindow({
-                          content: contentString
+                          content: reportIssueLink
                         });
                         search_marker = new google.maps.Marker({
                             position: myLatLng,
@@ -78,6 +81,7 @@
                       }
     });
 });
+
 
 </script>
 
