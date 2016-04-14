@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   devise_scope :admin do
     get '/sign_out' => 'admin/sessions#destroy', as: :sign_out
-    get 'admin/dashboard' => 'admin/sessions#admin_dashboard', as: :admin_dashboard
+    get 'admin/' => 'admin/sessions#home', as: :admin_home
   end
   resources :events
   resources :hotspots
@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
    root :to => redirect('/events')
-   # currently putting admin dashboard route under app controller // FIX
+   # currently putting admin home page route under app controller // FIX
   # get 'admin/dashboard' => 'application#admin_dashboard', as: :admin_dashboard
 
   # Example of named route that can be invoked with purchase_url(id: product.id)

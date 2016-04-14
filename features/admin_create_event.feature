@@ -3,9 +3,9 @@ Feature:
   I want to create events that automatically appear in the calendar
   So I don't need to go through the hassle of approving them
 
-Scenario: Can access event form from admin dashboard
+Scenario: Can access event form from admin home page
   Given I am signed in as an admin
-  When I am on the admin dashboard page
+  When I am on the admin home page
   And I follow "Create New Event"
   Then I should be on the admin create event page
 

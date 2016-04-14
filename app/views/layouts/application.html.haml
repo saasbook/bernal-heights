@@ -27,7 +27,7 @@
             %li= link_to "Hotspots", hotspots_path
           %ul.nav.navbar-nav.navbar-right
             - if current_admin
-              %li= link_to "Admin Panel", admin_dashboard_path
+              %li= link_to "Admin Panel", admin_home_path
               %li= link_to "Log out", destroy_admin_session_path, :method => :delete
             - else
               %li= link_to "Admin Sign In", new_admin_session_path
@@ -35,10 +35,13 @@
       / /.container-fluid
       
     #main
+    
       - if flash[:notice]
         #notice.message= flash[:notice]
       - elsif flash[:warning]
         #warning.message= flash[:warning]
-
+      - elsif flash[:alert]
+        #alert.message= flash[:alert]
+        
       = yield
   %foot

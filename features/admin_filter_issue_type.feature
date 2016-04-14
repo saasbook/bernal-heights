@@ -13,7 +13,7 @@ Background:
   | Car break-ins    | 4020 Folsom St           | 20-June-2016  |  South-East Bernal| Test          | test@test.com |   (415)123-4567  | yes    |
   | Car break-ins    | 105 Highland Ave         | 20-June-2016  |  South-West Bernal| Test          | test@test.com |   (415)123-4567  | no     |
   | Graffiti         | 120 & 122 Bocana St      | 12-June-2016  |  Central Bernal   | Test          | test@test.com |   (415)123-4567  | yes    |
-  Given I am on the admin dashboard page
+  Given I am on the admin home page
   When I follow "View Hotspot Forms"
 
 Scenario: See all hotspot forms by default # need to discuss if we want to display all the data in the table

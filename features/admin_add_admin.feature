@@ -5,7 +5,7 @@ Feature:
 
 Scenario: Admin can reach add new admin
   Given I am signed in as an admin
-  When I am on the admin dashboard page
+  When I am on the admin home page
   And I follow "Manage Admin Accounts"
   Then I should be on the view all admins page
   When I press "Add New Admin"
@@ -26,7 +26,7 @@ Scenario: Successfully create new admin
   
   Given I am signed out
   Then I can log in with email: "captain@karasuno.org" and password: "wingspiker"
-  And I should see "Welcome Back, Sawamura Daichi"
+  And I should see "Welcome back, Sawamura Daichi"
 
 Scenario: Invalid email
   Given I am signed in as an admin
