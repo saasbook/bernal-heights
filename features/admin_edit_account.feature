@@ -25,7 +25,7 @@ Scenario: Non-admins cannot reach edit account info
 Scenario: Invalid email
   Given I am signed in with email: "dullahan@drrr.com" and password: "headlessrider"
   When I update my email to "notanemail"
-  Then I should see "Email is invalid"
+  Then I should see "is invalid"
   And I can log in with email: "dullahan@drrr.com" and password: "headlessrider"
   And I cannot log in with email: "notanemail" and password: "headlessrider"
 
@@ -39,7 +39,7 @@ Scenario: Update email successfully
 Scenario: Invalid new password
   Given I am signed in with email: "ilovecelty@drrr.com" and password: "unrequitedlove"
   When I provide old password "unrequitedlove" to update my password to "fail"
-  Then I should see "Password is too short (minimum is 8 characters)"
+  Then I should see "is too short (minimum is 8 characters)"
   And I can log in with email: "ilovecelty@drrr.com" and password: "unrequitedlove"
   And I cannot log in with email: "ilovecelty@drrr.com" and password: "fail"
 
