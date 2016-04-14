@@ -1,5 +1,12 @@
 %h1 All Hotspots
 
+= form_tag admin_hotspots_path, :method => :get do
+  Show hotspots within: 
+  - @all_regions.each do |region|
+    = region + " Region"
+    = check_box_tag "regions[#{region}]", 1, @selected_regions.include?(region), :id => "regions_#{region}"
+  = submit_tag 'Filter', :id => 'regions_submit'
+
 = render 'layouts/map'
 
 %table#hotspots
