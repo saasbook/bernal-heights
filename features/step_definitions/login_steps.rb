@@ -11,7 +11,7 @@ end
 
 Given /^I am signed in with email: "([^"]*)" and password: "([^"]*)"$/ do |email, password|
   step %Q{I sign in with email: "#{email}" and password: "#{password}"}
-  step "I should be on the admin dashboard page"
+  step "I should be on the admin home page page"
 end
 
 Given /^I am signed out$/ do

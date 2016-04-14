@@ -10,9 +10,9 @@ Background:
     | Kishitani Shinra   | ilovecelty@drrr.com  | unrequitedlove    |
     | Heiwajima Shizuo   | izayaaakun@drrr.com  | peacefulisland    |
 
-Scenario: Admin can reach edit account info from admin dashboard
+Scenario: Admin can reach edit account info from admin home page
   Given I am signed in as an admin
-  When I am on the admin dashboard page
+  When I am on the admin home page page
   And I follow "Edit Account"
   Then I should be on the edit account info page
 
@@ -59,13 +59,13 @@ Scenario: Update password successfully
 
 Scenario: Update name successfully
   Given I am signed in with email: "izayaaakun@drrr.com" and password: "peacefulisland"
-  When I go to the admin dashboard page
+  When I go to the admin home page page
   Then I should see "Welcome back, Heiwajima Shizuo"
   
   When I update my name to "Shizu-chan"
   Then I should see "Name updated to Shizu-chan"
   
-  When I go to the admin dashboard page
+  When I go to the admin home page page
   Then I should see "Welcome back, Shizu-chan"
   And I should not see "Heiwajima Shizuo"
   

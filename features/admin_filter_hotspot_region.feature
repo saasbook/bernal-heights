@@ -13,7 +13,7 @@ Background:
   | Car break-ins    | 479 Prentiss St, San Francisco, CA 94110   | South-East Bernal| Test          | test@test.com |   (415)123-4567  | South-East    |
   | Car break-ins    | 219 Richland Ave, San Francisco, CA 94110  | South-West Bernal| Test          | test@test.com |   (415)123-4567  | South-West    |
   | Graffiti         | 25 Eugenia Ave, San Francisco, CA 94110    | Central Bernal   | Test          | test@test.com |   (415)123-4567  | Central       |
-  Given I am on the admin dashboard page
+  Given I am on the admin home page page
   When I follow "View Hotspot Forms"
 
 Scenario: See all hotspot forms by default # need to discuss if we want to display all the data in the table

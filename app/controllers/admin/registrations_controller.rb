@@ -55,7 +55,7 @@ before_filter :is_admin, prepend: true
   end
   
   def after_update_path_for(resource)
-    admin_dashboard_path
+    admin_home_path
   end
   
   def update_resource(resource, params)

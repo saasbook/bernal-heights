@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   
   def after_sign_in_path_for(resource)
     if admin_signed_in?
-      admin_dashboard_path
+      admin_home_path
     else
       events_path
     end
