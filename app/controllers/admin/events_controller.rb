@@ -1,11 +1,5 @@
 class Admin::EventsController < EventsController
   before_filter :is_admin
-  def is_admin
-    if !admin_signed_in?
-      flash[:notice] = "You must be an administrator to see this page"
-      redirect_to events_path
-    end
-  end
 
   def index
     @events = Event.where(approved: false)

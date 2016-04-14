@@ -38,7 +38,7 @@ Scenario: Non-admin cannot approve events
   When I go to the approve events page
   Then I should see "You must be an administrator to see this page"
   And I should not see "Confirm Events"
-  And I should be on the events page
+  And I should be on the sign in page
   
 # Scenario: Make sure if multiple events are on the page, the correct one gets approved
   

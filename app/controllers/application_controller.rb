@@ -15,4 +15,11 @@ class ApplicationController < ActionController::Base
       events_path
     end
   end
+  
+  def is_admin
+    if !admin_signed_in?
+      flash[:notice] = "You must be an administrator to see this page"
+      redirect_to new_admin_session_path
+    end
+  end
 end
