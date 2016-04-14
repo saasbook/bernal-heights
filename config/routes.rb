@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   devise_for :admins, path: "admin", singular: :admin, module: "admin"
   
   devise_scope :admin do
-    get "/auth/facebook"  => "admin/omniauth_callbacks#facebook", as: :fb_omniauth
     get '/sign_out' => 'admin/sessions#destroy', as: :sign_out
     get 'admin/dashboard' => 'admin/sessions#admin_dashboard', as: :admin_dashboard
   end

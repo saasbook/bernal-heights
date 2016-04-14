@@ -2,6 +2,7 @@ class Admin::SessionsController < Devise::SessionsController
 # before_filter :configure_sign_in_params, only: [:create]
 
   def admin_dashboard
+    @admin = current_admin
   end
   # GET /resource/sign_in
   # def new

@@ -75,8 +75,6 @@ gem 'haml'
 
 gem 'therubyracer'
 gem 'devise'
-gem 'omniauth'
-gem 'omniauth-facebook'
 
 #gems needed for map
 gem 'underscore-rails'

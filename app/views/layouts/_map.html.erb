@@ -1,6 +1,3 @@
-<script src="//maps.google.com/maps/api/js?v=3.18&sensor=false&client=&key=&libraries=geometry&language=&hl=&region="></script> 
-<script src="//google-maps-utility-library-v3.googlecode.com/svn/tags/markerclustererplus/2.0.14/src/markerclusterer_packed.js"></script>
-
 <div class="map-container">
   <div class="map-canvas" id="map" ></div>
 </div>
@@ -19,7 +16,7 @@
     }
   },
   function(){
-    <% if @hotspots.count == 0 %>
+    <% if @hotspots == nil || @hotspots.count == 0 %>
       handler.getMap().setCenter({lat: 37.744385, lng: -122.417046});
       handler.getMap().setZoom(15);
     <% else %>
