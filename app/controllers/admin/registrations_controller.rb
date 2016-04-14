@@ -55,7 +55,7 @@ before_filter :is_admin, prepend: true
   end
   
   def after_update_path_for(resource)
-    signed_in_root_path(resource)
+    admin_dashboard_path
   end
   
   def update_resource(resource, params)
