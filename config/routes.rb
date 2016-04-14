@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   devise_scope :admin do
     get '/sign_out' => 'admin/sessions#destroy', as: :sign_out
-    get 'admin/' => 'admin/sessions#admin_dashboard', as: :admin_home
+    get 'admin/' => 'admin/sessions#home', as: :admin_home
   end
   resources :events
   resources :hotspots
