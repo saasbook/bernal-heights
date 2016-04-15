@@ -29,20 +29,11 @@
     <% end %>
   }
 );
-
-    // $('#searchbar').keypress(function (e) {
-    //   var key = e.which;
-    //   if(key == 13)  // the enter key code
-    //   {
-    //     var coord = Geocoder.coordinates($('#searchbar').val());
-    //     alert("enter pressed");
-    //   }
-    // });
     
     var search_marker = new google.maps.Marker();
     var infowindow = new google.maps.InfoWindow();
     $('#searchbtn').click( function() {
-    $.ajax({
+        $.ajax({
                  url: "<%= gps_hotspot_path(@hotspots) %>", // Route to the Hotspot Controller gps method
                 type: "GET",
             dataType: "json",
@@ -79,8 +70,14 @@
                error: function() {
                         alert("ajax error");
                       }
-    });
-});
+        });
+  });
+  $('#searchbar').keypress(function(e){
+        if(e.which == 13){//Enter key pressed
+            alert("pressed");
+            $('#searchbtn').click();//Trigger search button click event
+        }
+  });
 
 
 </script>
