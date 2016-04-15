@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160412163706) do
-=======
 ActiveRecord::Schema.define(version: 20160414172156) do
->>>>>>> issues-model
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -65,7 +61,7 @@ ActiveRecord::Schema.define(version: 20160414172156) do
     t.string   "location"
     t.string   "details"
     t.integer  "report_num"
-    t.boolean  "to_share"
+    t.string   "to_share"
     t.string   "creator_name"
     t.string   "creator_email"
     t.string   "creator_number"
@@ -73,16 +69,14 @@ ActiveRecord::Schema.define(version: 20160414172156) do
     t.datetime "updated_at",     null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "region"
     t.boolean  "walk"
     t.date     "occurred_date"
     t.time     "occurred_time"
-<<<<<<< HEAD
-=======
   end
 
   create_table "issues", force: :cascade do |t|
     t.string "type"
->>>>>>> issues-model
   end
 
 end
