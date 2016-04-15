@@ -22,12 +22,24 @@
             
             = event.input :description, as: :text, label: "Description"
             
-            = event.input :creator_name, label: "Your Name", error: "Your name is required."
+            - if !current_admin
             
-            = event.input :creator_email, label: "Your E-mail", error: "Your e-mail is required."
+              = event.input :creator_name, label: "Your Name", error: "Your name is required."
+              
+              = event.input :creator_email, label: "Your E-mail", error: "Your e-mail is required."
+              
+              = event.input :event_organizer, label: "Organizer Name"
+              
+              = event.submit 'Create Event', :class => 'btn btn-primary'
+              
+            - else
             
-            = event.input :event_organizer, label: "Organizer Name"
-          
-            = event.submit 'Create Event', :class => 'btn btn-primary'
+              = event.input :creator_name, label: "Your Name", error: "Your name is required.", input_html: {value: "#{current_admin.name}" }
+              
+              = event.input :creator_email, label: "Your E-mail", error: "Your e-mail is required.", input_html: {value: "#{current_admin.email}" }
+            
+              = event.input :event_organizer, label: "Organizer Name", input_html: {value: "Bernal Heights Neighborhood Center" }
+              
+              = event.submit 'Create Event', :class => 'btn btn-primary'
 
   
