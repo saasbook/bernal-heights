@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :admins, path: "admin", singular: :admin, module: "admin"
-  resources :admins, except: [:index]
-  get 'admin/accounts' => 'admins#index', as: :admin_accounts
+  resources :admins, path: "staff", except: [:index, :update, :edit]
+  get '/staff' => 'admins#index', as: :staff_accounts
   
   devise_scope :admin do
     get '/sign_out' => 'admin/sessions#destroy', as: :sign_out

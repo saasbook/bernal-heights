@@ -51,7 +51,7 @@ before_filter :is_admin, prepend: true
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    admin_accounts_path
+    staff_accounts_path
   end
   
   def after_update_path_for(resource)

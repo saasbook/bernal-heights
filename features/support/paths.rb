@@ -52,10 +52,10 @@ module NavigationHelpers
       '/admin/edit'
       
     when /^the add new admin page$/
-      '/admin/new'
+      '/staff/new'
     
     when /^the view all admins page$/
-      '/admin/accounts'
+      '/staff'
     
     when /^the admin create event page$/
       '/admin/events/new'

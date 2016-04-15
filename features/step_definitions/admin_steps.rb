@@ -28,8 +28,8 @@ When /^I register an admin with name: "([^"]*)", email: "([^"]*)" and password: 
   visit path_to("the add new admin page")
   step %Q{I fill in "Name" with "#{name}"}
   step %Q{I fill in "Email" with "#{email}"}
-  step %Q{I fill in "Password" with "#{password}"}
-  step %Q{I fill in "Password confirmation" with "#{password}"}
+  fill_in('Password', with: password, :match => :prefer_exact)
+  fill_in('Password confirmation', with: password, :match => :prefer_exact)
   step %Q{I press "Create Account"}
 end
 

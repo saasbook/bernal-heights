@@ -5,42 +5,32 @@ class AdminsController < ApplicationController
     @admins = Admin.all
   end
   
-  def edit
-    @admin = current_admin
-  end
-  
   def new
+    @admin = Admin.new
   end
   
   def create
     @admin = Admin.new(admin_params)
     if @admin.save
-      flash[:notice] = "#{@admin.name} was successfully created."
-      redirect_to admin_accounts_path
+      flash[:notice] = "New staff account created for #{@admin.name}"
+      redirect_to staff_accounts_path
     else 
       flash[:error] = @admin.errors
       render :new
     end
   end
   
-  def update
-    @admin = Admin.find(admin_params[:id])
-    if admin_params[:password]
-      updated = @admin.update_with_password(admin_params)
-    else
-      updated = @admin.update_attributes(admin_params)
-    end
-    
-    if updated
-      flash[:notice] = "#{@admin.name} was successfully created."
-      redirect_to admin_accounts_path
-    else 
-      flash[:error] = @admin.errors
-      render :new
-    end
-  end
   
   def destroy
+    @admin = Admin.find(params[:id])
+    name = @admin.name
+    if @admin.destroy
+      flash[:notice] = "Account for #{name} removed."
+      redirect_to staff_accounts_path
+    else
+      flash[:error] = @admin.errors
+      render :index
+    end
   end
   
   private
