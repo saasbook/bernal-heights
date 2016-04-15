@@ -15,7 +15,6 @@ class Admin::EventsController < EventsController
     @event = Event.new(event_params)
     if @event.save
       @event.confirm
-      @event.save
       flash[:notice] = "#{@event.name} was successfully created."
       redirect_to admin_events_path
     else 

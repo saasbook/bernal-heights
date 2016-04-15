@@ -3,9 +3,9 @@ Feature:
   I want to create events that automatically appear in the calendar
   So I don't need to go through the hassle of approving them
 
-Scenario: Can access event form from admin home page
+Scenario: Can access event form from admin events page
   Given I am signed in as an admin
-  When I am on the admin home page
+  When I am on the admin events page
   And I press "Create New Event"
   Then I should be on the admin create event page
 
@@ -27,10 +27,13 @@ Scenario: Create event successfully
   When I create an event with name "Hotspot Walk" as an admin
   Then I should see "Hotspot Walk was successfully created"
   And I should be on the admin events page
-  And I should not see "Hotspot Walk" within "#unapproved"
   
   When I go to the events page
   Then I should see "Hotspot Walk"
+  
+  When I go to the admin events page
+  Then I should not see "Hotspot Walk"
+
   
 Scenario: Logged out users must fill in name and email
   Given I am signed out
@@ -41,8 +44,13 @@ Scenario: Logged out users must fill in name and email
 #Create event feature should take care of these tests
 #This feature should focus on the unique admin aspect
 Scenario: Missing fields
+  Given I am signed in as an admin
   Given I am on the admin create event page
   And I press "Create Event"
-  Then I should see "You have not filled out all required fields."
+  Then I should see "A name for the event is required."
+  And I should see "A location is required."
+  
+  Then I should not see "Your name is required."
+  Then I should not see "Your e-mail is required."
 
 
