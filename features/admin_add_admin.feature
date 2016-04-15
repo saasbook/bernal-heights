@@ -3,14 +3,6 @@ Feature:
   I want to be able to create more admin accounts
   So that new staff can manage the app
 
-Scenario: Admin can reach add new admin
-  Given I am signed in as an admin
-  When I am on the admin home page
-  And I follow "Manage Staff Accounts"
-  Then I should be on the view all admins page
-  When I press "Add Staff Account"
-  Then I should be on the add new admin page
-
 Scenario: Non-admins cannot access the add new admin page
   Given I am signed out
   When I go to the add new admin page

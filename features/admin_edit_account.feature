@@ -10,12 +10,6 @@ Background:
     | Kishitani Shinra   | ilovecelty@drrr.com  | unrequitedlove    |
     | Heiwajima Shizuo   | izayaaakun@drrr.com  | peacefulisland    |
 
-Scenario: Admin can reach edit account info from admin home page
-  Given I am signed in as an admin
-  When I am on the admin home page
-  And I follow "Edit Account"
-  Then I should be on the edit account info page
-
 Scenario: Non-admins cannot reach edit account info
   Given I am signed out
   When I go to the edit account info page
