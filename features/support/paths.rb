@@ -63,6 +63,9 @@ module NavigationHelpers
     when /^the admin create event page$/
       '/admin/events/new'
       
+    when /^the admin event page$/
+      '/admin/events'
+      
     else
       begin
         page_name =~ /^the (.*) page$/

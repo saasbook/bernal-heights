@@ -1,14 +1,13 @@
 class EventsController < ApplicationController
-  # skip_before_action :authenticate_user, only: [:index, :new, :create]
-  def event_params
-    params.require(:event).permit(:description, :end_date, :end_time, :event_organizer, :name, :start_date, :start_time, :location, :creator_name, :creator_email)
-  end
-  
+
   def index
     @events = Event.where(approved: true)
   end
   
   def new
+    if current_admin
+      redirect_to new_admin_event_path
+    end
     @event = Event.new
   end
   
@@ -24,10 +23,9 @@ class EventsController < ApplicationController
     end
   end
   
-  def confirm
-    @event = Event.find(params[:id])
-    @event.confirm
-    flash[:notice] = "Event Approved"
-    redirect_to admin_events_path
+  private
+  
+  def event_params
+    params.require(:event).permit(:description, :end_date, :end_time, :event_organizer, :name, :start_date, :start_time, :location, :creator_name, :creator_email)
   end
 end

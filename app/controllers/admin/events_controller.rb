@@ -2,18 +2,20 @@ class Admin::EventsController < EventsController
   before_filter :is_admin
 
   def index
-    @events = Event.where(approved: false)
+    @unapproved = Event.where(approved: false)
+    @approved = Event.where(approved: true)
   end
   
   def new
-    super
-    render '/events/new'
+    @event = Event.new
+    render 'admin/events/new'
   end
   
   def create
     @event = Event.new(event_params)
     if @event.save
       @event.confirm
+      @event.save
       flash[:notice] = "#{@event.name} was successfully created."
       redirect_to admin_events_path
     else 
