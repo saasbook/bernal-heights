@@ -19,3 +19,11 @@ bh_admin = CreateAdminService.new.call(ENV['BH_EMAIL'], ENV['BH_PASSWORD'], ENV[
 if bh_admin
   puts 'CREATED BHNC ACCT ' << bh_admin.name
 end
+
+Issue.create(issue_type: "Car Break-In")
+Issue.create(issue_type: "Abandoned Car")
+Issue.create(issue_type: "Broken Streetlight")
+Issue.create(issue_type: "Illegal Drug Transactions")
+Issue.create(issue_type: "Litter/Dumping Trash")
+Issue.create(issue_type: "Public Drinking and Noise")
+Issue.create(issue_type: "Other")
