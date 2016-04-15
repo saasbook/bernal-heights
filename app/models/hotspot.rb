@@ -2,7 +2,7 @@ class Hotspot < ActiveRecord::Base
     validates :issue_type, presence: true
     validates :location, presence: true
     geocoded_by :location
-    after_validation :geocode, :add_region
+    after_validation :geocode, :add_region, :if => lambda{ |obj| obj.location_changed? }
     
   def self.all_regions
     %w(North Central South-East South-West)
