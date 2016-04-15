@@ -9,7 +9,11 @@ Rails.application.routes.draw do
   end
   
   resources :events
-  resources :hotspots
+  resources :hotspots do
+    member do
+        get 'gps'
+    end
+  end
   
   namespace :admin do
     # Directs /admin/products/* to Admin::ProductsController

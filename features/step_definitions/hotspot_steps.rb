@@ -4,15 +4,6 @@ Given /the following hotspots exist/ do |hotspots_table|
   end
 end
 
-Then /I should only see unique hotspots/ do
-    num_markers = Hotspot.uniq.pluck(:location, :issue_type).count
-    expect(page).to have_selector('#markers img', count: num_markers)
-end
-
-Then /I should see overlapping hotspots as one hotspot/ do
-  pending # Write code here that determines hotspots within one block radius of each other
-end
-
 When /^(?:|I )select occurred time ([0-9 ]+[A|P]M), ([0-9]{2})$/ do |hour, minutes|
   select(hour, :from => "hotspot_time_4i")
   select(minutes, :from => "hotspot_time_5i")
@@ -22,4 +13,12 @@ When /^(?:|I )select occurred date ([0-9]{4}), ([a-zA-Z]+), ([0-9]{1})$/ do |yea
    select(year, :from => "hotspot_occurred_time_1i")
    select(month, :from => "hotspot_occurred_time_2i")
    select(day, :from => "hotspot_occurred_time_3i")
+end
+
+Then /location field should be prefilled with Bernal Heights coordinates/ do
+    page.should have_field('Location', with: '37.7411622, -122.4178378')
+end
+
+When /I report issue for Bernal Heights/ do
+    visit "/hotspots/new?location=37.7411622, -122.4178378"
 end
