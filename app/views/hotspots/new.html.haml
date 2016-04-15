@@ -4,17 +4,20 @@
 %h1 Create New Hotspot (Report)
 
 = form_for @hotspot do |hotspot|
-
+  
   = hotspot.label :issue_type, 'Type of Issue'
-  = hotspot.text_field 'issue_type'
+  = hotspot.select 'issue_type', ['Car Break-In', 'Abandoned Car','Broken Streetlight', 'Illegal Drug Transactions','Litter/Dumping Trash','Public Drinking and Noise','Other']
   
   = hotspot.label :location, "Location"
   = hotspot.text_area 'location'
   = hotspot.button 'Use my current location', :type => 'button', :onclick => 'getLocation()'
   = hotspot.label "(if location services is turned on)"
   
-  = hotspot.label :occurred_time, "Discovery Date"
-  = hotspot.date_select 'occurred_time'
+  = hotspot.label :occurred_time, "Discovery Time"
+  = hotspot.time_select 'occurred_time'
+  
+  = hotspot.label :occurred_date, "Discovery Date"
+  = hotspot.date_select 'occurred_date'
 
   = hotspot.label :details, "Details"
   = hotspot.text_area 'details'
@@ -36,6 +39,13 @@
   
   = hotspot.label :creator_number, "Your Phone Number"
   = hotspot.text_field 'creator_number'
+  
+  = hotspot.label 'walk', "Will you go on a hotspot walk with us?"
+  = hotspot.label 'label_walk_yes', 'Yes'
+  = hotspot.radio_button :walk, true
+  = hotspot.label 'label_walk_no', 'No'
+  = hotspot.radio_button :walk, false
+  
 
   = submit_tag 'Report Hotspot Issue'
 
