@@ -23,3 +23,11 @@ When /^(?:|I )select occurred date ([0-9]{4}), ([a-zA-Z]+), ([0-9]{1})$/ do |yea
    select(month, :from => "hotspot_occurred_time_2i")
    select(day, :from => "hotspot_occurred_time_3i")
 end
+
+Then /location field should be prefilled with Bernal Heights coordinates/ do
+    page.should have_field('Location', with: '37.7411622, -122.4178378')
+end
+
+When /I report issue for Bernal Heights/ do
+    visit "/hotspots/new?location=37.7411622, -122.4178378"
+end

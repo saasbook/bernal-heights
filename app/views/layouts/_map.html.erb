@@ -1,11 +1,21 @@
+<p>Type an address or intersection to report an issue and see hotspots already reported in that area.</p>
+<div class="row">
+  <div class="search-container col-xs-9 col-md-6">  
+    <input id="searchbar" class="form-control" type="text" placeholder="Search location" />
+  </div>
+  <div>
+    <input id = "searchbtn" class="btn btn-primary" type="button" value="Search" />
+  </div>
+</div>
 <div class="map-container">
-  <input id="searchbar" class="controls" type="text" placeholder="Search Box">
-  <input id = "searchbtn" type="button" value="Search" />
-  <div class="map-canvas" id="map" ></div>
+  
+  <div class="map-canvas" id="map" data-test-env="<%= Rails.env.test? %>" ></div>
 </div>
 
 <!--This creates the map and iterates through the hotspot locations in the db to create the markers.-->
 <script type="text/javascript">
+    var mapEl = $('#map');
+    var optimized = !mapEl.data('test-env');
 
     handler = Gmaps.build('Google');
     handler.buildMap({
@@ -22,22 +32,39 @@
       handler.getMap().setCenter({lat: 37.744385, lng: -122.417046});
       handler.getMap().setZoom(15);
     <% else %>
-      markers = handler.addMarkers(<%=raw @hash.to_json %>);
+      markers = handler.addMarkers(<%=raw @hash.to_json %>, {optimized: optimized});
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
       handler.getMap().setZoom(15);
     <% end %>
+    
+    if (!optimized) {
+      // We're adding a container for the markers.
+      // That way we can find all the markers by
+      // doing $("#markers img").
+      var myoverlay = new google.maps.OverlayView();
+
+      myoverlay.draw = function () {
+        this.getPanes().markerLayer.id = 'markers';
+      };
+
+      myoverlay.setMap(handler.getMap());
+    }
   }
 );
     
     var search_marker = new google.maps.Marker();
     var infowindow = new google.maps.InfoWindow();
+    
     $('#searchbtn').click( function() {
+      var search_param = $('#searchbar').val();
+      // prevents ajax error
+      if (search_param != "") {
         $.ajax({
                  url: "<%= gps_hotspot_path(@hotspots) %>", // Route to the Hotspot Controller gps method
                 type: "GET",
             dataType: "json",
-                data: { coords: $('#searchbar').val() }, // This goes to Controller in params hash, i.e. params[:file_name]
+                data: { coords: search_param }, // This goes to Controller in params hash, i.e. params[:file_name]
             complete: function() {},
              success: function(data, textStatus, xhr) {
                         // Do something with the response here
@@ -71,10 +98,10 @@
                         alert("ajax error");
                       }
         });
+      }
   });
   $('#searchbar').keypress(function(e){
         if(e.which == 13){//Enter key pressed
-            alert("pressed");
             $('#searchbtn').click();//Trigger search button click event
         }
   });
