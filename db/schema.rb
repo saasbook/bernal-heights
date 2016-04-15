@@ -11,6 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 20160415184949) do
 
   create_table "admins", force: :cascade do |t|
@@ -60,7 +61,7 @@ ActiveRecord::Schema.define(version: 20160415184949) do
     t.string   "location"
     t.string   "details"
     t.integer  "report_num"
-    t.boolean  "to_share"
+    t.string   "to_share"
     t.string   "creator_name"
     t.string   "creator_email"
     t.string   "creator_number"
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160415184949) do
     t.datetime "updated_at",     null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "region"
     t.boolean  "walk"
     t.date     "occurred_date"
     t.time     "occurred_time"

@@ -33,6 +33,9 @@ module NavigationHelpers
     when /^the events page$/
       '/events'
     
+    when /^the Hotspot map page$/
+      '/hotspots'
+    
     when /^the Hotspot form page$/
       '/hotspots/new'
     

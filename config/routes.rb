@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     get 'admin/dashboard' => 'admin/sessions#admin_dashboard', as: :admin_dashboard
   end
   resources :events
-  resources :hotspots
+  resources :hotspots do
+    member do
+        get 'gps'
+    end
+  end
   
   namespace :admin do
     # Directs /admin/products/* to Admin::ProductsController

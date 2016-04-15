@@ -7,6 +7,17 @@ class HotspotsController < ApplicationController
     @hotspots = Hotspot.all
   end
   
+  def gps
+    if request.xhr?
+        @coordinates = Geocoder.coordinates(params[:coords])
+        @lat = @coordinates[0]
+        @lng = @coordinates[1]
+        render :json => {
+                            :lat => @lat, :lng => @lng
+                        }
+    end
+  end
+  
   def new
     @hotspot = Hotspot.new
     @all_issues = Hotspot.all_issues
@@ -33,14 +44,13 @@ class HotspotsController < ApplicationController
         flash[:notice] = "You have successfully reported an issue. Thank you!"
         redirect_to new_hotspot_path
     else
-        flash.now[:warning] = "You have not filled out all required fields."
+        if @hotspot.errors.any? 
+          flash.now[:warning] = @hotspot.errors.full_messages.first 
+        else
+          flash.now[:warning] = "You have not filled out all required fields."
+        end
         render :new
     end
   end
   
-  def destroy
-    @hotspot = Hotspot.find(params[:id])
-    @hotspot.destroy
-    redirect_to hotspots_path
-  end
 end
