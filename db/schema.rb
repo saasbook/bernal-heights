@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160413064512) do
+ActiveRecord::Schema.define(version: 20160415184949) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -51,10 +51,13 @@ ActiveRecord::Schema.define(version: 20160413064512) do
     t.boolean  "approved",        default: false
   end
 
+  create_table "hotspotissues", force: :cascade do |t|
+    t.integer "hotspot_id"
+    t.integer "issue_id"
+  end
+
   create_table "hotspots", force: :cascade do |t|
-    t.string   "issue_type"
     t.string   "location"
-    t.datetime "occurred_time"
     t.string   "details"
     t.integer  "report_num"
     t.boolean  "to_share"
@@ -66,6 +69,13 @@ ActiveRecord::Schema.define(version: 20160413064512) do
     t.float    "latitude"
     t.float    "longitude"
     t.string   "region"
+    t.boolean  "walk"
+    t.date     "occurred_date"
+    t.time     "occurred_time"
+  end
+
+  create_table "issues", force: :cascade do |t|
+    t.string "issue_type"
   end
 
 end

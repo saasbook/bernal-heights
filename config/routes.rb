@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
   devise_for :admins, path: "admin", singular: :admin, module: "admin"
+  resources :admins, path: "staff", except: [:index, :update, :edit]
+  get '/staff' => 'admins#index', as: :staff_accounts
   
   devise_scope :admin do
     get '/sign_out' => 'admin/sessions#destroy', as: :sign_out
     get 'admin/' => 'admin/sessions#home', as: :admin_home
   end
+  
   resources :events
-  resources :hotspots
+  resources :hotspots do
+    member do
+        get 'gps'
+    end
+  end
   
   namespace :admin do
     # Directs /admin/products/* to Admin::ProductsController

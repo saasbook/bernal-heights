@@ -33,6 +33,9 @@ module NavigationHelpers
     when /^the events page$/
       '/events'
     
+    when /^the Hotspot map page$/
+      '/hotspots'
+    
     when /^the Hotspot form page$/
       '/hotspots/new'
     
@@ -52,10 +55,10 @@ module NavigationHelpers
       '/admin/edit'
       
     when /^the add new admin page$/
-      '/admin/accounts/new'
+      '/staff/new'
     
     when /^the view all admins page$/
-      '/admin/accounts'
+      '/staff'
     
     when /^the admin create event page$/
       '/admin/events/new'

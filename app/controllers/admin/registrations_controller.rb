@@ -3,7 +3,7 @@ before_filter :configure_sign_up_params, only: [:create]
 before_filter :configure_account_update_params, only: [:update]
 before_filter :is_admin, prepend: true
 
-  # GET /resource/sign_up
+  # GET /admin/new
   # def new
   #   super
   # end
@@ -51,7 +51,7 @@ before_filter :is_admin, prepend: true
 
   # The path used after sign up.
   def after_sign_up_path_for(resource)
-    super(resource)
+    staff_accounts_path
   end
   
   def after_update_path_for(resource)
