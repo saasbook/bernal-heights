@@ -52,7 +52,7 @@ module NavigationHelpers
       '/admin/edit'
       
     when /^the add new admin page$/
-      '/admin/accounts/new'
+      '/admin/new'
     
     when /^the view all admins page$/
       '/admin/accounts'

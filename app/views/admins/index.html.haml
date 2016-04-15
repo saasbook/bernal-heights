@@ -1,0 +1,14 @@
+%h1 Admin Accounts
+
+%table#admins
+  %thead
+    %tr
+      %th Name
+      %th Email
+  %tbody
+    - @admins.each do |admin|
+      %tr
+        %td= admin.name
+        %td= admin.email
+
+= link_to 'Create Account', new_event_path

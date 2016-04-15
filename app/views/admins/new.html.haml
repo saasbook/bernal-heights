@@ -1,0 +1,11 @@
+%h2 Create New Account
+= simple_form_for(:admin, url: new_admin(resource_name), html: { method: :post }) do |f|
+  .form-inputs
+    = f.input :name, required: true, autofocus: true
+    = f.input :email, required: true, autofocus: true
+    = f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+    = f.input :password_confirmation, required: true
+  .form-actions
+    = f.button :submit, "Create Account"
+    
+= link_to "Back", :back

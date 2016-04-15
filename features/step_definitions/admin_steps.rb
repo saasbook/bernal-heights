@@ -30,5 +30,6 @@ When /^I register an admin with name: "([^"]*)", email: "([^"]*)" and password: 
   step %Q{I fill in "Email" with "#{email}"}
   step %Q{I fill in "Password" with "#{password}"}
   step %Q{I fill in "Password confirmation" with "#{password}"}
+  step %Q{I press "Create Account"}
 end
 
