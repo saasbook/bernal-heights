@@ -69,6 +69,7 @@ ActiveRecord::Schema.define(version: 20160414172156) do
     t.datetime "updated_at",     null: false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "region"
     t.boolean  "walk"
     t.date     "occurred_date"
     t.time     "occurred_time"

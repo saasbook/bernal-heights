@@ -33,18 +33,18 @@ class HotspotsController < ApplicationController
 
   def create
     @hotspot = Hotspot.new(hotspot_params)
+    # need refactoring
     if @hotspot.save
         flash[:notice] = "You have successfully reported an issue. Thank you!"
         redirect_to new_hotspot_path
     else
-        flash.now[:warning] = "You have not filled out all required fields."
+        if @hotspot.errors.any? 
+          flash.now[:warning] = @hotspot.errors.full_messages.first 
+        else
+          flash.now[:warning] = "You have not filled out all required fields."
+        end
         render :new
     end
   end
   
-  def destroy
-    @hotspot = Hotspot.find(params[:id])
-    @hotspot.destroy
-    redirect_to hotspots_path
-  end
 end
