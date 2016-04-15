@@ -8,12 +8,12 @@ Feature: Filter hotspots by region
 Background:
   Given I am signed in as an admin
   Given the following hotspots exist:
-  | issue_type                | location                                   |  occurred_time       | occurred_date | details          | creator_name  | creator_email |   creator_number | region        |
-  | Car break-ins             | 1561 Treat Ave, San Francisco, CA 94110    |  01:55:00            | 2016-04-15    | North Bernal     | Test          | test@test.com |   (415)123-4567  | North         |
-  | Illegal Drug Transcations | 222 Winfield St, San Francisco, CA 94110   |  01:55:00            | 2016-04-15    | Central Bernal   | Test          | test@test.com |   (415)123-4567  | Central       |
-  | Car break-ins             | 479 Prentiss St, San Francisco, CA 94110   |  01:55:00            | 2016-04-15    | South-East Bernal| Test          | test@test.com |   (415)123-4567  | South-East    |
-  | Car break-ins             | 219 Richland Ave, San Francisco, CA 94110  |  01:55:00            | 2016-04-15    | South-West Bernal| Test          | test@test.com |   (415)123-4567  | South-West    |
-  | Illegal Drug Transcations | 25 Eugenia Ave, San Francisco, CA 94110    |  01:55:00            | 2016-04-15    | Central Bernal   | Test          | test@test.com |   (415)123-4567  | Central       |
+  | location                                   |  occurred_time       | occurred_date | details          | creator_name  | creator_email |   creator_number | region        |
+  | 1561 Treat Ave, San Francisco, CA 94110    |  01:55:00            | 2016-04-15    | North Bernal     | Test          | test@test.com |   (415)123-4567  | North         |
+  | 222 Winfield St, San Francisco, CA 94110   |  01:55:00            | 2016-04-15    | Central Bernal   | Test          | test@test.com |   (415)123-4567  | Central       |
+  | 479 Prentiss St, San Francisco, CA 94110   |  01:55:00            | 2016-04-15    | South-East Bernal| Test          | test@test.com |   (415)123-4567  | South-East    |
+  | 219 Richland Ave, San Francisco, CA 94110  |  01:55:00            | 2016-04-15    | South-West Bernal| Test          | test@test.com |   (415)123-4567  | South-West    |
+  | 25 Eugenia Ave, San Francisco, CA 94110    |  01:55:00            | 2016-04-15    | Central Bernal   | Test          | test@test.com |   (415)123-4567  | Central       |
   Given I am on the admin dashboard page
   When I follow "View Hotspot Forms"
 
