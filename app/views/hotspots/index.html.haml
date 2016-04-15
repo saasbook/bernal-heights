@@ -2,6 +2,7 @@
 
 = render 'layouts/map'
 
+
 %table#hotspots
   %thead
     %tr
@@ -12,7 +13,7 @@
     - if @hotspots
       - @hotspots.each do |hotspot|
         %tr
-          %td= hotspot.issue_type
+          %td= hotspot.issue_types
           %td= hotspot.location
           %td= hotspot.details
           - if admin_signed_in?

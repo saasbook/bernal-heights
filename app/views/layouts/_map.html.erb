@@ -1,5 +1,15 @@
+<p>Type an address or intersection to report an issue and see hotspots already reported in that area.</p>
+<div class="row">
+  <div class="search-container col-xs-9 col-md-6">  
+    <input id="searchbar" class="form-control" type="text" placeholder="Search location" />
+  </div>
+  <div>
+    <input id = "searchbtn" class="btn btn-primary" type="button" value="Search" />
+  </div>
+</div>
 <div class="map-container">
-  <div class="map-canvas" id="map" ></div>
+  
+  <div class="map-canvas" id="map" %>" ></div>
 </div>
 
 <!--This creates the map and iterates through the hotspot locations in the db to create the markers.-->
@@ -16,7 +26,143 @@
     }
   },
   function(){
-    <% if @hotspots == nil || @hotspots.count == 0 %>
+    var polygons = handler.addPolygons(
+      [
+        [
+          // north region
+          {lat:37.7468629, lng:-122.4191523},
+          {lat:37.7482117, lng:-122.41832610000002},
+          {lat:37.7483899, lng:-122.4078012},
+          {lat:37.7489668, lng:-122.4062347},
+          {lat:37.7494418, lng:-122.40314480000002},
+          {lat:37.7476773, lng:-122.403574},
+          {lat:37.7456073, lng:-122.4039388},
+          {lat:37.7444874, lng:-122.40438940000001},
+          {lat:37.742867, lng:-122.4054516},
+          {lat:37.7430866, lng:-122.40758130000002},
+          {lat:37.7431916, lng:-122.4084449},
+          {lat:37.7432462, lng:-122.40902560000002},
+          {lat:37.7432287, lng:-122.40942389999998},
+          {lat:37.7430781, lng:-122.40941990000002},
+          {lat:37.743101900000006, lng:-122.4097162},
+          {lat:37.743094, lng:-122.41003670000002},
+          {lat:37.7437441, lng:-122.411811},
+          {lat:37.7436767, lng:-122.41214360000001},
+          {lat:37.7436582, lng:-122.4123018},
+          {lat:37.743735, lng:-122.4124668},
+          {lat:37.7438034, lng:-122.4127002},
+          {lat:37.7438283, lng:-122.413065},
+          {lat:37.7438472, lng:-122.41314349999999},
+          {lat:37.7438894, lng:-122.4132022},
+          {lat:37.7439338, lng:-122.4132367},
+          {lat:37.7441651, lng:-122.4132943},
+          {lat:37.744138, lng:-122.4144121},
+          {lat:37.7442976, lng:-122.4153582},
+          {lat:37.7449923, lng:-122.41519330000001},
+          {lat:37.7459721, lng:-122.41778970000001},
+          {lat:37.7467484, lng:-122.41828860000001},
+          {lat:37.7468629, lng:-122.4191523}
+        ],
+        [
+          // central region
+          {lat:37.7467822, lng:-122.419163},
+          {lat:37.7440313, lng:-122.4210192},
+          {lat:37.7411277, lng:-122.4227894},
+          {lat:37.73938, lng:-122.4184871},
+          {lat:37.7389579, lng:-122.4145925},
+          {lat:37.7424683, lng:-122.4143887},
+          {lat:37.7438384, lng:-122.4133164},
+          {lat:37.7440258, lng:-122.4134332},
+          {lat:37.7441496, lng:-122.41337819999998},
+          {lat:37.7441189, lng:-122.4144389},
+          {lat:37.744269, lng:-122.4153998},
+          {lat:37.7449286, lng:-122.41533279999999},
+          {lat:37.7460017, lng:-122.4180203},
+          {lat:37.7462266, lng:-122.41809810000001},
+          {lat:37.7466211, lng:-122.4183047},
+          {lat:37.7467822, lng:-122.419163}
+        ],
+        [
+          // south-east region
+          {lat:37.7438087, lng:-122.41327289999998},
+          {lat:37.7435882, lng:-122.4122858},
+          {lat:37.7436603, lng:-122.4117816},
+          {lat:37.7430664, lng:-122.4100434},
+          {lat:37.743077, lng:-122.4097243},
+          {lat:37.7430537, lng:-122.4093837},
+          {lat:37.7432169, lng:-122.40939440000001},
+          {lat:37.7432318, lng:-122.4090457},
+          {lat:37.7431724, lng:-122.4084126},
+          {lat:37.7431258, lng:-122.40803719999998},
+          {lat:37.7430452, lng:-122.40737200000001},
+          {lat:37.7428596, lng:-122.405457},
+          {lat:37.7412211, lng:-122.4066961},
+          {lat:37.7404109, lng:-122.40693750000001},
+          {lat:37.7387352, lng:-122.407136},
+          {lat:37.7364783, lng:-122.4067712},
+          {lat:37.7359183, lng:-122.4079085},
+          {lat:37.7358589, lng:-122.40850930000002},
+          {lat:37.7357571, lng:-122.4090672},
+          {lat:37.7354219, lng:-122.40978599999998},
+          {lat:37.7348407, lng:-122.4106121},
+          {lat:37.7343274, lng:-122.41163139999999},
+          {lat:37.7338649, lng:-122.4122214},
+          {lat:37.7331013, lng:-122.4137449},
+          {lat:37.7333474, lng:-122.41382000000002},
+          {lat:37.7340347, lng:-122.4137878},
+          {lat:37.7347474, lng:-122.413702},
+          {lat:37.7348323, lng:-122.4149037},
+          {lat:37.7368134, lng:-122.414732},
+          {lat:37.738854, lng:-122.41451740000001},
+          {lat:37.7389579, lng:-122.414614},
+          {lat:37.7424725, lng:-122.41426},
+          {lat:37.7438087, lng:-122.41327289999998}
+        ],
+        [
+          // south-west region
+          {lat:37.7330589, lng:-122.41382000000002},
+          {lat:37.7332699, lng:-122.413928},
+          {lat:37.7347113, lng:-122.4137785},
+          {lat:37.7347685, lng:-122.41498140000002},
+          {lat:37.7388709, lng:-122.41461930000001},
+          {lat:37.7390661, lng:-122.41653439999999},
+          {lat:37.7392697, lng:-122.4186051},
+          {lat:37.7401309, lng:-122.42072939999998},
+          {lat:37.7405445, lng:-122.42181300000001},
+          {lat:37.7409835, lng:-122.42285380000001},
+          {lat:37.7406527, lng:-122.423079},
+          {lat:37.7397957, lng:-122.4236691},
+          {lat:37.7398636, lng:-122.42419490000002},
+          {lat:37.7391255, lng:-122.4244738},
+          {lat:37.7383024, lng:-122.42477420000002},
+          {lat:37.7376576, lng:-122.42532129999998},
+          {lat:37.736385, lng:-122.426759},
+          {lat:37.7353244, lng:-122.4283254},
+          {lat:37.7347135, lng:-122.42914080000001},
+          {lat:37.7317946, lng:-122.43484849999999},
+          {lat:37.732375, lng:-122.43186060000001},
+          {lat:37.732453, lng:-122.43034510000001},
+          {lat:37.7322595, lng:-122.42877600000001},
+          {lat:37.731864, lng:-122.4268824},
+          {lat:37.7317057, lng:-122.4258377},
+          {lat:37.7316323, lng:-122.42464280000002},
+          {lat:37.7316249, lng:-122.4231434},
+          {lat:37.7320576, lng:-122.4212203},
+          {lat:37.7321885, lng:-122.41984430000001},
+          {lat:37.7321667, lng:-122.4179641},
+          {lat:37.7321601, lng:-122.41720640000001},
+          {lat:37.7322552, lng:-122.41642720000002},
+          {lat:37.7325807, lng:-122.41510210000001},
+          {lat:37.7330589, lng:-122.41382000000002}
+        ]
+       ],
+        {
+        "strokeColor": "#FF0000",
+        "fillOpacity": 0
+        }
+     );
+     handler.bounds.extendWith(polygons);
+    <% if @hotspots.count == 0 %>
       handler.getMap().setCenter({lat: 37.744385, lng: -122.417046});
       handler.getMap().setZoom(15);
     <% else %>
@@ -27,6 +173,59 @@
     <% end %>
   }
 );
+    
+    var search_marker = new google.maps.Marker();
+    var infowindow = new google.maps.InfoWindow();
+    
+    $('#searchbtn').click( function() {
+      var search_param = $('#searchbar').val();
+      // prevents ajax error
+      if (search_param != "") {
+        $.ajax({
+                 url: "<%= gps_hotspot_path(@hotspots) %>", // Route to the Hotspot Controller gps method
+                type: "GET",
+            dataType: "json",
+                data: { coords: search_param }, // This goes to Controller in params hash, i.e. params[:file_name]
+            complete: function() {},
+             success: function(data, textStatus, xhr) {
+                        // Do something with the response here
+                        
+                        var myLatLng = {lat: data.lat, lng: data.lng};
+                        // clear out marker from previous search
+                        search_marker.setMap(null);
+                        infowindow.close();
+                        
+                        // marker appears with infowindow
+                        var location_str = "" + data.lat + ', ' + data.lng;
+                        // have to use String.replace to insert actual value of location_str into erb
+                        var reportIssueLink = '<%= link_to 'Report Issue', new_hotspot_path(:location => 'location_str') %>';
+                        reportIssueLink = reportIssueLink.replace('location_str', location_str);
+                        infowindow = new google.maps.InfoWindow({
+                          content: reportIssueLink
+                        });
+                        search_marker = new google.maps.Marker({
+                            position: myLatLng,
+                            map: handler.getMap(),
+                            title: 'Report Issue',
+                            animation: google.maps.Animation.DROP
+                        });
+                        infowindow.open(handler.getMap(), search_marker);
+                        search_marker.addListener('click', function() {
+                          infowindow.open(handler.getMap(), search_marker);
+                        });
+                        handler.getMap().setCenter(myLatLng);
+                      },
+               error: function() {
+                        alert("ajax error");
+                      }
+        });
+      }
+  });
+  $('#searchbar').keypress(function(e){
+        if(e.which == 13){//Enter key pressed
+            $('#searchbtn').click();//Trigger search button click event
+        }
+  });
 
 </script>
 

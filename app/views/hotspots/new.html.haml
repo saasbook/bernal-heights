@@ -5,11 +5,13 @@
 
 = form_for @hotspot do |hotspot|
   
-  = hotspot.label :issue_type, 'Type of Issue'
-  = hotspot.select 'issue_type', ['Car Break-In', 'Abandoned Car','Broken Streetlight', 'Illegal Drug Transactions','Litter/Dumping Trash','Public Drinking and Noise','Other']
-  
+  Include: 
+  - @all_issues.each do |issue|
+    = issue
+    = check_box_tag "issues[#{issue}]", 1, false, :id => "issues_#{issue}"
+    
   = hotspot.label :location, "Location"
-  = hotspot.text_area 'location'
+  = hotspot.text_area 'location', :value => params[:location]
   = hotspot.button 'Use my current location', :type => 'button', :onclick => 'getLocation()'
   = hotspot.label "(if location services is turned on)"
   
