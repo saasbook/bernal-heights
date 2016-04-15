@@ -9,7 +9,7 @@
   = hotspot.select 'issue_type', ['Car Break-In', 'Abandoned Car','Broken Streetlight', 'Illegal Drug Transactions','Litter/Dumping Trash','Public Drinking and Noise','Other']
   
   = hotspot.label :location, "Location"
-  = hotspot.text_area 'location'
+  = hotspot.text_area 'location', :value => params[:location]
   = hotspot.button 'Use my current location', :type => 'button', :onclick => 'getLocation()'
   = hotspot.label "(if location services is turned on)"
   

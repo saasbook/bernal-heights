@@ -1,5 +1,15 @@
+<p>Type an address or intersection to report an issue and see hotspots already reported in that area.</p>
+<div class="row">
+  <div class="search-container col-xs-9 col-md-6">  
+    <input id="searchbar" class="form-control" type="text" placeholder="Search location" />
+  </div>
+  <div>
+    <input id = "searchbtn" class="btn btn-primary" type="button" value="Search" />
+  </div>
+</div>
 <div class="map-container">
-  <div class="map-canvas" id="map" ></div>
+  
+  <div class="map-canvas" id="map" %>" ></div>
 </div>
 
 <!--This creates the map and iterates through the hotspot locations in the db to create the markers.-->
@@ -163,5 +173,59 @@
     <% end %>
   }
 );
+    
+    var search_marker = new google.maps.Marker();
+    var infowindow = new google.maps.InfoWindow();
+    
+    $('#searchbtn').click( function() {
+      var search_param = $('#searchbar').val();
+      // prevents ajax error
+      if (search_param != "") {
+        $.ajax({
+                 url: "<%= gps_hotspot_path(@hotspots) %>", // Route to the Hotspot Controller gps method
+                type: "GET",
+            dataType: "json",
+                data: { coords: search_param }, // This goes to Controller in params hash, i.e. params[:file_name]
+            complete: function() {},
+             success: function(data, textStatus, xhr) {
+                        // Do something with the response here
+                        
+                        var myLatLng = {lat: data.lat, lng: data.lng};
+                        // clear out marker from previous search
+                        search_marker.setMap(null);
+                        infowindow.close();
+                        
+                        // marker appears with infowindow
+                        var location_str = "" + data.lat + ', ' + data.lng;
+                        // have to use String.replace to insert actual value of location_str into erb
+                        var reportIssueLink = '<%= link_to 'Report Issue', new_hotspot_path(:location => 'location_str') %>';
+                        reportIssueLink = reportIssueLink.replace('location_str', location_str);
+                        infowindow = new google.maps.InfoWindow({
+                          content: reportIssueLink
+                        });
+                        search_marker = new google.maps.Marker({
+                            position: myLatLng,
+                            map: handler.getMap(),
+                            title: 'Report Issue',
+                            animation: google.maps.Animation.DROP
+                        });
+                        infowindow.open(handler.getMap(), search_marker);
+                        search_marker.addListener('click', function() {
+                          infowindow.open(handler.getMap(), search_marker);
+                        });
+                        handler.getMap().setCenter(myLatLng);
+                      },
+               error: function() {
+                        alert("ajax error");
+                      }
+        });
+      }
+  });
+  $('#searchbar').keypress(function(e){
+        if(e.which == 13){//Enter key pressed
+            $('#searchbtn').click();//Trigger search button click event
+        }
+  });
 
 </script>
+
