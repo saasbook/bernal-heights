@@ -4,12 +4,17 @@
     <input id="searchbar" class="form-control" type="text" placeholder="Search location" />
   </div>
   <div>
-    <input id = "searchbtn" class="btn btn-primary" type="button" value="Search" />
-    <a href="/hotspots/new" class="btn btn-default" role="button">Create new hotspot</a>
+    <input id = "searchbtn" class="btn btn-default" type="button" value="Search" />
   </div>
 </div>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-3">
+    <a href="/hotspots/new" id="hotspotbtn" class="btn btn-primary btn-block" role="button">Create new hotspot</a>
+  </div>
+</div>
+
 <div class="map-container">
-  
   <div class="map-canvas" id="map" %>" ></div>
 </div>
 
@@ -215,6 +220,7 @@
                           infowindow.open(handler.getMap(), search_marker);
                         });
                         handler.getMap().setCenter(myLatLng);
+                        handler.getMap().setZoom(15);
                       },
                error: function() {
                         alert("ajax error");
