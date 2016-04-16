@@ -1,11 +1,11 @@
-<h1>Hotspots#new</h1>
+<h1>New Hotspot Form</h1>
 <p>Find me in app/views/hotspots/new.html.haml</p>
 
 %h1 Create New Hotspot (Report)
 
 = form_for @hotspot do |hotspot|
   
-  Include: 
+  Type of Issue: 
   - @all_issues.each do |issue|
     = issue
     = check_box_tag "issues[#{issue}]", 1, false, :id => "issues_#{issue}"
@@ -16,7 +16,7 @@
   = hotspot.label "(if location services is turned on)"
   
   = hotspot.label :occurred_time, "Discovery Time"
-  = hotspot.time_select 'occurred_time'
+  = hotspot.time_select 'occurred_time', ampm: true
   
   = hotspot.label :occurred_date, "Discovery Date"
   = hotspot.date_select 'occurred_date'

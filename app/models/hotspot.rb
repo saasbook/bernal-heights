@@ -20,13 +20,15 @@ class Hotspot < ActiveRecord::Base
     def issue_types
         issue_types = ""
         self.issues.each do |issue|
-            issue_types = issue_types + issue.issue_type
+            if issue_types == ""
+              issue_types = issue.issue_type
+            else
+              issue_types = issue_types + ", " + issue.issue_type
+            end
         end
         issue_types
     end
       
-    
-    
     def self.all_regions
       %w(North Central South-East South-West)
     end
