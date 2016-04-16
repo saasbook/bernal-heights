@@ -14,7 +14,7 @@ Scenario: Neighbor searches for a location first to report an issue
   Then location field should be prefilled with Bernal Heights coordinates
 
 Scenario: Neighbor clicks on new hotspot form button to report an issue
-  When I press "Create new hotspot"
+  When I follow "Create new hotspot"
   Then I should be on the Hotspot form page
   
 Scenario: Neighbor leaves search field blank
