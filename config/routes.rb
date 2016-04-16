@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :resources
   devise_for :admins, path: "admin", singular: :admin, module: "admin"
   resources :admins, path: "staff", except: [:index, :update, :edit]
   get '/staff' => 'admins#index', as: :staff_accounts
