@@ -49,4 +49,4 @@ Scenario: location not in Bernal Heights Neighborhood
   And I fill in "Your Phone Number" with "123-456-7890"
   And I choose "hotspot_walk_false"
   And I press "Report Hotspot Issue"
-  Then I should see "Region : location is not in Bernal Heights Neighborhood."
+  Then I should see "Invalid address"
