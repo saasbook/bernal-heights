@@ -35,3 +35,24 @@ When /^I create an event with name "([^"]*)" as an admin$/ do |name|
   step %Q{I fill in "Location" with "Bernal Heights Public Library"}
   step %Q{I press "Create Event"}
 end
+
+When /^I create an event with name "([^"]*)" as regular user$/ do |name|
+  visit path_to("the create event page")
+  step %Q{I fill in "Event Name" with "#{name}"}
+  step %Q{I select start time 02 PM, 00}
+  step %Q{I select start date 2016, December, 7}
+  step %Q{I fill in "Location" with "Bernal Heights Public Library"}
+  step %Q{I fill in "Your Name" with "My Name"}
+  step %Q{I fill in "Your E-mail" with "email@email.com"}
+  step %Q{I fill in "Organizer Name" with "Library"}
+  step %Q{I press "Create Event"}
+end
+
+When /^I create an event with name "([^"]*)" without my personal info$/ do |name|
+  visit path_to("the New Event page")
+  step %Q{I fill in "Event Name" with "#{name}"}
+  step %Q{I select start time 02 PM, 00}
+  step %Q{I select start date 2016, December, 7}
+  step %Q{I fill in "Location" with "Bernal Heights Public Library"}
+  step %Q{I press "Create Event"}
+end

@@ -1,0 +1,15 @@
+%div{:class => "container fixed-width"}
+%h1 Admin Accounts
+
+%table{:class => "table table-striped table-condensed "}
+  %thead
+    %tr
+      %th Name
+      %th Email
+  %tbody
+    - @admins.each do |admin|
+      %tr
+        %td= admin.name
+        %td= admin.email
+        %td= link_to "Delete Account", admin, method: :delete, data: { confirm: "Are you sure?" }
+= button_to 'Add Staff Account', new_admin_path, method: :get

@@ -23,14 +23,12 @@ describe Admin do
     expect(admin).to respond_to(:admin)
   end
   
-  # describe "it supports omniauth login" do
-  #   it "has a uid" do
-  #     expect(admin).to respond_to(:uid)
-  #   end
-    
-  #   it "has a provider" do
-  #     expect(admin).to respond_to(:provider)
-  #   end
-  # end
+  it "validates name" do
+    expect( FactoryGirl.build(:admin, name: "")).to_not be_valid
+  end
   
+  it "validates email" do
+    expect(FactoryGirl.build(:admin, email: "fail")).to_not be_valid
+  end
+
 end

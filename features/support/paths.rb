@@ -49,22 +49,22 @@ module NavigationHelpers
       sign_out_path
       
     when /^the admin home page$/
-      '/admin/dashboard'
-  
-    when /^the admin dashboard page$/
-      '/admin/dashboard'
+      '/admin'
       
     when /^the edit account info page$/
       '/admin/edit'
       
     when /^the add new admin page$/
-      '/admin/accounts/new'
+      '/staff/new'
     
     when /^the view all admins page$/
-      '/admin/accounts'
+      '/staff'
     
     when /^the admin create event page$/
       '/admin/events/new'
+      
+    when /^the admin event page$/
+      '/admin/events'
       
     else
       begin

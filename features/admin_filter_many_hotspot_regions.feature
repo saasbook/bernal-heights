@@ -14,7 +14,7 @@ Background:
   | 479 Prentiss St, San Francisco, CA 94110   |  01:55:00            | 2016-04-15    | South-East Bernal| Test          | test@test.com |   (415)123-4567  | South-East    |
   | 219 Richland Ave, San Francisco, CA 94110  |  01:55:00            | 2016-04-15    | South-West Bernal| Test          | test@test.com |   (415)123-4567  | South-West    |
   | 25 Eugenia Ave, San Francisco, CA 94110    |  01:55:00            | 2016-04-15    | Central Bernal   | Test          | test@test.com |   (415)123-4567  | Central       |
-  Given I am on the admin dashboard page
+  Given I am on the admin home page
   When I follow "View Hotspot Forms"
 
 Scenario: Filter hotspot forms in the North and Central Region
