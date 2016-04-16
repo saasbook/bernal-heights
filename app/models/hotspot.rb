@@ -164,7 +164,7 @@ class Hotspot < ActiveRecord::Base
       # need refactoring
       pt = Geokit::LatLng.new(self.latitude,self.longitude)
       if self.latitude.nil? and self.longitude.nil?
-        self.errors.add(:location, ": you've provided an invalid/insufficient address.")
+        self.errors.add(:location, ": Invalid address - please try again")
       elsif @@north_region.contains?(pt)
         self.region = "North"
       elsif @@central_region.contains?(pt)
@@ -174,7 +174,7 @@ class Hotspot < ActiveRecord::Base
       elsif @@south_west_region.contains?(pt)
         self.region = "South-West"
       else
-        self.errors.add(:region, ": location is not in Bernal Heights Neighborhood.")
+        self.errors.add(:region, ": Invalid address - not in Bernal Heights Neighborhood.")
       end
     end
 end

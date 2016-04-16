@@ -31,6 +31,7 @@ Background:
 
 
 Scenario: View all Hotspots
+  Given I am signed in as an admin
   When I am on the admin home page
   And I follow "View Hotspot Forms"
   Then I should see "There is a broken light on Winfield St. which is a problem at night because it makes the street very dimly lit."
