@@ -1,22 +1,40 @@
 Feature: View Hotspots as Admin
   As an admin
-  I want to see all hotspot listed
+  I want to see all hotspots listed
   So that I can better coordinate hotspot walks
 
-Background: 
+Background:
   Given I am signed in as an admin
-  Given the following hotspots exist:
-  | issue_type       | location                         | details             | creator_name    | creator_email     | creator_number      |
-  | Car break-in     | Courtland and Hollyoak           | lorem ipsum         | Test            | test@test.com     | (415) 123-45678     |
-  | Streetlight      | 123456N, 3495902E                | broken streetlight  | Test            | test@test.com     | (415) 123-45678     | 
-  | Drug dealing     | The empty lot near the library   | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sed lobortis lacus. Donec velit neque, porttitor quis facilisis nec, volutpat sed ante. Vivamus a malesuada sem. Cras urna magna, venenatis vel erat id, euismod molestie odio. Curabitur tempor erat sit amet magna dapibus, vitae pellentesque risus aliquet. | Test            | test@test.com     | (415) 123-45678     | 
+  And I am on the Hotspot form page
+  When I check the following issues: Broken Streetlight
+  And I fill in "Location" with "266 Winfield St, San Francisco, CA 94110"
+  And I select occurred time 09 PM, 30
+  And I select occurred date 2016, March, 7
+  And I fill in "Details" with "There is a broken light on Winfield St. which is a problem at night because it makes the street very dimly lit."
+  And I fill in "Your Name" with "Joyce Toh"
+  And I fill in "Your Email" with "joycetoh@berkeley.edu"
+  And I fill in "Your Phone Number" with "123-456-7890"
+  And I choose "hotspot_walk_true"
+  And I press "Report Hotspot Issue"
+  
+  And I am on the Hotspot form page
+  When I check the following issues: Illegal Drug Transactions
+  And I fill in "Location" with "Holly Park Circle"
+  And I select occurred time 09 PM, 30
+  And I select occurred date 2016, March, 9
+  And I fill in "Details" with "There is a lot of smoking in the park at night."
+  And I fill in "Your Name" with "Joyce Toh"
+  And I fill in "Your Email" with "joycetoh@berkeley.edu"
+  And I fill in "Your Phone Number" with "123-456-7890"
+  And I choose "hotspot_walk_true"
+  And I press "Report Hotspot Issue"
+
 
 Scenario: View all Hotspots
   When I am on the admin home page
   And I follow "View Hotspot Forms"
-  Then I should see "Car break-in"
-  And I should see "Streetlight"
-  And I should see "Drug dealing"
+  Then I should see "There is a broken light on Winfield St. which is a problem at night because it makes the street very dimly lit."
+  And I should see "There is a lot of smoking in the park at night."
 
   
   
