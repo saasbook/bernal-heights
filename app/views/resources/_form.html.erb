@@ -1,0 +1,54 @@
+<%= form_for(@resource) do |f| %>
+  <% if @resource.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@resource.errors.count, "error") %> prohibited this resource from being saved:</h2>
+
+      <ul>
+      <% @resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :link %><br>
+    <%= f.text_field :link %>
+  </div>
+  <div class="field">
+    <%= f.label :phone %><br>
+    <%= f.text_field :phone %>
+  </div>
+  <h3> Add to... </h3>
+  <div class="radio-inline">
+    <%= f.radio_button :kind, 1 %>
+    <%= f.label "Non Emergency Police" %>
+  </div>
+   <div class="radio-inline">
+    
+    <%= f.radio_button :kind, 2 %>
+    <%= f.label "Be Informed" %>
+  </div>
+   <div class="radio-inline">
+   
+    <%= f.radio_button :kind, 3 %>
+     <%= f.label "Get Involved" %>
+  </div>
+  
+  <div class="radio-inline">
+    <%= f.radio_button :kind, 4 %>
+     <%= f.label "Other Contacts" %>
+  </div>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
