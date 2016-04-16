@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   devise_scope :admin do
     get '/sign_out' => 'admin/sessions#destroy', as: :sign_out
     get 'admin/' => 'admin/sessions#home', as: :admin_home
+    get 'admin/events/unapproved' => 'admin/events#unapproved', as: :admin_unapproved_events
   end
   
   resources :events

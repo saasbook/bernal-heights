@@ -2,8 +2,12 @@ class Admin::EventsController < EventsController
   before_filter :is_admin
 
   def index
+    @events = Event.where(approved: true)
     @unapproved = Event.where(approved: false)
-    @approved = Event.where(approved: true)
+  end
+  
+  def unapproved
+    @unapproved = Event.where(approved: false)
   end
   
   def new
@@ -28,7 +32,7 @@ class Admin::EventsController < EventsController
     @event = Event.find(params[:event_id])
     @event.confirm
     flash[:notice] = "Event Approved"
-    redirect_to admin_events_path
+    redirect_to admin_unapproved_events_path
   end
 
   def delete

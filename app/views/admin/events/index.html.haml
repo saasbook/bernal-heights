@@ -1,15 +1,23 @@
-%h1 Unapproved Events
+-#  This file is app/views/admin/events/index.html.haml
 
-%table#unapproved
-  %thead
-    %tr
-      %th Event Name
-      %th More Info
-  %tbody
-    - @unapproved.each do |event|
+%div{:class => "col-md-8"}  
+  - if !@unapproved.empty?
+    %div{:class => "well"}
+      %h4 You have #{@unapproved.count} unapproved events.
+      =link_to 'Review Events', admin_unapproved_events_path
+  
+  %h1 All Events
+  
+  %table#events{:class => "table table-striped table-condensed "}
+    %thead
       %tr
-        %td= event.name
-        //%td= link_to "More about #{event.name}", event_path(event)
-        %td= button_to "Approve Event",  admin_event_confirm_path(event_id: event.id)
+        %th Event Name
+        %th More Info
+    %tbody
+      - @events.each do |event|
+        %tr
+          %td= event.name
+          //%td= link_to "More about #{event.name}", event_path(event)
+          %td Show event details will be here
+  = button_to 'Create New Event', new_event_path, method: :get , class: "btn btn-default"
 
-=button_to 'Create New Event', new_admin_event_path, method: :get

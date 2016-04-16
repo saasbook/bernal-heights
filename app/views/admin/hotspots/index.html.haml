@@ -9,18 +9,19 @@
 
 = render 'layouts/map'
 
-%table#hotspots
-  %thead
-    %tr
-      %th Issue Type
-      %th Location
-      %th Details
-  %tbody
-    - if @hotspots
-      - @hotspots.each do |hotspot|
-        %tr
-          %td= hotspot.issue_types
-          %td= hotspot.location
-          %td= hotspot.details
-          - if admin_signed_in?
-            %td= link_to "Delete Hotspot", admin_hotspot_path(hotspot.id), { method: :delete }
+%div{:class => "col-md-8"}
+  %table#hotspots{:class => "table table-striped"}
+    %thead
+      %tr
+        %th Issue Type
+        %th Location
+        %th Details
+    %tbody
+      - if @hotspots
+        - @hotspots.each do |hotspot|
+          %tr
+            %td= hotspot.issue_types
+            %td= hotspot.location
+            %td= hotspot.details
+            - if admin_signed_in?
+              %td= link_to "Delete Hotspot", admin_hotspot_path(hotspot.id), { method: :delete }

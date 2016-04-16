@@ -31,7 +31,7 @@ Scenario: Create event successfully
   When I go to the events page
   Then I should see "Hotspot Walk"
   
-  When I go to the admin events page
+  When I go to the approve events page
   Then I should not see "Hotspot Walk"
 
   

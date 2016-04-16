@@ -15,11 +15,11 @@ Background:
   Given I am on the admin home page
   
 Scenario: See all unapproved events
-  When I follow "Confirm New Events"
+  When I go to the approve events page
   Then I should see "Fiesta on the Hill"
 
 Scenario: Approved events are not shown
-  When I follow "Confirm New Events"
+  When I go to the approve events page
   Then I should not see "Library Movie Night"
   And I should not see "Park Cleanup" 
   And I should not see "Neighborhood Pool Party"

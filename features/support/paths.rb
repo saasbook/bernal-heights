@@ -43,7 +43,7 @@ module NavigationHelpers
       '/events'
     
     when /^the approve events page$/
-      '/admin/events'
+      '/admin/events/unapproved'
       
     when /^the sign out page$/
       sign_out_path
