@@ -6,10 +6,10 @@ Feature: navigate to additional community resources
   so my family and I can make use of resources available to us as residents.
 
 Scenario: clicking on a resource link
-  When I follow "https://alertsf.org/"
-  Then I should see "AlertSF"
+  Given I am on the resources page
+  Then I should see "NON-EMERGENCY POLICE"
   
 Scenario: clicking on the wrong resource link
-  When I follow "http://sf311.org/"
-  Then I should not see "Resources"
+  Given I am on the resources page
+  Then I should not see "create a new hotspot"
   

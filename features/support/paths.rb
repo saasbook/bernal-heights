@@ -66,6 +66,9 @@ module NavigationHelpers
     when /^the admin event page$/
       '/admin/events'
       
+    when /^the resources page$/
+      '/resources'
+      
     else
       begin
         page_name =~ /^the (.*) page$/
