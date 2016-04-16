@@ -33,10 +33,10 @@ class HotspotsController < ApplicationController
   end
 
   def create
-    @selected_issues = params[:issues]
+    @selected_issues = params[:issues] || {}
     @hotspot = Hotspot.new(hotspot_params)
     @all_issues = Hotspot.all_issues
-    if @hotspot.save and not(params[:issues] == {})
+    if @hotspot.save and not(@selected_issues == {})
         @selected_issues.each do |issue|
           @hotspot.issues << Issue.where(issue_type: issue)
         end
