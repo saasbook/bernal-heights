@@ -13,30 +13,30 @@
               
             = hotspot.input :location, as: :text, label: "Location", hint: "Please type an address or the street intersection, e.g. Andover St and Cortland Ave.", error: "A location is required.", :value => params[:location]
            
-            // = hotspot.button 'Use my current location', :type => 'button', :onclick => 'getLocation()'
-            // = hotspot.label "(if location services is turned on)"
+            = hotspot.button :button, "Use my current location", :onclick => 'getLocation()'
+            = hotspot.label "(if location services is turned on)"
             
             = hotspot.input :occurred_time, as: :time, label: "Discovery Time", ampm: true
             = hotspot.input :occurred_date, as: :date, label: "Occurred Date"
    
-            = hotspot.input :details, as: :text, label: "Details"
+            = hotspot.input :details, as: :text, label: "Details", error: "Details are required."
             
             = hotspot.input :report_num, as: :integer, label: "Police report number (if applicable)"
           
             = hotspot.label "Can we share your info with the SFPD?"
             = hotspot.collection_radio_buttons :to_share, [[true, 'Yes'] ,[false, 'No']], :first, :last
             
-            = hotspot.input :creator_name, as: :text, label: "Your Name"
+            = hotspot.input :creator_name, as: :text, label: "Your Name", error: "Your name is required."
             
-            = hotspot.input :creator_email, as: :email, label: "Your Email"
+            = hotspot.input :creator_email, as: :email, label: "Your Email", error: "Your e-mail is required."
             
-            = hotspot.input :creator_number, as: :tel, label: "Your Phone Number"
+            = hotspot.input :creator_number, as: :tel, label: "Your Phone Number", error: "Your phone number is required."
             
             = hotspot.label "Will you go on a hotspot walk with us?"
             = hotspot.collection_radio_buttons :walk, [[true, 'Yes'] ,[false, 'No']], :first, :last
             
-            = submit_tag 'Report Hotspot Issue', :class => 'btn btn-primary'
-          
+            = hotspot.submit 'Report Hotspot Issue', :class => 'btn btn-primary'
+            
           :javascript
             var x = document.getElementById("hotspot_location");
             
