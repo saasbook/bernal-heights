@@ -3,16 +3,16 @@
 = month_calendar(attribute: :start_date, events: @events) do |date, acts|
   = date.mday
   - acts.each do |event|
-    %div
+    %div.truncate
       = event.name
 
-%table#events
-  %thead
-    %tr
-      %th Event Name
-      %th More Info
-  %tbody
-    - @events.each do |event|
+// %table#events
+//   %thead
+//     %tr
+//       %th Event Name
+//       %th More Info
+//   %tbody
+//     - @events.each do |event|
 
 // %div{:class => "col-md-8"}
 //   %h1 All Events
@@ -29,4 +29,4 @@
 //           //%td= link_to "More about #{event.name}", event_path(event)
 //           %td Show event details will be here
   
-  = button_to 'Create New Event', new_event_path, method: :get, class: "btn btn-default"
+//   = button_to 'Create New Event', new_event_path, method: :get, class: "btn btn-default"

@@ -18,3 +18,14 @@ $orange-primary: #FF9F27;
 .form-border {
     border-color: $orange-primary;
 }
+
+// keeps calendar cells the same size
+.simple-calendar .table {
+  table-layout:fixed;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
