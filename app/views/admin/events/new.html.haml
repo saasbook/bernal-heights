@@ -1,0 +1,31 @@
+%div{:class => "container fixed-width"}
+  .row
+    %div{:class => "col-md-6"}
+      %div{:class => "form-border panel"}
+        %div{:class => "form-heading panel-heading"} New Event Form
+        %div{:class => "panel-body"}
+          = simple_form_for([:admin, @event], html: { class: '' }) do |event|
+            = event.input :name, label: "Event Name", error: "A name for the event is required."
+      
+            = event.input :start_date, as: :date, label: "Start Date"
+      
+            = event.input :end_date, as: :date, label: 'End Date'
+          
+            = event.input :start_time, as: :time, label: "Start Time", ampm: true
+            
+            = event.label :end_time, "End Time"
+            = event.time_select 'end_time', {ampm: true}
+            
+            = event.input :location, as: :text, label: "Location", hint: "Please type an address or the street intersection, e.g. Andover St and Cortland Ave.", error: "A location is required."
+            
+            = event.input :description, as: :text, label: "Description"
+            
+            = event.input :creator_name, label: "Your Name", error: "Your name is required.", input_html: {value: "#{current_admin.name}" }
+            
+            = event.input :creator_email, label: "Your E-mail", error: "Your e-mail is required.", input_html: {value: "#{current_admin.email}" }
+          
+            = event.input :event_organizer, label: "Organizer Name", input_html: {value: "Bernal Heights Neighborhood Center" }
+            
+            = event.submit 'Create Event', :class => 'btn btn-primary'
+
+  

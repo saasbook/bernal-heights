@@ -7,7 +7,7 @@ Feature: create a new community event
   
 Scenario: create a new event
   Given I am on the All Events page
-  And I follow "Create new event"
+  And I press "Create New Event"
   Then I should be on the New Event page
   
 Scenario: all required fields filled out
