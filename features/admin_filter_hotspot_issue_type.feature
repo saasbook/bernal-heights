@@ -8,6 +8,8 @@ Feature: Filter hotspots by issue types
 #for now; will generate factories later
 Background:
   Given I am signed in as an admin
+  And I am on the admin home page
+  When I follow "View Hotspot Forms"
   And there is a hotspot for each issue type
 
 Scenario: See all hotspot forms by default 
