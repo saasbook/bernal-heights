@@ -23,9 +23,12 @@ $orange-primary: #FF9F27;
 .simple-calendar .table {
   table-layout:fixed;
 }
-
 .truncate {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.event-marker {
+    font-weight: bold;
+    color: orange;
 }

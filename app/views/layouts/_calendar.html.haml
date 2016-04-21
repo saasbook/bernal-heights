@@ -2,9 +2,9 @@
 
 = month_calendar(attribute: :start_date, events: @events) do |date, acts|
   = date.mday
-  - acts.each do |event|
-    %div.truncate
-      = event.name
+  - if acts.length != 0
+    %p.event-marker
+      = "&bull;".html_safe
 
 %div{:class => "col-md-8"}
   
