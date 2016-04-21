@@ -1,0 +1,11 @@
+%div{:class => "col-md-4"}
+  %h2 Log in
+  = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    .form-inputs
+      = f.error_notification
+      = f.input :email, required: false, autofocus: true, error: flash[:alert]
+      = f.input :password, required: false, error: flash[:alert]
+      = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+    .form-actions
+      = f.button :submit, "Log in"
+  = render "admin/shared/links"

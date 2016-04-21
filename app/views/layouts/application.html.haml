@@ -19,26 +19,44 @@
             %span.icon-bar
             %span.icon-bar
             %span.icon-bar
-          = link_to "Bernal Heights App", root_path, :class => "navbar-brand"
+          - if current_admin
+            = link_to "Bernal Heights Admin Panel", admin_home_path, :class => "navbar-brand"
+          - else
+            = link_to "Bernal Heights App", root_path, :class => "navbar-brand"
         / Collect the nav links, forms, and other content for toggling
         #to-collapse.collapse.navbar-collapse
           %ul.nav.navbar-nav
-            %li= link_to "Events", events_path
-            %li= link_to "Hotspots", hotspots_path
+            - if current_admin
+              %li= link_to "Events", admin_events_path
+              %li= link_to "Hotspots", admin_hotspots_path
+            - else
+              %li= link_to "Events", events_path
+              %li= link_to "Hotspots", hotspots_path
+              %li= link_to "Resources", resources_path
           %ul.nav.navbar-nav.navbar-right
             - if current_admin
-              %li= link_to "Admin Panel", admin_dashboard_path
-              %li= link_to "Log out", destroy_admin_session_path, :method => :delete
+              %li.dropdown
+                %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "/admin", :role => "button"}
+                  #{current_admin.name}
+                  %span.caret
+                %ul.dropdown-menu
+                  %li= link_to "Edit Account", edit_admin_registration_path
+                  %li= link_to "Manage Staff Accounts", staff_accounts_path
+                  %li.divider{:role => "separator"}
+                  %li= link_to "Log out", destroy_admin_session_path, :method => :delete
             - else
               %li= link_to "Admin Sign In", new_admin_session_path
         / /.navbar-collapse
       / /.container-fluid
       
     #main
+    
       - if flash[:notice]
         #notice.message= flash[:notice]
       - elsif flash[:warning]
         #warning.message= flash[:warning]
-
+      - elsif flash[:alert]
+        #alert.message= flash[:alert]
+        
       = yield
   %foot

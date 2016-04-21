@@ -17,6 +17,7 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "events";
+@import "simple_calendar";
 
 .errorExplanation {
   padding: 0 10px;
@@ -46,4 +47,7 @@ div.fieldWithErrors {
   background: pink;
   margin: 1em 0;
   padding: 4px;
+}
+.btn-primary {
+  background-color: #0275d8;
 }

@@ -33,6 +33,9 @@ module NavigationHelpers
     when /^the events page$/
       '/events'
     
+    when /^the Hotspot map page$/
+      '/hotspots'
+    
     when /^the Hotspot form page$/
       '/hotspots/new'
     
@@ -40,28 +43,31 @@ module NavigationHelpers
       '/events'
     
     when /^the approve events page$/
-      '/admin/events'
+      '/admin/events/unapproved'
       
     when /^the sign out page$/
       sign_out_path
       
     when /^the admin home page$/
-      '/admin/dashboard'
-  
-    when /^the admin dashboard page$/
-      '/admin/dashboard'
+      '/admin'
       
     when /^the edit account info page$/
       '/admin/edit'
       
     when /^the add new admin page$/
-      '/admin/accounts/new'
+      '/staff/new'
     
     when /^the view all admins page$/
-      '/admin/accounts'
+      '/staff'
     
     when /^the admin create event page$/
       '/admin/events/new'
+      
+    when /^the admin event page$/
+      '/admin/events'
+      
+    when /^the resources page$/
+      '/resources'
       
     else
       begin

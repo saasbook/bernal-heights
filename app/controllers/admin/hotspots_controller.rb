@@ -1,14 +1,6 @@
 class Admin::HotspotsController < ApplicationController
   before_filter :is_admin
   
-  def is_admin
-    if !admin_signed_in?
-      flash[:notice] = "You must be an administrator to see this page"
-      redirect_to events_path
-    end
-  end
-  
-  
   def index
     @all_regions = Hotspot.all_regions
     #@hotspots = Hotspot.all
@@ -21,7 +13,7 @@ class Admin::HotspotsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@hotspots) do |hotspot, marker|
       marker.lat hotspot.latitude
       marker.lng hotspot.longitude
-      marker.infowindow hotspot.issue_type
+      marker.infowindow hotspot.issue_types
     end
   end
   

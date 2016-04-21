@@ -1,26 +1,27 @@
 %h1 All Hotspots
 
-= form_tag admin_hotspots_path, :method => :get do
+= form_tag admin_hotspots_path, :id => "hotspotFilters", :method => :get do
   Show hotspots within: 
   - @all_regions.each do |region|
     = region + " Region"
     = check_box_tag "regions[#{region}]", 1, @selected_regions.include?(region), :id => "regions_#{region}"
-  = submit_tag 'Filter', :id => 'regions_submit'
+  = submit_tag 'Filter', :id => 'regions_submit', :class => 'btn btn-sm btn-secondary'
 
 = render 'layouts/map'
 
-%table#hotspots
-  %thead
-    %tr
-      %th Issue Type
-      %th Location
-      %th Details
-  %tbody
-    - if @hotspots
-      - @hotspots.each do |hotspot|
-        %tr
-          %td= hotspot.issue_type
-          %td= hotspot.location
-          %td= hotspot.details
-          - if admin_signed_in?
-            %td= link_to "Delete Hotspot", admin_hotspot_path(hotspot.id), { method: :delete }
+%div{:class => "col-md-8"}
+  %table#hotspots{:class => "table table-striped"}
+    %thead
+      %tr
+        %th Issue Type
+        %th Location
+        %th Details
+    %tbody
+      - if @hotspots
+        - @hotspots.each do |hotspot|
+          %tr
+            %td= hotspot.issue_types
+            %td= hotspot.location
+            %td= hotspot.details
+            - if admin_signed_in?
+              %td= link_to "Delete Hotspot", admin_hotspot_path(hotspot.id), { method: :delete }
