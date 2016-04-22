@@ -26,6 +26,16 @@ Scenario: See events on particular day
   And I should not see "Neighborhood Pool Party"
   And I should not see "Park Cleanup"
   And I should not see "Fiesta on the Hill"
+ 
+Scenario: No events on particular day
+  When I am on the events page
+  And I view the June 2016 calendar
+  And I click on 2016, June, 21
+  Then I should see "No events on June 21, 2016"
+  And I should not see "Library Movie Night"
+  And I should not see "Neighborhood Pool Party"
+  And I should not see "Park Cleanup"
+  And I should not see "Fiesta on the Hill"
   
 # Scenario: See all unapproved events
 #   When I go to the approve events page
