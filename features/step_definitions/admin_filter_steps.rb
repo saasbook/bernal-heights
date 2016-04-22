@@ -21,8 +21,3 @@ end
 When(/^I uncheck the following issue types: Car break\-ins,Abandoned Car,Broken Streetlight,Illegal Drug Transactions,Litter\/Dumping Trash,Public Drinking and Noise,Other$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
-
-Then(/^I should not see any hotspot$/) do
-  rows_count = page.all('#hotspots tr').count - 1
-  rows_count.should == 0
-end
