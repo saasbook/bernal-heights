@@ -1,1 +1,24 @@
-%h1 = @event.name
+%div{:class => "panel panel-default"}
+  %div{:class => "panel-body row"}
+    %div{:class => "col-md-8"}
+      %h2= #{@event.name}
+      %h4= Date: #{@event.start_date}
+      %h4= Time: #{@event.start_time}
+      %h4= Location: #{@event.location}
+      - if @event.event_organizer
+        %h4= Event Organizer: #{@event.event_organizer}
+    
+      - if @event.description
+        %p= #{@event.description}
+    - if current_admin
+      %div{:class => "col-md-4"}
+        - if !@event.approved?
+          = button_to 'Approve Event', admin_event_confirm_path(event_id: @event.id), class: "list-group-item"
+        =button_to 'Edit Event', edit_event_path, class: "list-group-item"
+        =button_to 'Delete Event', event, method: :delete, data: { confirm: "Are you sure?" }, class: "list-group-item"
+      
+  %div{:class => "panel-footer"}
+    %p= Contact Information
+    %p= #{@event.creator_name}: #{@event.creator_email}
+    
+

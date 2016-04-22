@@ -1,17 +1,20 @@
 %div{:class => "col-md-8"}
   %h1 Submitted Events
   
-  %table#unapproved{:class => "table table-striped"}
-    %thead
-      %tr
-        %th Event Name
-        %th Location
-    %tbody
-      - @unapproved.each do |event|
-        %tr
-          %td= event.name
-          %td= event.location
-          //%td= link_to "More about #{event.name}", event_path(event)
-          %td= button_to "Approve Event",  admin_event_confirm_path(event_id: event.id), class: "btn btn-default btn-sm"
+  - @unapproved.each do |event|
+    = render 'events/event'
+  
+  // %table#unapproved{:class => "table table-striped"}
+  //   %thead
+  //     %tr
+  //       %th Event Name
+  //       %th Location
+  //   %tbody
+  //     - @unapproved.each do |event|
+  //       %tr
+  //         %td= event.name
+  //         %td= event.location
+  //         //%td= link_to "More about #{event.name}", event_path(event)
+  //         %td= button_to "Approve Event",  admin_event_confirm_path(event_id: event.id), class: "btn btn-default btn-sm"
   
   =link_to 'Back to events', admin_events_path
