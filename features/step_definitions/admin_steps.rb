@@ -33,3 +33,16 @@ When /^I register an admin with name: "([^"]*)", email: "([^"]*)" and password: 
   step %Q{I press "Create Account"}
 end
 
+When /^I delete the account for "([^"]*)"$/ do |arg1|
+  css_id = "#" + arg1.downcase!.gsub!(/\s+/, "_")
+  within("#{css_id}") do
+    step %Q{I accept the confirm dialogue for "Delete Account"}
+  end
+end
+
+When /^I do not delete the account for "([^"]*)"$/ do |arg1|
+  css_id = "#" + arg1.downcase!.gsub!(/\s+/, "_")
+  within("#{css_id}") do
+    step %Q{I cancel the confirm dialogue for "Delete Account"}
+  end
+end

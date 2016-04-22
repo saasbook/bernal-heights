@@ -71,3 +71,14 @@ Then /^I should see all the event information for "([^"]*)"$/ do |arg1|
   step %Q{I should see "#{event.creator_email}"}
 end
 
+When (/^I should see the calendar$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When /^I click on (\d+), ([a-zA-Z]+), (\d+)$/ do |year, month, day|
+  pending
+end
+
+When /^I view the ([a-zA-Z]+) (\d+) calendar$/ do |month, year|
+  visit "/events?start_date=#{year}-#{month}-01"
+end
