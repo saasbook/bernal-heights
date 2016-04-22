@@ -15,9 +15,18 @@ Background:
 Scenario: Superadmins can have option to delete accounts
   Given I am signed in as an admin
   When I go to the view all admins page
-  Then I should be able to delete "Orhihara Izaya"
-  And I should be able to cancel deleting "Kishitani Shinra"
+  And I delete "Orhihara Izaya"
+  When I go to the view all admins page
+  Then I should not see "Orihara Izaya"
 
+Scenario: Cancel deleting account
+  Given I am signed in as an admin
+  When I go to the view all admins page
+  And I follow "Delete Account" for "Heiwajima Shizuo"
+  And I press "Cancel"
+  When I go to the view all admins page
+  Then I should see "Heiwajima Shizuo"
+  
 Scenario: Superadmins cannot delete their own accounts
   Given I am signed in with email: "dullahan@drrr.com" and password: "headlessrider"
   When I go to the view all admins page
