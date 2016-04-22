@@ -57,6 +57,20 @@ When /^I create an event with name "([^"]*)" without my personal info$/ do |name
   step %Q{I press "Create Event"}
 end
 
+When /^I delete event "([^"]*)"$/  do |name|
+  css_id = "#" + name.downcase!.gsub!(/\s+/, "_")
+  within("#{css_id}") do
+    step %Q{I accept the confirm dialogue for "Delete Event"}
+  end
+end
+
+When /^I cancel deleting event "([^"]*)"$/ do |name|
+  css_id = "#" + name.downcase!.gsub!(/\s+/, "_")
+  within("#{css_id}") do
+    step %Q{I cancel the confirm dialogue for "Delete Event"}
+  end
+end
+
 Given /^an event titled "([^"]*)" exists$/ do |arg1|
   FactoryGirl.build(:event, name: arg1)
 end
