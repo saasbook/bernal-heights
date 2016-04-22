@@ -37,32 +37,3 @@ Scenario: No events on particular day
   And I should not see "Park Cleanup"
   And I should not see "Fiesta on the Hill"
   
-# Scenario: See all unapproved events
-#   When I go to the approve events page
-#   Then I should see "Fiesta on the Hill"
-
-# Scenario: Approved events are not shown
-#   When I go to the approve events page
-#   Then I should not see "Library Movie Night"
-#   And I should not see "Park Cleanup" 
-#   And I should not see "Neighborhood Pool Party"
-    
-# Scenario: Approve an event
-#   Given I am on the approve events page
-#   When I press "Approve Event"
-#   Then I should see "Event Approved"
-#   And I should not see "Fiesta on the Hill"
-  
-#   When I go to the events page
-#   Then I should see "Fiesta on the Hill"
- 
-# Scenario: Non-admin cannot approve events
-#   Given I am signed out
-#   When I go to the approve events page
-#   Then I should see "You must be an administrator to see this page"
-#   And I should not see "Confirm Events"
-#   And I should be on the sign in page
-  
-# Scenario: Make sure if multiple events are on the page, the correct one gets approved
-  
-  
