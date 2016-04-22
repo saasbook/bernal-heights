@@ -11,6 +11,13 @@ This is a web app for the Bernal Heights Neighborhood Center. To follow our prog
 
 To avoid having to manually simulate login in cucumber each time, make sure to tag your features/scenarios with @noauth when needed.
 
+@javascript tag before any scenarios that use javascript will run the Poltergeist driver instead of the RackTest. Use this tag for confirming modals, etc. Read more about the documentation in [Capybara] (https://github.com/jnicklas/capybara/blob/master/README.md#modals) and [Poltergeist] (https://github.com/teampoltergeist/poltergeist#installing-phantomjs).
+
+To get PhantomJs working, you'll need it [installed] (https://github.com/teampoltergeist/poltergeist#installing-phantomjs) on your dev environment. Travis CI already has it pre-installed. You can follow those instructions; if it's not working out on Cloud9 try:
+
+    sudo npm install -g phantomjs-prebuilt  
+
+
 ### Travis CI
 
 Find the configuration for travis in .travis.yml.
