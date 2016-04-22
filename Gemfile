@@ -62,7 +62,7 @@ group :test do
   gem 'faker'
   gem "codeclimate-test-reporter", require: nil
   gem 'test-unit'
-
+  gem 'poltergeist'
 end
 
 group :production do
