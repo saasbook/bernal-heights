@@ -56,3 +56,15 @@ When /^I create an event with name "([^"]*)" without my personal info$/ do |name
   step %Q{I fill in "Location" with "Bernal Heights Public Library"}
   step %Q{I press "Create Event"}
 end
+
+When (/^I should see the calendar$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When /^I click on (\d+), ([a-zA-Z]+), (\d+)$/ do |year, month, day|
+  pending
+end
+
+When /^I view the ([a-zA-Z]+) (\d+) calendar$/ do |month, year|
+  visit "/events?start_date=#{year}-#{month}-01"
+end
