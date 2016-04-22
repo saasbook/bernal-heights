@@ -54,6 +54,9 @@ module NavigationHelpers
     when /^the edit account info page$/
       '/admin/edit'
       
+    when /^the add resource path$/
+      '/resources/new'
+      
     when /^the add new admin page$/
       '/staff/new'
     

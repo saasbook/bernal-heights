@@ -64,14 +64,15 @@ ActiveRecord::Schema.define(version: 20160416050540) do
     t.string   "creator_name"
     t.string   "creator_email"
     t.string   "creator_number"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.float    "latitude"
     t.float    "longitude"
     t.boolean  "walk"
     t.date     "occurred_date"
     t.time     "occurred_time"
     t.string   "region"
+    t.boolean  "archive",        default: false
   end
 
   create_table "issues", force: :cascade do |t|
