@@ -70,6 +70,20 @@ When /^I cancel deleting event "([^"]*)"$/ do |name|
     step %Q{I cancel the confirm dialogue for "Delete Event"}
   end
 
+Given /^an event titled "([^"]*)" exists$/ do |arg1|
+  FactoryGirl.build(:event, name: arg1)
+end
+
+Then /^I should see all the event information for "([^"]*)"$/ do |arg1|
+  event = Event.where(name: arg1)
+  step %Q{I should see "#{event.name}"}
+  step %Q{I should see "#{event.start_time}"}
+  step %Q{I should see "#{event.start_date}"}
+  step %Q{I should see "#{event.location}"}
+  step %Q{I should see "#{event.creator_name}"}
+  step %Q{I should see "#{event.creator_email}"}
+end
+
 When (/^I should see the calendar$/) do
   pending # Write code here that turns the phrase above into concrete actions
 end
