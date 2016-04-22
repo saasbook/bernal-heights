@@ -14,7 +14,7 @@ Background:
 Scenario: Successfully delete pending event
   Given I am signed in as an admin
   When I go to the approve events page
-  And I delete "Troll Event"
+  And I delete event "Troll Event"
   
   When I go to the approve events page
   Then I should not see "Troll Event"
@@ -22,7 +22,7 @@ Scenario: Successfully delete pending event
 Scenario: Cancel deleting pending event
   Given I am signed in as an admin
   When I go to the approve events page
-  And I cancel deleting "Park Cleanup"
+  And I cancel deleting event "Park Cleanup"
   
   When I go to the approve events page
   Then I should see "Park Cleanup"
@@ -30,7 +30,7 @@ Scenario: Cancel deleting pending event
 Scenario: Successfully delete existing event
   Given I am signed in as an admin
   When I go to the events page
-  And I delete "Library Movie Night"
+  And I delete event "Library Movie Night"
   
   When I go to the events page
   Then I should not see "Library Movie Night"
