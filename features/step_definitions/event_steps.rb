@@ -69,6 +69,7 @@ When /^I cancel deleting event "([^"]*)"$/ do |name|
   within("#{css_id}") do
     step %Q{I cancel the confirm dialogue for "Delete Event"}
   end
+end
 
 Given /^an event titled "([^"]*)" exists$/ do |arg1|
   FactoryGirl.build(:event, name: arg1)
