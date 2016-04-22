@@ -56,3 +56,18 @@ When /^I create an event with name "([^"]*)" without my personal info$/ do |name
   step %Q{I fill in "Location" with "Bernal Heights Public Library"}
   step %Q{I press "Create Event"}
 end
+
+Given /^an event titled "([^"]*)" exists$/ do |arg1|
+  FactoryGirl.build(:event, name: arg1)
+end
+
+Then /^I should see all the event information for "([^"]*)"$/ do |arg1|
+  event = Event.where(name: arg1)
+  step %Q{I should see "#{event.name}"}
+  step %Q{I should see "#{event.start_time}"}
+  step %Q{I should see "#{event.start_date}"}
+  step %Q{I should see "#{event.location}"}
+  step %Q{I should see "#{event.creator_name}"}
+  step %Q{I should see "#{event.creator_email}"}
+end
+
