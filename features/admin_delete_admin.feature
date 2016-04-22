@@ -11,27 +11,27 @@ Background:
   | Heiwajima Shizuo   | izayaaakun@drrr.com  | peacefulisland    | true   |
   | Orihara Izaya      | shizuchan@drrr.com   | ilovehumans       | false  |
   
-  
+@javascript  
 Scenario: Superadmins can have option to delete accounts
   Given I am signed in as an admin
   When I go to the view all admins page
-  And I delete "Orhihara Izaya"
+  And I delete the account for "Orhihara Izaya"
   When I go to the view all admins page
   Then I should not see "Orihara Izaya"
 
+@javascript
 Scenario: Cancel deleting account
   Given I am signed in as an admin
   When I go to the view all admins page
-  And I follow "Delete Account" for "Heiwajima Shizuo"
-  And I press "Cancel"
+  And I do not delete the account for "Heiwajima Shizuo"
   When I go to the view all admins page
   Then I should see "Heiwajima Shizuo"
   
 Scenario: Superadmins cannot delete their own accounts
   Given I am signed in with email: "dullahan@drrr.com" and password: "headlessrider"
   When I go to the view all admins page
-  Then I should not see "Delete Account" next to "Celty Sturlson"
-  And I should see "Delete Account" next to "Kishitani Shinra"
+  Then I should not see "Delete Account" within "#celty_sturlson"
+  And I should see "Delete Account" within "#kishitani_shinra"
 
 Scenario: Admins without superadmin permissions cannot delete accounts
   Given I am signed in with email: "shizuchan@drrr.com" and password: "ilovehumans"
