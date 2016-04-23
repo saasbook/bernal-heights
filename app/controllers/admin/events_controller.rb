@@ -2,12 +2,12 @@ class Admin::EventsController < EventsController
   before_filter :is_admin
 
   def index
-    @events = Event.where(approved: true)
-    @unapproved = Event.where(approved: false)
+    @events = Event.get_all_approved
+    @unapproved = Event.get_all_unconfirmed
   end
   
   def unapproved
-    @unapproved = Event.where(approved: false)
+    @unapproved = Event.get_all_unconfirmed
   end
   
   def new

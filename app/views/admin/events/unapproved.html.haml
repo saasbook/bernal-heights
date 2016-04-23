@@ -1,8 +1,7 @@
 %div{:class => "col-md-8"}
   %h1 Submitted Events
   
-  - @unapproved.each do |event|
-    = render 'events/event'
+  = render :partial => "event", collection: @unapproved, as: :event
   
   // %table#unapproved{:class => "table table-striped"}
   //   %thead

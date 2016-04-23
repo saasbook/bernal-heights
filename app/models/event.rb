@@ -9,6 +9,10 @@ class Event < ActiveRecord::Base
     def self.get_all_unconfirmed
         return Event.where(approved: false)
     end
+    
+    def self.get_all_approved
+        return Event.where(approved: true)
+    end
 
     def confirm
         self.approved = true

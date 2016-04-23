@@ -124,4 +124,20 @@ describe Event do
       expect(Event.get_all_unconfirmed).to_not include(@event_c)
     end
   end
+  
+  describe "@@get_all_approved" do
+    before do
+      @event_a = FactoryGirl.create(:event, approved: false)
+      @event_b = FactoryGirl.create(:event, approved: false)
+      @event_c = FactoryGirl.create(:event, approved: true)
+    end
+    
+    it "returns all approved events" do
+      expect(Event.get_all_approved).to include(@event_c)
+    end
+    
+    it "does not return unapproved events" do
+      expect(Event.get_all_approved).to_not include(@event_a, @event_b)
+    end
+  end
 end
