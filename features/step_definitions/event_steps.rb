@@ -56,3 +56,43 @@ When /^I create an event with name "([^"]*)" without my personal info$/ do |name
   step %Q{I fill in "Location" with "Bernal Heights Public Library"}
   step %Q{I press "Create Event"}
 end
+
+When /^I delete event "([^"]*)"$/  do |name|
+  css_id = "#" + name.downcase!.gsub!(/\s+/, "_")
+  within("#{css_id}") do
+    step %Q{I accept the confirm dialogue for "Delete Event"}
+  end
+end
+
+When /^I cancel deleting event "([^"]*)"$/ do |name|
+  css_id = "#" + name.downcase!.gsub!(/\s+/, "_")
+  within("#{css_id}") do
+    step %Q{I cancel the confirm dialogue for "Delete Event"}
+  end
+end
+
+Given /^an event titled "([^"]*)" exists$/ do |arg1|
+  FactoryGirl.build(:event, name: arg1)
+end
+
+Then /^I should see all the event information for "([^"]*)"$/ do |arg1|
+  event = Event.where(name: arg1)
+  step %Q{I should see "#{event.name}"}
+  step %Q{I should see "#{event.start_time}"}
+  step %Q{I should see "#{event.start_date}"}
+  step %Q{I should see "#{event.location}"}
+  step %Q{I should see "#{event.creator_name}"}
+  step %Q{I should see "#{event.creator_email}"}
+end
+
+When (/^I should see the calendar$/) do
+  pending # Write code here that turns the phrase above into concrete actions
+end
+
+When /^I click on (\d+), ([a-zA-Z]+), (\d+)$/ do |year, month, day|
+  pending
+end
+
+When /^I view the ([a-zA-Z]+) (\d+) calendar$/ do |month, year|
+  visit "/events?start_date=#{year}-#{month}-01"
+end

@@ -36,21 +36,40 @@ class HotspotsController < ApplicationController
     @selected_issues = params[:issues] || {}
     @hotspot = Hotspot.new(hotspot_params)
     @all_issues = Hotspot.all_issues
-    if @hotspot.save and not(@selected_issues == {})
-        @selected_issues.each do |issue|
-          @hotspot.issues << Issue.where(issue_type: issue)
-        end
-        
+
+    if @selected_issues == {}
+      flash.now[:warning] = "You have not selected an issue type."
+      render :new
+    else
+      @selected_issues.each do |issue|
+        @hotspot.issues << Issue.where(issue_type: issue)
+      end
+      if @hotspot.save
         flash[:notice] = "You have successfully reported an issue. Thank you!"
         redirect_to new_hotspot_path
-    else
+      else
         if @hotspot.errors.any? 
           flash.now[:warning] = @hotspot.errors.full_messages.first 
         else
           flash.now[:warning] = "You have not filled out all required fields."
         end
         render :new
+      end
     end
   end
-  
 end
+    # if @hotspot.save and not(@selected_issues == {})
+    #     @selected_issues.each do |issue|
+    #       @hotspot.issues << Issue.where(issue_type: issue)
+    #     end
+        
+    #     flash[:notice] = "You have successfully reported an issue. Thank you!"
+    #     redirect_to new_hotspot_path
+    # else
+    #     if @hotspot.errors.any? 
+    #       flash.now[:warning] = @hotspot.errors.full_messages.first 
+    #     else
+    #       flash.now[:warning] = "You have not filled out all required fields."
+    #     end
+    #     render :new
+    # end
