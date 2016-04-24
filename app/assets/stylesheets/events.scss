@@ -2,8 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//colors
-//$orange-primary: #FF9F27;
 
 .fixed-width {
     width: 750 px;
@@ -38,4 +36,10 @@
     border: 1px solid #ddd;
     border-radius: 16px 16px;
     padding-top: 10px;
+}
+.marker {
+    border-radius: 50%;
+    height: 8px;
+    width: 8px;
+    background-color: $orange-primary;
 }
