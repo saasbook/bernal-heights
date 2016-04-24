@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 //colors
-$orange-primary: #FF9F27;
+//$orange-primary: #FF9F27;
 
 .fixed-width {
     width: 750 px;
@@ -33,4 +33,9 @@ $orange-primary: #FF9F27;
 }
 .day {
     cursor: pointer;
+}
+.calendar-container {
+    border: 1px solid #ddd;
+    border-radius: 16px 16px;
+    padding-top: 10px;
 }
