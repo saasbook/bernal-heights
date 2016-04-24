@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
   
   resources :events
+  resources :hotspotforms
   resources :hotspots do
     member do
         get 'gps'

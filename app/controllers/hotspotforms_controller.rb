@@ -1,4 +1,4 @@
-class HotspotFormController < ApplicationController
+class HotspotformsController < ApplicationController
     include Wicked::Wizard
     steps :issue_description, :personal_information
     before_filter :redirect_to
