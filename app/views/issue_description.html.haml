@@ -1,0 +1,9 @@
+class IssueDescriptionForm < Reform::Form
+  property :location
+  property :occurred_time
+  property :occurred_date
+  property :details
+  
+  validates :location, :occurred_time, :occurred_date, :details presence: true
+
+end

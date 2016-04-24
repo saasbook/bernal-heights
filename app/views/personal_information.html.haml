@@ -1,0 +1,7 @@
+class PersonalInformationForm < Reform::Form
+  property :creator_name
+  property :creator_email
+  property :creator_number
+  
+  validates :creator_name, :creator_email, :creator_number, presence: true
+end
