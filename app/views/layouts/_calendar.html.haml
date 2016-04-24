@@ -9,7 +9,8 @@
         = "&bull;".html_safe
   = button_to 'Create New Event', new_event_path, method: :get, class: "btn btn-default", id: "event-btn"
 
-= render 'layouts/event_list'
+%div{:class => "col-sm-5", :id => "event-list"}
+  = render 'layouts/event_list'
 
 :javascript
   $('.day').click( function() {
