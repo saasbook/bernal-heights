@@ -15,7 +15,7 @@
   $('.day').click( function() {
     var search_param = $(this).children("p").attr("id");
     $.ajax({
-            url: "events/", // Route to the Event Controller day_events method
+            url: "events/", //param is specific day
             type: "GET",
         dataType: "text",
         contentType: "text/plain",

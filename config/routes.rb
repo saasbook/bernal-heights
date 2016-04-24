@@ -25,7 +25,6 @@ Rails.application.routes.draw do
     # (app/controllers/admin/products_controller.rb)
     resources :events do
       post 'confirm'
-      # get 'day_events'
     end
     resources :hotspots
   end
