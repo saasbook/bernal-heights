@@ -14,4 +14,9 @@ class Event < ActiveRecord::Base
         self.approved = true
         self.save
     end
+    
+    def self.getEventsForDay(day)
+        return Event.where(start_date: Date.parse(day))
+    end
+    
 end

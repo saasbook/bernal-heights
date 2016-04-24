@@ -2,23 +2,32 @@
 
 %div.col-sm-7
   = month_calendar(attribute: :start_date, events: @events) do |date, acts|
-    = date.mday
+    %p{id: date}
+      = date.mday
     - if acts.length != 0
       %p.event-marker
         = "&bull;".html_safe
   = button_to 'Create New Event', new_event_path, method: :get, class: "btn btn-default", id: "event-btn"
 
-%div{:class => "col-sm-5"}
-  
-  %table#events{:class => "table table-striped table-condensed "}
-    %thead
-      %tr
-        %th Event Name
-        %th More Info
-    %tbody
-      - @events.each do |event|
-        %tr
-          %td= event.name
-          //%td= link_to "More about #{event.name}", event_path(event)
-          %td Show event details will be here
+= render 'layouts/event_list'
 
+:javascript
+  $('.day').click( function() {
+    console.log($(this).children("p").attr("id"));
+    var search_param = $(this).children("p").attr("id");
+    $.ajax({
+            url: "events/", // Route to the Event Controller day_events method
+            type: "GET",
+        dataType: "text",
+        contentType: "text/plain",
+            data: { day: search_param },
+        complete: function() {},
+        success: function(data, textStatus, xhr) {
+                    // Do something with the response here
+                    $('#events').html(data);
+                  },
+          error: function(data) {
+                    alert("ajax error");
+                  }
+    });
+  });
