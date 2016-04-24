@@ -1,7 +1,12 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.where(approved: true)
+    if request.xhr?
+      @events = Event.getEventsForDay(params[:day])
+      render :partial => 'layouts/event_list'
+    else
+      @events = Event.where(approved: true)
+    end
   end
   
   def new
