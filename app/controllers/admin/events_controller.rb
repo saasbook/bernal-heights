@@ -4,6 +4,15 @@ class Admin::EventsController < EventsController
   def index
     @events = Event.where(approved: true)
     @unapproved = Event.where(approved: false)
+    @todays_events = Event.getEventsForDay(Date.today.strftime("%F"))
+    if request.xhr?
+      @todays_events = Event.getEventsForDay(params[:day])
+      render :partial => 'layouts/event_list'
+    end
+  end
+  
+  def index2
+    
   end
   
   def unapproved

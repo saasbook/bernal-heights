@@ -6,7 +6,7 @@
         %th Event Name
         %th More Info
     %tbody
-      - @events.each do |event|
+      - @todays_events.each do |event|
         %tr
           %td= event.name
           //%td= link_to "More about #{event.name}", event_path(event)

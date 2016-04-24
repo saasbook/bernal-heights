@@ -16,7 +16,7 @@ class Event < ActiveRecord::Base
     end
     
     def self.getEventsForDay(day)
-        return Event.where(start_date: Date.parse(day))
+        return Event.where(start_date: Date.parse(day), approved: true)
     end
     
 end
