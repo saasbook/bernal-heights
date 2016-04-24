@@ -10,11 +10,7 @@ class Admin::EventsController < EventsController
       render :partial => 'layouts/event_list'
     end
   end
-  
-  def index2
-    
-  end
-  
+
   def unapproved
     @unapproved = Event.where(approved: false)
   end
