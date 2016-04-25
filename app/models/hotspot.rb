@@ -3,16 +3,20 @@ class Hotspot < ActiveRecord::Base
     has_many :issues, :through => :hotspotissues
     validates_presence_of :hotspotissues
     
-    validates :location, presence: true
-    validates :occurred_time, presence: true
-    validates :occurred_date, presence: true
-    validates :details, presence: true
-    validates :creator_name, presence: true
-    validates :creator_email, presence: true
-    validates :creator_number, presence: true
+    validates :location, :occurred_time, :occurred_date, :details, :creator_name, :creator_email, :creator_number, :presence => true, :if => :active?
+    # validates :occurred_time, presence: true
+    # validates :occurred_date, presence: true
+    # validates :details, presence: true
+    # validates :creator_name, presence: true
+    # validates :creator_email, presence: true
+    # validates :creator_number, presence: true
     
     geocoded_by :location
     after_validation :geocode, :add_region, :if => lambda{ |obj| obj.location_changed? }
+    
+    def active?
+      status == 'active'
+    end
     
     def self.all_issues
         ['Car Break-In', 'Abandoned Car','Broken Streetlight', 'Illegal Drug Transactions','Litter/Dumping Trash','Public Drinking and Noise','Other']
