@@ -52,3 +52,14 @@ div.fieldWithErrors {
 .btn-primary {
   background-color: #0275d8;
 }
+.page-header {
+    color: $bernal-purple;
+    padding-bottom: 20px;
+    margin-bottom: 30px;
+}
+.orange-bg {
+  background-color: $orange-primary;
+}
+.navbar-default .navbar-nav > li > a, .navbar-default .navbar-brand {
+  color: #FFF;
+}
