@@ -1,7 +1,7 @@
 class Hotspot < ActiveRecord::Base
     has_many :hotspotissues
     has_many :issues, :through => :hotspotissues
-    validates_presence_of :hotspotissues
+    validates_presence_of :hotspotissues, :if => :active?
     
     validates :location, :occurred_time, :occurred_date, :details, :creator_name, :creator_email, :creator_number, :presence => true, :if => :active?
     # validates :occurred_time, presence: true
