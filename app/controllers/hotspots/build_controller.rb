@@ -1,7 +1,7 @@
 class Hotspots::BuildController < ApplicationController
     include Wicked::Wizard
     
-    steps :issue_description, :personal_information
+    steps :basic_issue, :issue_description, :personal_information
     
     def hotspot_params
         params.require(:hotspot).permit(:location, :occurred_time, :occurred_date, :details, :report_num, :to_share, :creator_name, :creator_email, :creator_number, :walk)

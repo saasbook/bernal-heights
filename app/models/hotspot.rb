@@ -8,7 +8,7 @@ class Hotspot < ActiveRecord::Base
     # validates :hotspotissues, :location, :occurred_time, :occurred_date, :details, :presence => true, :if => :first?
     # validates :creator_name, :creator_email, :creator_number, :presence => true, :if => :last?
     
-    validates :hotspotissues, :presence => true, :if => :first?
+    validates_presence_of :hotspotissues, :if => :first?
     validates :location, :presence => true, :if => :first?
     validates :occurred_time, :presence => true, :if => :first?
     validates :occurred_date, :presence => true, :if => :first?

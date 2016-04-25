@@ -6,18 +6,6 @@
         %div{:class => "panel-body"}
           = simple_form_for(@hotspot, html: { class: '' },:url => wizard_path, :method => :put) do |hotspot|
             
-  
-            = hotspot.label "Type of Issue:"
-            - @all_issues.each do |issue|
-              = issue
-              = check_box_tag "issues[#{issue}]", 1, false, :id => "issues_#{issue}"
-              
-            = hotspot.input :location, as: :text, label: "Location", hint: "Please type an address or the street intersection, e.g. Andover St and Cortland Ave.", error: "A location is required.", :value => params[:location]
-           
-          
-            = hotspot.button :button, "Use my current location", :class => 'btn btn-secondary', :type => 'button', :onclick => 'getLocation()'
-            = hotspot.label "(if location services is turned on)"
-            
             = hotspot.input :occurred_time, as: :time, label: "Discovery Time", ampm: true
             = hotspot.input :occurred_date, as: :date, label: "Occurred Date"
    
@@ -26,19 +14,3 @@
             = hotspot.input :report_num, as: :integer, label: "Police report number (if applicable)"
   
             = hotspot.submit 'Next', :class => 'btn btn-primary'
-
-:javascript
-  var x = document.getElementById("hotspot_location");
-  
-  function getLocation() {
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-      } else { 
-          x.innerHTML = "Geolocation is not supported by this browser.";
-      }
-  }
-  
-  function showPosition(position) {
-      x.innerHTML = position.coords.latitude + 
-      ", " + position.coords.longitude;	
-  }
