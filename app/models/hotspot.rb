@@ -1,21 +1,31 @@
 class Hotspot < ActiveRecord::Base
     has_many :hotspotissues
     has_many :issues, :through => :hotspotissues
-    validates_presence_of :hotspotissues, :if => :active?
+   
+    # validates_presence_of :hotspotissues, :if => :active_or_issue?
+    # validates :location, :occurred_time, :occurred_date, :details, :creator_name, :creator_email, :creator_number, :presence => true, :if => :active?
     
-    validates :location, :occurred_time, :occurred_date, :details, :creator_name, :creator_email, :creator_number, :presence => true, :if => :active?
-    # validates :occurred_time, presence: true
-    # validates :occurred_date, presence: true
-    # validates :details, presence: true
-    # validates :creator_name, presence: true
-    # validates :creator_email, presence: true
-    # validates :creator_number, presence: true
+    # validates :hotspotissues, :location, :occurred_time, :occurred_date, :details, :presence => true, :if => :first?
+    # validates :creator_name, :creator_email, :creator_number, :presence => true, :if => :last?
+    
+    validates :hotspotissues, :presence => true, :if => :first?
+    validates :location, :presence => true, :if => :first?
+    validates :occurred_time, :presence => true, :if => :first?
+    validates :occurred_date, :presence => true, :if => :first?
+    validates :details, :presence => true, :if => :first?
+    validates :creator_name, :presence => true, :if => :last?
+    validates :creator_email, :presence => true, :if => :last?
+    validates :creator_number, :presence => true, :if => :last?
     
     geocoded_by :location
     after_validation :geocode, :add_region, :if => lambda{ |obj| obj.location_changed? }
     
-    def active?
-      status == 'active'
+    def last?
+      status == "last"
+    end
+    
+    def first?
+      status == "first"
     end
     
     def self.all_issues
