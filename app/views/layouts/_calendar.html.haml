@@ -1,6 +1,4 @@
-%h1 All Events
-
-%div.col-sm-7.calendar-container
+%div.col-sm-12.calendar-container
   = month_calendar(attribute: :start_date, events: @events) do |date, acts|
     %p{id: date}
       = date.mday
@@ -10,8 +8,8 @@
       %div.marker
   = button_to 'Create New Event', new_event_path, method: :get, class: "btn btn-default", id: "event-btn"
   
-%div{:class => "col-sm-5", :id => "event-list"}
-  = render 'layouts/event_list'
+// %div{:class => "col-sm-5", :id => "event-list"}
+//   = render 'layouts/event_list'
 
 :javascript
   $('.day').click( function() {

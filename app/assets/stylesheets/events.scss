@@ -43,3 +43,6 @@
     width: 8px;
     background-color: $orange-primary;
 }
+.day.past.prev-month, .day.future.next-month {
+    background-color: lavender;
+}

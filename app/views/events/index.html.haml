@@ -1,2 +1,7 @@
-%div{:class => "container"}  
-  = render 'layouts/calendar'
+%h1.page-header All Events
+
+%div{:class => "container"} 
+  %div{:class => "col-sm-7", :id => "event-list"}
+    = render 'layouts/calendar'
+  %div{:class => "col-sm-5", :id => "event-list"}
+    = render 'layouts/event_list'
