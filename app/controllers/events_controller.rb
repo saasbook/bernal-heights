@@ -4,6 +4,10 @@ class EventsController < ApplicationController
     @events = Event.where(approved: true)
   end
   
+  def show
+    @event = Event.find(params[:id])
+  end
+  
   def new
     if current_admin
       redirect_to new_admin_event_path

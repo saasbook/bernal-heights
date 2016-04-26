@@ -1,7 +1,7 @@
 %div{:class => "panel panel-default"}
   %div{:class => "panel-body row"}
     %div{:class => "col-md-8"}
-      %h3 #{event.name}
+      %h3= link_to "#{event.name}", event_path(event)
       - if event.end_date
         %p Date: #{event.start_date.to_formatted_s(:long_ordinal)} to #{event.end_date.to_formatted_s(:long_ordinal)}
       - else
