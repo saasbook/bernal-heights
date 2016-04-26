@@ -12,11 +12,13 @@
  *
 
  */
-// *= require_tree .
+
 // *= require_self
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "events";
+@import "variables.scss";
+@import "events.scss";
+@import "hotspots.scss";
 @import "simple_calendar";
 
 .errorExplanation {
