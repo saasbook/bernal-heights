@@ -1,3 +1,13 @@
 %div{:class => "container"}
   %h1 All Hotspots
+    
+  %p Type an address or intersection to report an issue and see hotspots already reported in that area.
+  .row
+    .search-container.col-xs-9.col-md-6
+      %input#searchbar.form-control{:placeholder => "Search location", :type => "text"}
+    %div
+      %input#searchbtn.btn.btn-default{:type => "button", :value => "Search"}
+  .row
+    .col-xs-12.col-sm-3
+      %a#hotspotbtn.btn.btn-primary.btn-block{:href => "/hotspots/new", :role => "button"} Create new hotspot
   = render 'layouts/map'
