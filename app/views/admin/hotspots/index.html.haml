@@ -3,9 +3,15 @@
 = form_tag admin_hotspots_path, :id => "hotspotFilters", :method => :get do
   Show hotspots within: 
   - @all_regions.each do |region|
-    = region + " Region"
     = check_box_tag "regions[#{region}]", 1, @selected_regions.include?(region), :id => "regions_#{region}"
-  = submit_tag 'Filter', :id => 'regions_submit', :class => 'btn btn-sm btn-secondary'
+    = region + " Region"
+  %br
+  Show hotspots with issue type of: 
+  - @all_issues.each do |issue|
+    = check_box_tag "issues[#{issue}]", 1, @selected_issues.include?(issue), :id => "issues_#{issue}"
+    = issue
+  %br
+  = submit_tag 'Filter', :id => 'filter_submit', :class => 'btn btn-sm btn-secondary'
 
 = render 'layouts/map'
 
