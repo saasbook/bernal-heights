@@ -32,7 +32,7 @@
     }
   },
   function(){
-    var polygons = handler.addPolygons(
+    var north = handler.addPolygons(
       [
         [
           // north region
@@ -68,7 +68,14 @@
           {lat:37.7459721, lng:-122.41778970000001},
           {lat:37.7467484, lng:-122.41828860000001},
           {lat:37.7468629, lng:-122.4191523}
-        ],
+        ]
+      ], {
+        "strokeColor": "#DB4436",
+        "fillOpacity": 0
+        }
+      );
+    var central = handler.addPolygons(
+      [
         [
           // central region
           {lat:37.7467822, lng:-122.419163},
@@ -87,7 +94,14 @@
           {lat:37.7462266, lng:-122.41809810000001},
           {lat:37.7466211, lng:-122.4183047},
           {lat:37.7467822, lng:-122.419163}
-        ],
+        ]
+      ], {
+        "strokeColor": "#F4B400",
+        "fillOpacity": 0
+        }
+     );
+    var south_east = handler.addPolygons(
+      [
         [
           // south-east region
           {lat:37.7438087, lng:-122.41327289999998},
@@ -123,7 +137,14 @@
           {lat:37.7389579, lng:-122.414614},
           {lat:37.7424725, lng:-122.41426},
           {lat:37.7438087, lng:-122.41327289999998}
-        ],
+        ]
+      ], {
+        "strokeColor": "#4186F0",
+        "fillOpacity": 0
+        }
+    );
+    var south_west = handler.addPolygons(
+      [
         [
           // south-west region
           {lat:37.7330589, lng:-122.41382000000002},
@@ -161,13 +182,16 @@
           {lat:37.7325807, lng:-122.41510210000001},
           {lat:37.7330589, lng:-122.41382000000002}
         ]
-       ],
+      ],
         {
-        "strokeColor": "#FF0000",
+        "strokeColor": "#62AF44",
         "fillOpacity": 0
         }
-     );
-     handler.bounds.extendWith(polygons);
+    );
+     handler.bounds.extendWith(north);
+     handler.bounds.extendWith(central);
+     handler.bounds.extendWith(south_east);
+     handler.bounds.extendWith(south_west);
     <% if @hotspots.count == 0 %>
       handler.getMap().setCenter({lat: 37.744385, lng: -122.417046});
       handler.getMap().setZoom(15);
@@ -235,4 +259,3 @@
   });
 
 </script>
-
