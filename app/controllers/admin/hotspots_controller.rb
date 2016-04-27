@@ -21,6 +21,11 @@ class Admin::HotspotsController < ApplicationController
       marker.lng hotspot.longitude
       marker.infowindow hotspot.issue_types
     end
+    
+    respond_to do |format|
+      format.html
+      format.csv { send_data @hotspots.to_csv, filename: "hotspots-data-#{Date.today}.csv" }
+    end
   end
   
   def destroy

@@ -178,4 +178,14 @@ class Hotspot < ActiveRecord::Base
         self.errors.add(:region, ": Invalid address - not in Bernal Heights Neighborhood.")
       end
     end
+    
+    def self.to_csv
+      attributes = %w(id issue_types location details occurred_date occurred_time creator_name creator_email creator_number report_num to_share walk)
+      CSV.generate do |csv|
+        csv << attributes
+        all.each do |hotspot|
+          csv << attributes.map{ |attr| hotspot.send(attr) }
+        end
+      end
+    end
 end
