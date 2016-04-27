@@ -19,6 +19,7 @@
   %table#hotspots{:class => "table table-striped"}
     %thead
       %tr
+        %th ID#
         %th Issue Type
         %th Location
         %th Details
@@ -26,8 +27,10 @@
       - if @hotspots
         - @hotspots.each do |hotspot|
           %tr
+            %td= hotspot.id
             %td= hotspot.issue_types
             %td= hotspot.location
             %td= hotspot.details
             - if admin_signed_in?
+              %td= link_to "Archive Hotspot", admin_hotspot_path(hotspot.id), { method: :put }
               %td= link_to "Delete Hotspot", admin_hotspot_path(hotspot.id), { method: :delete }

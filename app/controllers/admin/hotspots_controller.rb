@@ -15,8 +15,6 @@ class Admin::HotspotsController < ApplicationController
     end
     
     @hotspots = Hotspot.where(region: @selected_regions.keys, archive: false).joins(:issues).where(:issues => { :issue_type => @selected_issues.keys}).references(:issues).distinct()
-  
-    
     
     @hash = Gmaps4rails.build_markers(@hotspots) do |hotspot, marker|
       marker.lat hotspot.latitude
@@ -30,4 +28,15 @@ class Admin::HotspotsController < ApplicationController
     @hotspot.destroy
     redirect_to admin_hotspots_path
   end
+  
+  def update
+    @hotspot = Hotspot.find(params[:id])
+    if @hotspot.update(archive: true)
+      flash[:notice] = "You have successfully archived hotspot #{params[:id]}."
+    else
+      flash[:notice] = "Fail attempt to archive hotspot #{params[:id]}."
+    end
+    redirect_to admin_hotspots_path
+  end
+  
 end
