@@ -8,26 +8,33 @@ class Hotspot < ActiveRecord::Base
     # validates :hotspotissues, :location, :occurred_time, :occurred_date, :details, :presence => true, :if => :first?
     # validates :creator_name, :creator_email, :creator_number, :presence => true, :if => :last?
     
-    validates_presence_of :hotspotissues, :if => :first?
-    validates :location, :presence => true, :if => :first?
-    validates :occurred_time, :presence => true, :if => :first?
-    validates :occurred_date, :presence => true, :if => :first?
-    validates :details, :presence => true, :if => :first?
-    validates :creator_name, :presence => true, :if => :last?
-    validates :creator_email, :presence => true, :if => :last?
-    validates :creator_number, :presence => true, :if => :last?
+    validates_presence_of :hotspotissues, :if => :active_or_basic_issue?
+    validates :location, presence: true, :if => :active_or_basic_issue?
+    validates :occurred_time, presence: true, :if => :active_or_issue_description?
+    validates :occurred_date, presence: true, :if => :active_or_issue_description?
+    validates :details, presence: true, :if => :active_or_issue_description?
+    validates :creator_name, presence: true, :if => :active_or_personal_information?
+    validates :creator_email, presence: true, :if => :active_or_personal_information?
+    validates :creator_number, presence: true, :if => :active_or_personal_information?
     
     geocoded_by :location
     after_validation :geocode, :add_region, :if => lambda{ |obj| obj.location_changed? }
     
-    def last?
-      status == "last"
+    def active?
+      status == 'active'
     end
     
-    def first?
-      status == "first"
+    def active_or_basic_issue?
+      status.include?('basic_issue') || active?
     end
     
+    def active_or_issue_description?
+      status.include?('issue_description') || active?
+    end
+    
+    def active_or_personal_information?
+      status.include?('personal_information') || active?
+    end
     def self.all_issues
         ['Car Break-In', 'Abandoned Car','Broken Streetlight', 'Illegal Drug Transactions','Litter/Dumping Trash','Public Drinking and Noise','Other']
     end

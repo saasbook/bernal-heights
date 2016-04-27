@@ -4,7 +4,7 @@ class Hotspots::BuildController < ApplicationController
     steps :basic_issue, :issue_description, :personal_information
     
     def hotspot_params
-        params.require(:hotspot).permit(:location, :occurred_time, :occurred_date, :details, :report_num, :to_share, :creator_name, :creator_email, :creator_number, :walk)
+        params.require(:hotspot).permit(:location, :occurred_time, :occurred_date, :details, :report_num, :to_share, :creator_name, :creator_email, :creator_number, :walk,:status)
     end
   
     def show
@@ -16,8 +16,8 @@ class Hotspots::BuildController < ApplicationController
     def update
         @hotspot = Hotspot.find(params[:hotspot_id])
         @all_issues = Hotspot.all_issues
-        params[:hotspot][:status] = "first" if step == steps.first
-        params[:hotspot][:status] = "last" if step == steps.last
+        params[:hotspot][:status] = step.to_s
+        params[:hotspot][:status] = 'active' if step == steps.last
         @hotspot.update_attributes(hotspot_params)
         if step == steps.first
             @selected_issues = params[:issues] || {}
@@ -32,14 +32,8 @@ class Hotspots::BuildController < ApplicationController
         render_wizard @hotspot
     end
     
-    # def index
-    #     @hotspot = Hotspot.create
-    #     @all_issues = Hotspot.all_issues
-    #     redirect_to wizard_path(steps.first, :hotspot_id => @hotspot.id)
-    # end
-    
     def create 
-        @hotspot = Hotspot.create(:status => "new")
+        @hotspot = Hotspot.create(:status => 'new')
         @all_issues = Hotspot.all_issues
         redirect_to wizard_path(steps.first, :hotspot_id => @hotspot.id)
     end
