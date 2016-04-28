@@ -1,8 +1,44 @@
-%div{:class => "container"}
-  %dl{:class => "dl-horizontal"}
-    %dt ID #
-    %dd @hotspot.id
-    %dt Issue Type(s)
-    %dd @hotspot.issue_types
-    %dt Location
-    %dd @hotspot.location
+%h1 
+
+%div.container.card
+  %h3 Form ##{@hotspot.id}
+  %div.divider
+  %div.col-sm-4.card-panel-left
+    %h4 Issue Type(s)
+    %p #{@hotspot.issue_types}
+    %div.divider
+    %h4 Discovery Date
+    %p #{@hotspot.occurred_date.to_formatted_s(:long_ordinal)}
+    %div.divider
+    %h4 Discovery Time
+    %p #{@hotspot.occurred_time.strftime("%I:%M%p")}
+    %div.divider
+    %h4 Location
+    %p #{@hotspot.location}
+    - if @hotspot.report_num
+      %div.divider
+      %h4 Police Report #
+      %p #{@hotspot.report_num}
+  
+  %div.col-sm-6
+    %h4 Details
+    %p #{@hotspot.details}
+      
+%br
+%br 
+
+%div.container.card
+  %h3 Reporter Information
+  %div.divider
+  %div.col-sm-4
+    %h4 Name
+    #{@hotspot.creator_name}
+    %h4 Email
+    %p #{@hotspot.creator_email}
+    %h4 Phone Number
+    %p #{@hotspot.creator_number}
+    %h4 Can share info with SFPD?
+    %p #{@hotspot.to_share}
+    %h4 Willing to go on hotspot walk?
+    %p #{@hotspot.walk}
+  

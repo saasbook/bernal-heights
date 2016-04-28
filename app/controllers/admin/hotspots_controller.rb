@@ -44,4 +44,8 @@ class Admin::HotspotsController < ApplicationController
     redirect_to admin_hotspots_path
   end
   
+  def show
+    @hotspot = Hotspot.find(params[:id])
+  end
+  
 end

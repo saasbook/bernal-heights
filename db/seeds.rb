@@ -25,8 +25,10 @@ issues = ["Car Break-In", "Abandoned Car", "Broken Streetlight", "Illegal Drug T
 puts "================= CREATED ISSUES ================"
 
 issues.each do |issue|
-  Issue.create!(issue_type: issue)
-  puts "    #{issue}"
+  if Issue.where(issue_type: issue) == []
+    Issue.create!(issue_type: issue)
+    puts "    #{issue}"
+  end
 end
 
 Resource.first_or_create!(title:"SFPD Online Reporting System", description:"Report minor

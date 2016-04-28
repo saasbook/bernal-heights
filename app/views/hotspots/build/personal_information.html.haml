@@ -1,0 +1,23 @@
+%div{:class => "container fixed-width"}
+  .row
+    %div{:class => "col-md-6"}
+      %div{:class => "form-border panel"}
+        %div{:class => "form-heading panel-heading"} New Hotspot Form - Personal Information
+        %div{:class => "panel-body"}
+          = simple_form_for(@hotspot, html: { class: '' },:url => wizard_path, :method => :put) do |hotspot|
+            
+            
+            = hotspot.label "Can we share your info with the police department?"
+            = hotspot.collection_radio_buttons :to_share, [[true, 'Yes'] ,[false, 'No']], :first, :last
+            
+            = hotspot.input :creator_name, as: :text, label: "Your Name", hint: "Your personal information will not be shared to the public.", error: "Your name is required."
+            
+            = hotspot.input :creator_email, as: :email, label: "Your Email", error: "Your e-mail is required."
+            
+            = hotspot.input :creator_number, as: :tel, label: "Your Phone Number", error: "Your phone number is required."
+            
+            = hotspot.label "Will you go on a hotspot walk with us?"
+            = hotspot.collection_radio_buttons :walk, [[true, 'Yes'] ,[false, 'No']], :first, :last
+            
+            %div
+            = hotspot.submit 'Report Hotspot Issue', :class => 'btn btn-primary'

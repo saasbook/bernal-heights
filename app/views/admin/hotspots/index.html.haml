@@ -35,6 +35,6 @@
               %td= hotspot.issue_types
               %td= hotspot.location
               - if admin_signed_in?
-                %td= link_to "View Details", admin_hotspot_path(hotspot.id)
+                %td= link_to "View Details", admin_hotspot_path(hotspot)
                 %td= link_to "Archive Hotspot", admin_hotspot_path(hotspot.id), { method: :put }
                 %td= link_to "Delete Hotspot", admin_hotspot_path(hotspot.id), { method: :delete }
