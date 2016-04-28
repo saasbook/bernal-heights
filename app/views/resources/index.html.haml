@@ -1,0 +1,161 @@
+%p#notice= notice
+
+:css
+  // h3 {
+  //     color: green;
+  //     font-family: "Times New Roman", Times, serif;
+  // }
+  h1 { color: #F90B6D; font-family: 'Open Sans', sans-serif; text-align: center; letter-spacing: 2px; font-size: 34px; font-weight: 300; line-height: 40px; margin: 0 0 16px; }
+
+
+  h2 { color: orange; font-family: 'Open Sans', sans-serif; letter-spacing: 2px; font-size: 34px; font-weight: 300; line-height: 40px; margin: 0 0 16px; }
+  
+  h3 { color: orange; font-family: 'Open Sans', sans-serif;letter-spacing: 2px; font-size: 34px; font-weight: 300; line-height: 40px; margin: 0 0 16px; }
+
+
+  p { color: #222; font-family: 'Open Sans', sans-serif; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0 0 14px; }
+
+
+  a { background: #fff; color: #222; text-decoration: none; }
+  
+
+  a:hover { background: #F90B6D; color: #eee; text-decoration: none; }
+  
+  ul {list-style-type: none; padding: 4; margin: 0; }
+
+  
+  
+  
+  	
+  table { border-collapse: collapse;}
+
+  td { padding-top: .5em; padding-bottom: .5em;}
+  #num { color: green; white-space:nowrap;}
+  
+  
+  
+  
+%h1 Welcome to Bernal Heights Resources!
+= link_to 'Add a New Resource', new_resource_path
+%h2 Emergency!
+%div{:style => "word-wrap: break-word; width:500px;"}
+  CALL 911 or 415 5530-8090 from a cell phone for life-threatening situations
+  %br
+    %u OR
+    a crime in progress(event property crimes)
+    %br
+      %u OR
+      suspicious behavior that has suddenly escalated.
+%h3 - NON-EMERGENCY POLICE - 
+%div
+  When you see suspicious behavior, call the police and let them sort it out. Just remember
+  %br People aren't suspicious, their behavior is.
+%table{:cellspacing => "10"}
+  // %thead
+  //   %tr
+  //     %th Title
+  //     %th Description
+  //     %th Link
+  //     %th Phone
+  //     %th{:colspan => "3"}
+  %tbody
+    - @type1 = Resource.where(:kind => 1)
+    - @type1.each do |resource|
+      %tr
+        %td
+          %b= resource.title
+          = resource.description
+          %br/
+          = "More info "
+          %a#hello{:href => resource.link} here
+          
+          #num= resource.phone
+          
+          
+%h3 CALL 311 FOR (ALMOST) EVERYTHING ELSE
+%h4
+  Complete information at
+  %a{:href => "http://www.sf311.org"} www.sf311.org
+%div
+  311 corrdinates, directs & tracks city questions and issues. Alyways ask for the
+  CAD tracking number to track a complaint.
+  %br
+    A PDF of this Safety Resources List can be found
+    %a{:href => "http://www.sf311.org"} here
+  %h5 Call 311 for Problems
+  %UL
+    %UL
+      %UL
+        %li Animals lost or found
+        %li Driveways blocked
+        %li Dumping illegally
+        %li Graffiti
+        %li MUNI problems
+        %li Parking meters broken
+        %li Playgrounds & parks
+        %li Potholes
+        %li Sidewalk buckling
+        %li
+          Streetlights broken or flickering. Get the ID
+          number from the pole + nearest house address.
+        %li Tree maintenance
+        %li
+          Vehicles - abandoned (parked 72+ hours). Get
+          license plate number.
+        %li Vehicles – people living inside, call 553-0123
+%h5 Call 311 for Information
+%ul
+  %li Birth, marriage, and death certificates
+  %li City Codes
+  %li IDs
+  %li MUNI schedules
+  %li Permits (new)
+  %li Taxes
+%h5 Contact City Attorney or Code Enforcement
+%div
+  Report public nuisance violations that endanger
+  health & safety: unsafe building conditions,
+  slumlords, hoarding, overgrown or poorly maintained
+  lots, etc. Main number: 554-4700
+  Report online or via free smartphone app at
+  %a{:href => "http://www.up2code.org"} www.up2code.org
+%h3 Be Informed
+%table{:cellspacing => "10"}
+  %tbody
+    - @type1 = Resource.where(:kind => 2)
+    - @type1.each do |resource|
+      %tr
+        %td
+          %b= resource.title
+          = resource.description
+          %br/
+          = "More info "
+          %a#hello{:href => resource.link} here
+          #num= resource.phone
+%h3 Get Invoved
+%table{:cellspacing => "10"}
+  %tbody
+    - @type1 = Resource.where(:kind => 3)
+    - @type1.each do |resource|
+      %tr
+        %td
+          %b= resource.title
+          = resource.description
+          %br/
+          = "More info "
+          %a#hello{:href => resource.link} here
+          #num= resource.phone
+%h3 Other Conctacts
+%table{:cellspacing => "10"}
+  %tbody
+    - @type1 = Resource.where(:kind => 4)
+    - @type1.each do |resource|
+      %tr
+        %td
+          %b= resource.title
+          = resource.description
+          %br/
+          = resource.link
+          #num= resource.phone
+%br
+  / <haml:loud> link_to 'Add a New Resource', new_resource_path </haml:loud>

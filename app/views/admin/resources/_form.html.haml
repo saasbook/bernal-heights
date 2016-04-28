@@ -1,0 +1,88 @@
+%div{:class => "container fixed-width"}
+  .row
+    %div{:class => "col-md-6"}
+      %div{:class => "form-border panel"}
+        %div{:class => "form-heading panel-heading"} New Event Form
+        %div{:class => "panel-body"}
+          = simple_form_for(@resource, html: { class: '' }) do |f| 
+          //= form_for(@resource) do |f| #  = event.input :start_date, as: :date, label: "Start Date"
+            - if @resource.errors.any?
+              #error_explanation
+                %h2
+                  = pluralize(@resource.errors.count, "error")
+                  prohibited this resource from being saved:
+                %ul
+                  - @resource.errors.full_messages.each do |message|
+                    %li= message
+                    
+            = event.input :title, label: "Title", error: "A title is required."
+            = event.input :description, as: :text, label: "Description"
+            = event.input :link, label: "Link"
+            = event.input :phone, label: "Title"
+            = f.collection_radio_buttons :kind, [[1, " Non Emergency Police"] ,[2, " Be Informed"], [3, " Get Involved"], [4, " Other Contacts"]],:first, :last
+            
+            
+//             .field
+//               = f.label :title
+//               %br
+//                 = f.text_field :title
+//             .field
+//               = f.label :description
+//               %br
+//                 = f.text_field :description
+//             .field
+//               = f.label :link
+//               %br
+//                 = f.text_field :link
+//             .field
+//               = f.label :phone
+//               %br
+//                 = f.text_field :phone
+//             %h3 Add to...
+//             .radio-inline
+//               = f.radio_button :kind, 1
+//               = f.label "Non Emergency Police"
+//             .radio-inline
+//               = f.radio_button :kind, 2
+//               = f.label "Be Informed"
+//             .radio-inline
+//               = f.radio_button :kind, 3
+//               = f.label "Get Involved"
+//             .radio-inline
+//               = f.radio_button :kind, 4
+//               = f.label "Other Contacts"
+//             .actions
+//               = f.submit
+    
+    
+// %div{:class => "container fixed-width"}
+//   .row
+//     %div{:class => "col-md-6"}
+//       %div{:class => "form-border panel"}
+//         %div{:class => "form-heading panel-heading"} New Event Form
+//         %div{:class => "panel-body"}
+//           = simple_form_for(@event, html: { class: '' }) do |event|
+//             = event.input :name, label: "Event Name", error: "A name for the event is required."
+      
+//             = event.input :start_date, as: :date, label: "Start Date"
+      
+//             = event.input :end_date, as: :date, label: 'End Date'
+          
+//             = event.input :start_time, as: :time, label: "Start Time", ampm: true
+            
+//             = event.label :end_time, "End Time"
+//             = event.time_select 'end_time', {ampm: true}
+            
+//             = event.input :location, as: :text, label: "Location", hint: "Please type an address or the street intersection, e.g. Andover St and Cortland Ave.", error: "A location is required."
+            
+//             = event.input :description, as: :text, label: "Description"
+            
+//             = event.input :creator_name, label: "Your Name", error: "Your name is required."
+            
+//             = event.input :creator_email, label: "Your E-mail", error: "Your e-mail is required."
+            
+//             = event.input :event_organizer, label: "Organizer Name"
+            
+//             = event.submit 'Create Event', :class => 'btn btn-primary'
+
+  

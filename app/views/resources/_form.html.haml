@@ -1,0 +1,49 @@
+%div{:class => "container fixed-width"}
+  .row
+    %div{:class => "col-md-6"}
+      %div{:class => "form-border panel"}
+        %div{:class => "form-heading panel-heading"} New Resource
+        %div{:class => "panel-body"}
+          = simple_form_for(@resource, html: { class: '' }) do |f| 
+                    
+            = f.input :title, label: "Title", error: "A title is required."
+            = f.input :description, as: :text, label: "Description"
+            = f.input :link, label: "Link"
+            = f.input :phone, label: "Title"
+            = f.collection_radio_buttons :kind, [[1, " Non Emergency Police"] ,[2, " Be Informed"], [3, " Get Involved"], [4, " Other Contacts"]],:first, :last, item_wrapper_class: :block_radio_button_collection
+            = f.submit 'Submit', :class => 'btn btn-primary'
+            
+//             .field
+//               = f.label :title
+//               %br
+//                 = f.text_field :title
+//             .field
+//               = f.label :description
+//               %br
+//                 = f.text_field :description
+//             .field
+//               = f.label :link
+//               %br
+//                 = f.text_field :link
+//             .field
+//               = f.label :phone
+//               %br
+//                 = f.text_field :phone
+//             %h3 Add to...
+//             .radio-inline
+//               = f.radio_button :kind, 1
+//               = f.label "Non Emergency Police"
+//             .radio-inline
+//               = f.radio_button :kind, 2
+//               = f.label "Be Informed"
+//             .radio-inline
+//               = f.radio_button :kind, 3
+//               = f.label "Get Involved"
+//             .radio-inline
+//               = f.radio_button :kind, 4
+//               = f.label "Other Contacts"
+//             .actions
+//               = f.submit
+    
+
+  
