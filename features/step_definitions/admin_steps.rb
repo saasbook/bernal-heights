@@ -34,15 +34,29 @@ When /^I register an admin with name: "([^"]*)", email: "([^"]*)" and password: 
 end
 
 When /^I delete the account for "([^"]*)"$/ do |arg1|
-  css_id = "#" + arg1.downcase!.gsub!(/\s+/, "_")
+  admin = Admin.where(name: arg1)
+  css_id = "#" + "delete-admin#{admin.id}"
   within("#{css_id}") do
     step %Q{I accept the confirm dialogue for "Delete Account"}
   end
 end
 
-When /^I do not delete the account for "([^"]*)"$/ do |arg1|
-  css_id = "#" + arg1.downcase!.gsub!(/\s+/, "_")
+When /^I do not delete the account for "([^"]*)"$/ do |name|
+  admin = Admin.where(name: name).first
+  css_id = "#" + "delete-admin#{admin.id}"
   within("#{css_id}") do
     step %Q{I cancel the confirm dialogue for "Delete Account"}
   end
+end
+
+When /^I should not have the option to delete "([^"]*)"$/ do |name|
+  admin = Admin.where(name: name).first
+  css_id = "#" + "delete-admin#{admin.id}"
+  expect(page).to_not have_css(css_id)
+end
+
+When /^I should have the option to delete "([^"]*)"$/ do |name|
+  admin = Admin.where(name: name)
+  css_id = "#" + "delete-admin#{admin.id}"
+  expect(page).to_not have_css(css_id)
 end
