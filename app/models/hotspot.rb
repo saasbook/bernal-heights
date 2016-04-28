@@ -184,7 +184,6 @@ class Hotspot < ActiveRecord::Base
       CSV.generate do |csv|
         csv << attributes
         hotspots.each do |hotspot|
-          puts hotspot.issue_types
           csv << attributes.map{ |attr| hotspot.send(attr) }
         end
       end
