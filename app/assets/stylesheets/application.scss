@@ -51,8 +51,16 @@ div.fieldWithErrors {
   margin: 1em 0;
   padding: 4px;
 }
+
+
 .btn-primary {
   background-color: $orange-primary;
+  border:none;
+}
+
+.btn-primary:hover {
+  background-color: $bernal-orange;
+  border:none;
 }
 
 body.container-fluid {
