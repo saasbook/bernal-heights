@@ -3,6 +3,7 @@ class Admin::SessionsController < Devise::SessionsController
 
   def home
     @admin = current_admin
+    @event_count = Event.get_all_unconfirmed.count
   end
   # GET /resource/sign_in
   # def new
