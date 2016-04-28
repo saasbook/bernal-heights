@@ -1,5 +1,6 @@
 %div{:class => "container"}
-  %h1 All Hotspots
+  - content_for :header do
+    %h1.pg-header All Hotspots
     
   %p Type an address or intersection to report an issue and see hotspots already reported in that area.
   .row
