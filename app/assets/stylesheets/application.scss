@@ -52,12 +52,12 @@ div.fieldWithErrors {
   padding: 4px;
 }
 .btn-primary, .btn-primary:visited {
-  background-color: $orange-primary;
-  border-color: $orange-primary;
+  background-color: $orange-primary !important ;
+  border-color: $orange-primary !important;
 }
 .btn-primary:hover {
-  background-color: #ccc;
-  border-color: #bbb;
+  background-color: #ccc !important;
+  border-color: #bbb !important;
 }
 .btn-primary:active {
   background-color: #aaa !important;
