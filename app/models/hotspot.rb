@@ -12,7 +12,8 @@ class Hotspot < ActiveRecord::Base
     validates :creator_number, presence: true, :if => :active_or_personal_information?
     
     geocoded_by :location
-    after_validation :geocode, :add_region, :if => lambda{ |obj| obj.location_changed? }
+    reverse_geocoded_by :latitude, :longitude, :address => :location
+    after_validation :geocode, :reverse_geocode, :add_region, :if => lambda{ |obj| obj.location_changed? }
     
     def active?
       status == 'active'
@@ -191,6 +192,16 @@ class Hotspot < ActiveRecord::Base
         self.region = "South-West"
       else
         self.errors.add(:region, ": Invalid address - not in Bernal Heights Neighborhood.")
+      end
+    end
+    
+    def self.to_csv(hotspots)
+      attributes = %w(id issue_types location details occurred_date occurred_time creator_name creator_email creator_number report_num to_share walk)
+      CSV.generate do |csv|
+        csv << attributes
+        hotspots.each do |hotspot|
+          csv << attributes.map{ |attr| hotspot.send(attr) }
+        end
       end
     end
 end

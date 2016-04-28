@@ -4,6 +4,11 @@
 #hotspotFilters {
     margin-bottom: 20px;
 }
-#regions_submit {
+#filter_submit {
     margin-left: 10px;
+}
+#exportcsvbtn {
+    margin: 20px;
+    background-color: $orange-primary;
+    border-color: $orange-primary;
 }
