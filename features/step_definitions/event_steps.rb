@@ -83,7 +83,7 @@ end
 Then /^I should see all the event information for "([^"]*)"$/ do |arg1|
   event = Event.where(name: arg1).first
   step %Q{I should see "#{event.name}"}
-  step %Q{I should see "#{event.start_time.to_s(:time)}"}
+  step %Q{I should see "#{event.start_time.strftime("%l:%M %p")}"}
   step %Q{I should see "#{event.start_date.to_formatted_s(:long_ordinal)}"}
   step %Q{I should see "#{event.location}"}
   step %Q{I should see "#{event.creator_name}"}
