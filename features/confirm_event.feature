@@ -41,5 +41,3 @@ Scenario: Non-admin cannot approve events
   And I should be on the sign in page
   
 # Scenario: Make sure if multiple events are on the page, the correct one gets approved
-  
-  

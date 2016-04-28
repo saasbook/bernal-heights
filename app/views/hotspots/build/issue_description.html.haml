@@ -1,0 +1,16 @@
+%div{:class => "container fixed-width"}
+  .row
+    %div{:class => "col-md-6"}
+      %div{:class => "form-border panel"}
+        %div{:class => "form-heading panel-heading"} New Hotspot Form - Issue Description
+        %div{:class => "panel-body"}
+          = simple_form_for(@hotspot, html: { class: '' },:url => wizard_path, :method => :put) do |hotspot|
+            
+            = hotspot.input :occurred_time, as: :time, label: "Discovery Time", ampm: true
+            = hotspot.input :occurred_date, as: :date, label: "Occurred Date"
+   
+            = hotspot.input :details, as: :text, label: "Details", error: "Details are required."
+            
+            = hotspot.input :report_num, as: :integer, label: "Police report number (if applicable)"
+  
+            = hotspot.submit 'Next', :class => 'btn btn-primary'

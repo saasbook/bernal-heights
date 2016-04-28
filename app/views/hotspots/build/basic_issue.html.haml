@@ -1,0 +1,38 @@
+%div{:class => "container fixed-width"}
+  .row
+    %div{:class => "col-md-6"}
+      %div{:class => "form-border panel"}
+        %div{:class => "form-heading panel-heading"} New Hotspot Form - Issue Type and Location
+        %div{:class => "panel-body"}
+          = simple_form_for(@hotspot, html: { class: '' },:url => wizard_path, :method => :put) do |hotspot|
+              
+            = hotspot.label "Issue" 
+            - @all_issues.each do |issue|
+              %div
+                = check_box_tag "issues[#{issue}]", 1, false, :id => "issues_#{issue}"
+                = issue
+            
+            = hotspot.input :location, as: :text, label: "Location", hint: "Please type an address or the street intersection, e.g. Andover St and Cortland Ave.", error: "A location is required.", :value => params[:location]
+                
+          
+            = hotspot.button :button, "Use my current location", :class => 'btn btn-secondary', :type => 'button', :onclick => 'getLocation()'
+            = hotspot.label "(if location services is turned on)"
+            
+            %div
+            = hotspot.submit 'Next', :class => 'btn btn-primary'
+
+:javascript
+  var x = document.getElementById("hotspot_location");
+  
+  function getLocation() {
+      if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+      } else { 
+          x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+  }
+  
+  function showPosition(position) {
+      x.innerHTML = position.coords.latitude + 
+      ", " + position.coords.longitude;	
+  }
