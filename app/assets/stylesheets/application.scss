@@ -52,5 +52,59 @@ div.fieldWithErrors {
   padding: 4px;
 }
 .btn-primary {
-  background-color: #0275d8;
+  background-color: $orange-primary;
+}
+body.container-fluid {
+  padding: 0px;
+  background-color: #F2F3F5;
+}
+.full-width {
+  padding-left: 5%;
+  padding-right: 5%;
+}
+.navbar {
+  margin-bottom: 0px;
+}
+.pg-header {
+  margin: 0px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  background-color: white;
+  box-shadow: 10px 10px 10px #ddd;
+  margin-bottom: 5%;
+  padding-left: 15px;
+  color: $orange-primary;
+}
+.container-shadow {
+    border: 1px solid #ddd;
+    border-radius: 5px 5px;
+    padding: 25px;
+    background-color: #FFFFFF;
+    box-shadow: 3px 3px 5px #ccc;
+    margin-bottom: 20px;
+}
+
+
+.card {
+    background-color: #FFFFFF;
+    padding: 25px;
+}
+
+.card h4{
+    color: $purple-primary;
+    font-weight: bold;
+}
+
+.card .divider {
+  height: 1px;
+  width:100%;
+  display:block; /* for use on default inline elements like span */
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+.card-panel-left {
+    border-right: 1px solid;
+    border-color: #e5e5e5;
 }

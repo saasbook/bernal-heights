@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     get 'admin/events/unapproved' => 'admin/events#unapproved', as: :admin_unapproved_events
   end
   
-  resources :events
+  resources :events do
+    get '/events/:day', to: 'events#index'
+  end
+  
   resources :hotspots do
     member do
         get 'gps'

@@ -12,6 +12,7 @@ class Hotspot < ActiveRecord::Base
     validates :creator_number, presence: true
     
     geocoded_by :location
+    # reverse_geocoded_by :latitude, :longitude, :address => :location
     after_validation :geocode, :add_region, :if => lambda{ |obj| obj.location_changed? }
     
     def self.all_issues

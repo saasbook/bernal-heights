@@ -25,7 +25,7 @@ issues = ["Car Break-In", "Abandoned Car", "Broken Streetlight", "Illegal Drug T
 puts "================= CREATED ISSUES ================"
 
 issues.each do |issue|
-  Issue.first_or_create!(issue_type: issue)
+  Issue.create!(issue_type: issue)
   puts "    #{issue}"
 end
 
