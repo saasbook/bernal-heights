@@ -1,12 +1,6 @@
 class Hotspot < ActiveRecord::Base
     has_many :hotspotissues
     has_many :issues, :through => :hotspotissues
-   
-    # validates_presence_of :hotspotissues, :if => :active_or_issue?
-    # validates :location, :occurred_time, :occurred_date, :details, :creator_name, :creator_email, :creator_number, :presence => true, :if => :active?
-    
-    # validates :hotspotissues, :location, :occurred_time, :occurred_date, :details, :presence => true, :if => :first?
-    # validates :creator_name, :creator_email, :creator_number, :presence => true, :if => :last?
     
     validates_presence_of :hotspotissues, :if => :active_or_basic_issue?
     validates :location, presence: true, :if => :active_or_basic_issue?
