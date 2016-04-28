@@ -9,5 +9,5 @@
       %input#searchbtn.btn.btn-default{:type => "button", :value => "Search"}
   .row
     .col-xs-12.col-sm-3
-      %a#hotspotbtn.btn.btn-primary.btn-block{:href => "/hotspots/new", :role => "button"} Create new hotspot
+      = link_to "Create new hotspot", hotspot_build_index_path(:hotspot_id => "building"), :method => :post, :id => "hotspotbtn", :class => "btn btn-primary btn-block"
   = render 'layouts/map'
