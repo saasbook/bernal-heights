@@ -11,12 +11,6 @@ Rails.application.routes.draw do
   end
   
   resources :events
-  # resources :hotspots do
-  #   member do
-  #       get 'gps'
-  #   end
-  # end
-  
   resources :hotspots do
     resources :build, controller: 'hotspots/build'
     member do 
