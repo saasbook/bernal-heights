@@ -4,13 +4,12 @@ Feature:
   So that only appropriate and accurate information is shared on our calendar
 
 Background:
-  Given the following events exist:
-  | name                    | start_date    | start_time | location                         | creator_name     | creator_email     | approved  |
-  | Troll Event             | 15-June-2016  | 14:00:00   | Cortland Ave and Andover St      | Test             | test@test.com     | false     |
-  | Library Movie Night     | 10-June-2016  | 20:00:00   | Bernal Heights Public Library    | Admin            | admin@test.com    | true      |
-  | Park Cleanup            | 20-June-2016  | 08:00:00   | Bernal Heights Park              | Test             | test2@test.com    | false     |
-  | Fiesta on the Hill      | 27-June-2016  | 11:00:00   | Bernal Heights Park              | Admin2           | admin2@test.com   | true      |
+  Given an unapproved event titled "Troll Event" exists
+  Given an unapproved event titled "Park Cleanup" exists
+  Given an event titled "Library Movie Night" exists
+  Given an event titled "Fiesta on the Hill" exists
 
+@javascript
 Scenario: Successfully delete pending event
   Given I am signed in as an admin
   When I go to the approve events page
@@ -19,6 +18,7 @@ Scenario: Successfully delete pending event
   When I go to the approve events page
   Then I should not see "Troll Event"
 
+@javascript
 Scenario: Cancel deleting pending event
   Given I am signed in as an admin
   When I go to the approve events page
@@ -27,6 +27,7 @@ Scenario: Cancel deleting pending event
   When I go to the approve events page
   Then I should see "Park Cleanup"
 
+@javascript
 Scenario: Successfully delete existing event
   Given I am signed in as an admin
   When I go to the events page

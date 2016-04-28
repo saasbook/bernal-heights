@@ -58,23 +58,26 @@ When /^I create an event with name "([^"]*)" without my personal info$/ do |name
 end
 
 When /^I delete event "([^"]*)"$/  do |name|
-  event_id = Event.where(name: name).first
-  css_id = "#" + event_id + "_delete"
+  event = Event.where(name: name).first
+  css_id = "#" + "delete" + event.id.to_s
   accept_confirm do
     find(:css, css_id).click
   end
 end
 
 When /^I cancel deleting event "([^"]*)"$/ do |name|
-  event_id = Event.where(name: name).first
-  css_id = "#" + event_id + "_delete"
-  dismiss_confirm do
-    find(:css, css_id).click
-  end
+  event = Event.where(name: name).first
+  css_id = "#" + "delete#{event.id.to_s}"
+  find(css_id).click
+  dismiss_confirm
 end
 
-Given /^an event titled "([^"]*)" exists$/ do |arg1|
-  FactoryGirl.create(:event, name: arg1, start_date: Date.today, approved: true)
+Given /^an event titled "([^"]*)" exists$/ do |name|
+  FactoryGirl.create(:event, name: name, start_date: Date.today, approved: true)
+end
+
+Given /^an unapproved event titled "([^"]*)" exists$/ do |name|
+  FactoryGirl.create(:event, name: name, start_date: Date.today)
 end
 
 Then /^I should see all the event information for "([^"]*)"$/ do |arg1|

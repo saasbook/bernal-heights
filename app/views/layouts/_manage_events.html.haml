@@ -1,9 +1,9 @@
 - if !event.approved
-  = link_to admin_event_confirm_path(event_id: event.id), :method => :post, :class=>"btn btn-default approve", :id=> "#{event.id}_approve" do
+  = link_to admin_event_confirm_path(event_id: event.id), :method => :post, :class=>"btn btn-default approve", :id=> "approve#{event.id.to_s}" do
     %span{:class => "glyphicon glyphicon-ok"}
   
-= link_to edit_admin_event_path(event), :class => "btn btn-default edit", :id => "#{event.id}_edit" do
+= link_to edit_admin_event_path(event), :class => "btn btn-default edit", :id => "edit#{event.id.to_s}" do
   %span{:class => "glyphicon glyphicon-pencil"}
   
-=link_to admin_event_path(event), :method => :delete, :data => { confirm: "Are you sure?" }, :class => "btn btn-default delete", :id => "#{event.id}_delete" do
+=link_to admin_event_path(event), :method => :delete, :data => { confirm: "Are you sure?" }, :class => "btn btn-default delete", :id => "delete#{event.id.to_s}" do
   %span{:class => "glyphicon glyphicon-remove"}
