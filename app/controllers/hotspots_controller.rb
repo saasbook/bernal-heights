@@ -1,4 +1,7 @@
 class HotspotsController < ApplicationController
+  include Wicked::Wizard
+  steps :issue_description, :personal_information
+  
   def hotspot_params
     params.require(:hotspot).permit(:hotspotissues,:location, :occurred_time, :occurred_date, :details, :report_num, :to_share, :creator_name, :creator_email, :creator_number, :walk)
   end
@@ -21,6 +24,7 @@ class HotspotsController < ApplicationController
   def new
     @hotspot = Hotspot.new
     @all_issues = Hotspot.all_issues
+    render :issue_description
   end
   
   def index
@@ -30,6 +34,13 @@ class HotspotsController < ApplicationController
       marker.lng hotspot.longitude
       marker.infowindow hotspot.issue_types
     end
+  end
+  
+  def update
+    @selected_issues = params[:issues] || {}
+    @hotspot = Hotspot.new(hotspot_params)
+    @all_issues = Hotspot.all_issues
+    render_wizard @hotspot
   end
 
   def create
