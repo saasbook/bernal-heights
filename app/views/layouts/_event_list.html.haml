@@ -6,6 +6,6 @@
   %tbody
     - @todays_events.each do |event|
       %tr
-        %td= event.name
+        %td= link_to "#{event.name}", event_path(event)
         //%td= link_to "More about #{event.name}", event_path(event)
         %td Show event details will be here

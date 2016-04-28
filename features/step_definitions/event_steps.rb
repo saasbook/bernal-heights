@@ -72,14 +72,14 @@ When /^I cancel deleting event "([^"]*)"$/ do |name|
 end
 
 Given /^an event titled "([^"]*)" exists$/ do |arg1|
-  FactoryGirl.build(:event, name: arg1)
+  FactoryGirl.create(:event, name: arg1, start_date: Date.today, approved: true)
 end
 
 Then /^I should see all the event information for "([^"]*)"$/ do |arg1|
-  event = Event.where(name: arg1)
+  event = Event.where(name: arg1).first
   step %Q{I should see "#{event.name}"}
-  step %Q{I should see "#{event.start_time}"}
-  step %Q{I should see "#{event.start_date}"}
+  step %Q{I should see "#{event.start_time.to_s(:time)}"}
+  step %Q{I should see "#{event.start_date.to_formatted_s(:long_ordinal)}"}
   step %Q{I should see "#{event.location}"}
   step %Q{I should see "#{event.creator_name}"}
   step %Q{I should see "#{event.creator_email}"}

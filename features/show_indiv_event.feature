@@ -7,5 +7,6 @@ Background:
   
 Scenario: Show Individual Event
   When I go to the events page
+  Then I should see "Library Movie Night"
   When I follow "Library Movie Night"
   Then I should see all the event information for "Library Movie Night"
