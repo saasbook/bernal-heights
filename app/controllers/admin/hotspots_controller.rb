@@ -24,7 +24,7 @@ class Admin::HotspotsController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.csv { send_data @hotspots.to_csv, filename: "hotspots-data-#{Date.today}.csv" }
+      format.csv { send_data Hotspot.to_csv(@hotspots), filename: "hotspots-data-#{Date.today}.csv" }
     end
   end
   

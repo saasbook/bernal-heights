@@ -179,11 +179,12 @@ class Hotspot < ActiveRecord::Base
       end
     end
     
-    def self.to_csv
+    def self.to_csv(hotspots)
       attributes = %w(id issue_types location details occurred_date occurred_time creator_name creator_email creator_number report_num to_share walk)
       CSV.generate do |csv|
         csv << attributes
-        all.each do |hotspot|
+        hotspots.each do |hotspot|
+          puts hotspot.issue_types
           csv << attributes.map{ |attr| hotspot.send(attr) }
         end
       end
