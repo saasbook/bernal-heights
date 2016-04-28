@@ -2,17 +2,28 @@ class Admin::EventsController < EventsController
   before_filter :is_admin
 
   def index
-    @events = Event.where(approved: true)
-    @unapproved = Event.where(approved: false)
+    @events = Event.get_all_approved
+    @unapproved = Event.get_all_unconfirmed
+    @todays_events = Event.getEventsForDay(Date.today.strftime("%F"))
+    if request.xhr?
+      @todays_events = Event.getEventsForDay(params[:day])
+      render :partial => 'layouts/event_list'
+    end
   end
-  
+
   def unapproved
-    @unapproved = Event.where(approved: false)
+    @unapproved = Event.get_all_unconfirmed
+    session[:return_to] ||= request.referer
   end
   
   def new
     @event = Event.new
     render 'admin/events/new'
+  end
+  
+  def edit
+    @event = Event.find(params[:id])
+    session[:return_to] ||= request.referer
   end
   
   def create
@@ -28,6 +39,19 @@ class Admin::EventsController < EventsController
     end
   end
   
+  def update
+    @event = Event.find(params[:id])
+    @event.update(event_params)
+    if @event.save
+      @event.confirm
+      flash[:notice] = "#{@event.name} was successfully edited."
+      redirect_to session.delete(:return_to)
+    else
+      flash.now[:warning] = "You have not filled out all required fields"
+      render :edit
+    end
+  end
+  
   def confirm
     @event = Event.find(params[:event_id])
     @event.confirm
@@ -35,8 +59,10 @@ class Admin::EventsController < EventsController
     redirect_to admin_unapproved_events_path
   end
 
-  def delete
+  def destroy
     @event = Event.find(params[:id])
     @event.destroy
+    flash[:notice] = "Event Destroyed"
+    redirect_to session.delete(:return_to)
   end
 end

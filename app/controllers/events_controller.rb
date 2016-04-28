@@ -1,7 +1,17 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.where(approved: true)
+      @events = Event.where(approved: true)
+      @todays_events = Event.getEventsForDay(Date.today.strftime("%F"))
+    if request.xhr?
+      @todays_events = Event.getEventsForDay(params[:day])
+      render :partial => 'layouts/event_list'
+    end
+  end
+  
+  def show
+    @event = Event.find(params[:id])
+    session[:return_to] ||= request.referer
   end
   
   def new
@@ -22,6 +32,7 @@ class EventsController < ApplicationController
       render :new
     end
   end
+
   
   private
   

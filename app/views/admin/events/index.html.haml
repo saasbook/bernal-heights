@@ -1,9 +1,11 @@
 -#  This file is app/views/admin/events/index.html.haml
-
-%div{:class => "container"}  
+- content_for :header do
+  %h1.pg-header All Events
+  
+%div{:class => ""}  
   - if !@unapproved.empty?
-    %div{:class => "well"}
+    %div.well
       %h4 You have #{@unapproved.count} unapproved events.
       =link_to 'Review Events', admin_unapproved_events_path
 
-  = render 'layouts/calendar'
+= render 'layouts/calendar'

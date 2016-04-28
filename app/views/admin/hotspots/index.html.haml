@@ -1,5 +1,6 @@
 %div{:class => "container"}
-  %h1 All Hotspots
+  - content_for :header do
+    %h1.pg-header All Hotspots
   
   = form_tag admin_hotspots_path, :id => "hotspotFilters", :method => :get do
     Show hotspots with issue type of: 
@@ -35,5 +36,6 @@
               %td= hotspot.issue_types
               %td= hotspot.location
               - if admin_signed_in?
+                %td= link_to "View Details", admin_hotspot_path(hotspot)
                 %td= link_to "Archive Hotspot", admin_hotspot_path(hotspot.id), { method: :put }
                 %td= link_to "Delete Hotspot", admin_hotspot_path(hotspot.id), { method: :delete }

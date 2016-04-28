@@ -1,2 +1,4 @@
-%div{:class => "container"}  
-  = render 'layouts/calendar'
+- content_for :header do
+  %h1.pg-header All Events
+  
+= render 'layouts/calendar'

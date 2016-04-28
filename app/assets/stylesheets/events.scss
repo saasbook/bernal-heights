@@ -2,26 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//colors
-$orange-primary: #FF9F27;
 
 .fixed-width {
     width: 750 px;
 }
-
 .form-heading {
     border-color: $orange-primary;
     background-color: $orange-primary;
     color: white;
 }
-
 .form-border {
     border-color: $orange-primary;
+    margin-top: 20px;
 }
-
-// keeps calendar cells the same size
+.simple-calendar {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.simple-calendar a {
+    color: $orange-primary;
+    font-weight: normal;
+    font-size: small;
+}
 .simple-calendar .table {
-  table-layout:fixed;
+  table-layout: fixed; // keeps calendar cells the same size
+  font-size: .7em;
+  font-weight: normal;
+}
+.simple-calendar .table th {
+    padding-left: .75%;
 }
 .event-marker {
     font-weight: bold;
@@ -30,4 +39,56 @@ $orange-primary: #FF9F27;
 #event-btn {
     margin-top: 10px;
     margin-bottom: 15px;
+    border-color: $orange-primary;
+}
+.day {
+    cursor: pointer;
+}
+.marker {
+    border-radius: 50%;
+    height: 8px;
+    width: 8px;
+    background-color: $orange-primary;
+}
+.simple-calendar table .prev-month, .simple-calendar table .next-month {
+    background-color: lavender;
+}
+
+#event-card {
+    background-color: #FFFFFF;
+    padding: 25px;
+}
+
+#event-card h4{
+    color: $purple-primary;
+    font-weight: bold;
+}
+
+#event-card .divider {
+  height: 1px;
+  width:100%;
+  display:block; /* for use on default inline elements like span */
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+.event-panel-left {
+    border-right: 1px solid;
+    border-color: #e5e5e5;
+}
+
+.approve:hover {
+    background-color: $approve;
+    color: white;
+}
+
+.edit:hover {
+    background-color: gray;
+    color: white;
+}
+
+.delete:hover{
+    background-color: $delete;
+    color: white;
 }
