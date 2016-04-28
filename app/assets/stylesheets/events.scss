@@ -52,3 +52,18 @@
 .simple-calendar table .prev-month, .simple-calendar table .next-month {
     background-color: lavender;
 }
+
+.approve:hover {
+    background-color: $approve;
+    color: white;
+}
+
+.edit:hover {
+    background-color: gray;
+    color: white;
+}
+
+.delete:hover{
+    background-color: $delete;
+    color: white;
+}

@@ -39,6 +39,6 @@ Scenario: Non-admins cannot delete existing events
   Given I am signed out
   When I go to the events page
   And I follow "Fiesta on the Hill"
-  Then I should not see "Delete Event"
-  And I should see "Fiesta on the Hill"
+  Then I should not be able to delete the event
+  And I should see all the event information for "Fiesta on the Hill"
   

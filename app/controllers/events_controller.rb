@@ -11,6 +11,7 @@ class EventsController < ApplicationController
   
   def show
     @event = Event.find(params[:id])
+    session[:return_to] ||= request.referer
   end
   
   def new
@@ -31,6 +32,7 @@ class EventsController < ApplicationController
       render :new
     end
   end
+
   
   private
   

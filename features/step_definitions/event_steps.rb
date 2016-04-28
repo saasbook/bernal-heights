@@ -58,16 +58,18 @@ When /^I create an event with name "([^"]*)" without my personal info$/ do |name
 end
 
 When /^I delete event "([^"]*)"$/  do |name|
-  css_id = "#" + name.downcase!.gsub!(/\s+/, "_")
-  within("#{css_id}") do
-    step %Q{I accept the confirm dialogue for "Delete Event"}
+  event_id = Event.where(name: name).first
+  css_id = "#" + event_id + "_delete"
+  accept_confirm do
+    find(:css, css_id).click
   end
 end
 
 When /^I cancel deleting event "([^"]*)"$/ do |name|
-  css_id = "#" + name.downcase!.gsub!(/\s+/, "_")
-  within("#{css_id}") do
-    step %Q{I cancel the confirm dialogue for "Delete Event"}
+  event_id = Event.where(name: name).first
+  css_id = "#" + event_id + "_delete"
+  dismiss_confirm do
+    find(:css, css_id).click
   end
 end
 
@@ -84,6 +86,11 @@ Then /^I should see all the event information for "([^"]*)"$/ do |arg1|
   step %Q{I should see "#{event.creator_name}"}
   step %Q{I should see "#{event.creator_email}"}
 end
+
+Then /^I should not be able to delete the event$/ do
+  expect(page).to_not have_selector 'delete'
+end
+  
 
 When (/^I should see the calendar$/) do
   pending # Write code here that turns the phrase above into concrete actions

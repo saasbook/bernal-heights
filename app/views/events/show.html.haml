@@ -1,38 +1,37 @@
-%div{:class => "col-md-8"}
-  %h2 #{@event.name}
-  %h4 When
-  - if @event.end_date
-    %p #{@event.start_date.to_formatted_s(:long_ordinal)} to #{@event.end_date.to_formatted_s(:long_ordinal)}
-  - else
-    %p #{@event.start_date.to_formatted_s(:long_ordinal)}
-  - if @event.end_time
-    %p #{@event.start_time.to_s(:time)} to #{@event.end_time.to_s(:time)}
-  - else
-    %p Time: #{@event.start_time.to_s(:time)}
-  %h4 Where
-  %p #{@event.location}
-  - if @event.event_organizer
-    %h4 Organizer
-    %p #{@event.event_organizer}
-  
-  - if @event.description
-    %h4 Details
-    %p #{@event.description}
+%div.full-width
+  %div{:class => "col-md-8 container-shadow"}
+    %h2 #{@event.name}
+    %h4 When
+    - if @event.end_date
+      %p #{@event.start_date.to_formatted_s(:long_ordinal)} to #{@event.end_date.to_formatted_s(:long_ordinal)}
+    - else
+      %p #{@event.start_date.to_formatted_s(:long_ordinal)}
+    - if @event.end_time
+      %p #{@event.start_time.to_s(:time)} to #{@event.end_time.to_s(:time)}
+    - else
+      %p Time: #{@event.start_time.to_s(:time)}
+    %h4 Where
+    %p #{@event.location}
+    - if @event.event_organizer
+      %h4 Organizer
+      %p #{@event.event_organizer}
     
-  %h4 Contact Information
-  %p #{@event.creator_name}: #{@event.creator_email}
-
+    - if @event.description
+      %h4 Details
+      %p #{@event.description}
+      
+    %h4 Contact Information
+    %p #{@event.creator_name}: #{@event.creator_email}
   
-  = link_to "Back", :back
-
-- if admin_signed_in?
-  %div{:class => "pull-right"}
-    = link_to admin_event_confirm_path(event_id: @event.id), :method => :post, :class=>"btn btn-default", :id=> "approve" do
-      %span{:class => "glyphicon glyphicon-ok"}
-      
-    = link_to edit_admin_event_path(@event), :class => "btn btn-default", :id => "edit" do
-      %span{:class => "glyphicon glyphicon-pencil"}
-      
-    =link_to  @event, :method => :delete, :data => { confirm: "Are you sure?" }, :class => "btn btn-default", :id => "delete" do
-      %span{:class => "glyphicon glyphicon-remove"}
     
+    - if admin_signed_in?
+      %ul
+        %li= link_to "All Events", admin_events_path
+        %li= link_to "Submitted Events", admin_unapproved_events_path
+    - else
+      = link_to "All Events", events_path
+  
+  - if admin_signed_in?
+    %div{:class => "pull-right container-shadow"}
+      = render partial: 'layouts/manage_events', locals: {event: @event}
+      
