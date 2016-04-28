@@ -1,7 +1,9 @@
-%div.container#event-card
+%h1.pg-header #{@event.name}
+
+%div.container.card
   %div{:class => ""}
     // %h2 #{@event.name}
-    %div.col-sm-4.event-panel-left
+    %div.col-sm-4.card-panel-left
       %h4 When
       - if @event.end_date
         %p #{@event.start_date.to_formatted_s(:long_ordinal)} to #{@event.end_date.to_formatted_s(:long_ordinal)}
@@ -22,20 +24,9 @@
     
     %div.col-sm-6
       - if @event.description
-        %h4 Details
+        %h4 Event Description
+        %div.divider
         %p #{@event.description}
-  
-%div      
-  = link_to "Back", :back
-
-- if admin_signed_in?
-  %div{:class => "pull-right"}
-    = link_to admin_event_confirm_path(event_id: @event.id), :method => :post, :class=>"btn btn-default", :id=> "approve" do
-      %span{:class => "glyphicon glyphicon-ok"}
-      
-    = link_to edit_admin_event_path(@event), :class => "btn btn-default", :id => "edit" do
-      %span{:class => "glyphicon glyphicon-pencil"}
-      
-    =link_to  @event, :method => :delete, :data => { confirm: "Are you sure?" }, :class => "btn btn-default", :id => "delete" do
-      %span{:class => "glyphicon glyphicon-remove"}
-    
+    - if admin_signed_in?
+      %div{:class => "pull-right"}
+        = render partial: 'layouts/manage_events', locals: {event: @event}

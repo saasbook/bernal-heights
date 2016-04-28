@@ -73,6 +73,14 @@ World(FactoryGirl::Syntax::Methods)
 #   OmniAuth.config.test_mode = false
 # end
 
+Before('@javascript') do 
+  Capybara.current_driver = :poltergeist
+end
+
+After('@javascript') do
+  Capybara.use_default_driver
+end
+
 Before('@noauth') do
   $disable_authentication = true
 end
