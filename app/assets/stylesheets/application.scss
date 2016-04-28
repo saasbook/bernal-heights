@@ -18,7 +18,9 @@
 @import "bootstrap";
 @import "variables.scss";
 @import "events.scss";
+@import "hotspots.scss";
 @import "simple_calendar";
+@import "admin/hotspots.scss";
 
 .errorExplanation {
   padding: 0 10px;
@@ -50,6 +52,7 @@ div.fieldWithErrors {
   padding: 4px;
 }
 .btn-primary {
+<<<<<<< HEAD
   background-color: $orange-primary;
 }
 body.container-fluid {
@@ -81,3 +84,8 @@ body.container-fluid {
     box-shadow: 3px 3px 5px #ccc;
     margin-bottom: 20px;
 }
+=======
+  background-color: #0275d8;
+}
+
+>>>>>>> master
