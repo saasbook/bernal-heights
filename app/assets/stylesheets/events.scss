@@ -14,10 +14,22 @@
 .form-border {
     border-color: $orange-primary;
 }
-
-// keeps calendar cells the same size
+.simple-calendar {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.simple-calendar a {
+    color: $orange-primary;
+    font-weight: normal;
+    font-size: small;
+}
 .simple-calendar .table {
-  table-layout:fixed;
+  table-layout: fixed; // keeps calendar cells the same size
+  font-size: .7em;
+  font-weight: normal;
+}
+.simple-calendar .table th {
+    padding-left: .75%;
 }
 .event-marker {
     font-weight: bold;
