@@ -1,0 +1,32 @@
+%h1.pg-header #{@event.name}
+
+%div.container.card
+  %div{:class => ""}
+    // %h2 #{@event.name}
+    %div.col-sm-4.card-panel-left
+      %h4 When
+      - if @event.end_date && !(@event.end_date == @event.start_date)
+        %p #{@event.start_date.to_formatted_s(:long_ordinal)} to #{@event.end_date.to_formatted_s(:long_ordinal)}
+      - else
+        %p #{@event.start_date.to_formatted_s(:long_ordinal)}
+      - if @event.end_time && !(@event.end_time == @event.start_time)
+        %p #{@event.start_time.strftime("%l:%M %p")} to #{@event.end_time.strftime("%l:%M %p")}
+      - else
+        %p #{@event.start_time.strftime("%l:%M %p")}
+      %h4 Where
+      %p #{@event.location}
+      - if !@event.event_organizer.empty?
+        %h4 Organizer
+        %p #{@event.event_organizer}
+        
+      %h4 Contact Information
+      %p #{@event.creator_name}: #{@event.creator_email}
+    
+    %div.col-sm-6
+      - if @event.description
+        %h4 Event Description
+        %div.divider
+        %p #{@event.description}
+    - if admin_signed_in?
+      %div{:class => "pull-right"}
+        = render partial: 'layouts/manage_events', locals: {event: @event}

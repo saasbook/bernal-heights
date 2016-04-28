@@ -58,32 +58,42 @@ When /^I create an event with name "([^"]*)" without my personal info$/ do |name
 end
 
 When /^I delete event "([^"]*)"$/  do |name|
-  css_id = "#" + name.downcase!.gsub!(/\s+/, "_")
-  within("#{css_id}") do
-    step %Q{I accept the confirm dialogue for "Delete Event"}
+  event = Event.where(name: name).first
+  css_id = "#" + "delete" + event.id.to_s
+  accept_confirm do
+    find(:css, css_id).click
   end
 end
 
 When /^I cancel deleting event "([^"]*)"$/ do |name|
-  css_id = "#" + name.downcase!.gsub!(/\s+/, "_")
-  within("#{css_id}") do
-    step %Q{I cancel the confirm dialogue for "Delete Event"}
-  end
+  event = Event.where(name: name).first
+  css_id = "#" + "delete#{event.id.to_s}"
+  find(css_id).click
+  dismiss_confirm
 end
 
-Given /^an event titled "([^"]*)" exists$/ do |arg1|
-  FactoryGirl.build(:event, name: arg1)
+Given /^an event titled "([^"]*)" exists$/ do |name|
+  FactoryGirl.create(:event, name: name, start_date: Date.today, approved: true)
+end
+
+Given /^an unapproved event titled "([^"]*)" exists$/ do |name|
+  FactoryGirl.create(:event, name: name, start_date: Date.today)
 end
 
 Then /^I should see all the event information for "([^"]*)"$/ do |arg1|
-  event = Event.where(name: arg1)
+  event = Event.where(name: arg1).first
   step %Q{I should see "#{event.name}"}
-  step %Q{I should see "#{event.start_time}"}
-  step %Q{I should see "#{event.start_date}"}
+  step %Q{I should see "#{event.start_time.strftime("%l:%M %p")}"}
+  step %Q{I should see "#{event.start_date.to_formatted_s(:long_ordinal)}"}
   step %Q{I should see "#{event.location}"}
   step %Q{I should see "#{event.creator_name}"}
   step %Q{I should see "#{event.creator_email}"}
 end
+
+Then /^I should not be able to delete the event$/ do
+  expect(page).to_not have_selector 'delete'
+end
+  
 
 When (/^I should see the calendar$/) do
   pending # Write code here that turns the phrase above into concrete actions

@@ -2,26 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-//colors
-$orange-primary: #FF9F27;
 
 .fixed-width {
     width: 750 px;
 }
-
 .form-heading {
     border-color: $orange-primary;
     background-color: $orange-primary;
     color: white;
 }
-
 .form-border {
     border-color: $orange-primary;
 }
-
-// keeps calendar cells the same size
+.simple-calendar {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.simple-calendar a {
+    color: $orange-primary;
+    font-weight: normal;
+    font-size: small;
+}
 .simple-calendar .table {
-  table-layout:fixed;
+  table-layout: fixed; // keeps calendar cells the same size
+  font-size: .7em;
+  font-weight: normal;
+}
+.simple-calendar .table th {
+    padding-left: .75%;
 }
 .event-marker {
     font-weight: bold;
@@ -30,4 +38,32 @@ $orange-primary: #FF9F27;
 #event-btn {
     margin-top: 10px;
     margin-bottom: 15px;
+    border-color: $orange-primary;
+}
+.day {
+    cursor: pointer;
+}
+.marker {
+    border-radius: 50%;
+    height: 8px;
+    width: 8px;
+    background-color: $orange-primary;
+}
+.simple-calendar table .prev-month, .simple-calendar table .next-month {
+    background-color: lavender;
+}
+
+.approve:hover {
+    background-color: $approve;
+    color: white;
+}
+
+.edit:hover {
+    background-color: gray;
+    color: white;
+}
+
+.delete:hover{
+    background-color: $delete;
+    color: white;
 }
