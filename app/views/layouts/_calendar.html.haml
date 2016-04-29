@@ -1,8 +1,9 @@
 // %h1.pg-header All Events
 
 %div.full-width
-  %p Click on a day to view its events.
+  // %p Click on a day to view its events.
   %div.col-md-7.container-shadow
+    %p Click on a day to view its events.
     = month_calendar(attribute: :start_date, events: @events) do |date, acts|
       %p{id: date}
         = date.mday
