@@ -17,6 +17,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 # Gems for forms and calendar
 gem 'simple_form'
 gem "simple_calendar", "~> 2.0"
+gem 'wicked'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

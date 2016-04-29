@@ -1,3 +1,14 @@
 %div{:class => "container"}
-  %h1 All Hotspots
+  - content_for :header do
+    %h1.pg-header All Hotspots
+    
+  %p Type an address or intersection to report an issue and see hotspots already reported in that area.
+  .row
+    .search-container.col-xs-9.col-md-6
+      %input#searchbar.form-control{:placeholder => "Search location", :type => "text"}
+    %div
+      %input#searchbtn.btn.btn-default{:type => "button", :value => "Search"}
+  .row
+    .col-xs-12.col-sm-3
+      = link_to "Create new hotspot", hotspot_build_index_path(:hotspot_id => "building"), :method => :post, :id => "hotspotbtn", :class => "btn btn-primary btn-block"
   = render 'layouts/map'

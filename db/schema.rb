@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160416050540) do
+ActiveRecord::Schema.define(version: 20160424223106) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -73,6 +73,7 @@ ActiveRecord::Schema.define(version: 20160416050540) do
     t.time     "occurred_time"
     t.string   "region"
     t.boolean  "archive",        default: false
+    t.string   "status"
   end
 
   create_table "issues", force: :cascade do |t|

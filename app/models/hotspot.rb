@@ -1,19 +1,35 @@
 class Hotspot < ActiveRecord::Base
     has_many :hotspotissues
     has_many :issues, :through => :hotspotissues
-    validates_presence_of :hotspotissues
     
-    validates :location, presence: true
-    validates :occurred_time, presence: true
-    validates :occurred_date, presence: true
-    validates :details, presence: true
-    validates :creator_name, presence: true
-    validates :creator_email, presence: true
-    validates :creator_number, presence: true
+    validates_presence_of :hotspotissues, :if => :active_or_basic_issue?
+    validates :location, presence: true, :if => :active_or_basic_issue?
+    validates :occurred_time, presence: true, :if => :active_or_issue_description?
+    validates :occurred_date, presence: true, :if => :active_or_issue_description?
+    validates :details, presence: true, :if => :active_or_issue_description?
+    validates :creator_name, presence: true, :if => :active_or_personal_information?
+    validates :creator_email, presence: true, :if => :active_or_personal_information?
+    validates :creator_number, presence: true, :if => :active_or_personal_information?
     
     geocoded_by :location
-    after_validation :geocode, :add_region, :if => lambda{ |obj| obj.location_changed? }
+    reverse_geocoded_by :latitude, :longitude, :address => :location
+    after_validation :geocode, :reverse_geocode, :add_region, :if => lambda{ |obj| obj.location_changed? }
     
+    def active?
+      status == 'active'
+    end
+    
+    def active_or_basic_issue?
+      status.include?('basic_issue') || active?
+    end
+    
+    def active_or_issue_description?
+      status.include?('issue_description') || active?
+    end
+    
+    def active_or_personal_information?
+      status.include?('personal_information') || active?
+    end
     def self.all_issues
         ['Car Break-In', 'Abandoned Car','Broken Streetlight', 'Illegal Drug Transactions','Litter/Dumping Trash','Public Drinking and Noise','Other']
     end
@@ -176,6 +192,16 @@ class Hotspot < ActiveRecord::Base
         self.region = "South-West"
       else
         self.errors.add(:region, ": Invalid address - not in Bernal Heights Neighborhood.")
+      end
+    end
+    
+    def self.to_csv(hotspots)
+      attributes = %w(id issue_types location details occurred_date occurred_time creator_name creator_email creator_number report_num to_share walk)
+      CSV.generate do |csv|
+        csv << attributes
+        hotspots.each do |hotspot|
+          csv << attributes.map{ |attr| hotspot.send(attr) }
+        end
       end
     end
 end

@@ -13,6 +13,7 @@
 }
 .form-border {
     border-color: $orange-primary;
+    margin-top: 20px;
 }
 .simple-calendar {
     font-size: 1.5em;
@@ -51,6 +52,30 @@
 }
 .simple-calendar table .prev-month, .simple-calendar table .next-month {
     background-color: lavender;
+}
+
+#event-card {
+    background-color: #FFFFFF;
+    padding: 25px;
+}
+
+#event-card h4{
+    color: $purple-primary;
+    font-weight: bold;
+}
+
+#event-card .divider {
+  height: 1px;
+  width:100%;
+  display:block; /* for use on default inline elements like span */
+  margin: 9px 0;
+  overflow: hidden;
+  background-color: #e5e5e5;
+}
+
+.event-panel-left {
+    border-right: 1px solid;
+    border-color: #e5e5e5;
 }
 
 .approve:hover {

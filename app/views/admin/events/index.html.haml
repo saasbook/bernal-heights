@@ -1,6 +1,8 @@
 -#  This file is app/views/admin/events/index.html.haml
-
-%div.full-width 
+- content_for :header do
+  %h1.pg-header All Events
+  
+%div{:class => ""}  
   - if !@unapproved.empty?
     %div.well
       %h4 You have #{@unapproved.count} unapproved events.
