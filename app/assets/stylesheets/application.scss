@@ -20,6 +20,7 @@
 @import "events.scss";
 @import "hotspots.scss";
 @import "simple_calendar";
+@import "admin.scss";
 
 .errorExplanation {
   padding: 0 10px;
@@ -81,35 +82,4 @@ body.container-fluid {
     background-color: #FFFFFF;
     box-shadow: 3px 3px 5px #ccc;
     margin-bottom: 20px;
-}
-
-.admin-hero {
-    background-image:url(image_path('bernalheights_admin.jpg'));
-    background-size:cover;
-}
-
-.admin-hero h1{
-    color: white;
-}
-
-.update-icon {
-    float: left;
-    border: 1px solid #ddd;
-    border-radius: 5px 5px;
-    padding: 25px;
-    background-color: $bernal-purple;
-    box-shadow: 3px 0px 5px  #ccc;
-    margin-bottom: 20px;
-    height: 20%;
-}
-
-.update-text {
-    float: left;
-    border: 1px 1px 1px 0px solid #ddd;
-    border-radius: 5px 5px;
-    padding: 25px;
-    background-color: #FFFFFF;
-    box-shadow: 3px 3px 5px #ccc;
-    margin-bottom: 20px;
-    height: 20%;
 }

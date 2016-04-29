@@ -1,0 +1,28 @@
+.admin-hero {
+    background-image:url(image_path('bernalheights_admin.jpg'));
+    background-size:cover;
+}
+
+.admin-hero h1{
+    color: white;
+}
+
+.update {
+    margin-bottom: 20px;
+    margin-right: 20px;
+    background-color: white;
+}
+
+.update-icon {
+    float: left;
+    border: 1px solid #ddd;
+    border-radius: 5px 5px;
+    background-color: $bernal-purple;
+    padding: 25px;
+}
+
+.update-text {
+    float: left;
+    border: 1px 1px 1px 0px solid #ddd;
+    border-radius: 5px 5px;
+}

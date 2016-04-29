@@ -3,24 +3,25 @@
     %h1 Welcome back, #{@admin.name}!
 
 %div.container
+  %h2 Updates
   %div.col-md-8
-    %div.row
-      %div.update-icon.col-md-2
+    %div.row.update
+      %div.update-icon
         = image_tag "calendar_icon.svg", class: "center-block"
-      %div.col-md-6
+      %div.col-md-6.update-text
         - if (@event_count > 1)
           %h3= link_to "#{@event_count} new events to review", admin_unapproved_events_path
-        - if (@event_count == 1)
+        - elsif (@event_count == 1)
           %h3= link_to "#{@event_count} new event to review", admin_unapproved_events_path
         - else
           %h3= link_to "See All Events", admin_events_path
-    %div.row
-      %div.update-icon.col-md-2
+    %div.row.update
+      %div.update-icon
         =image_tag "location_icon.svg", class: "center-block"
-      %div.col-md-6
+      %div.col-md-6.update-text
         %h3= link_to 'View Hotspot Forms', admin_hotspots_path
   %div.col-md-4
-    %p= link_to 'Edit Account', edit_admin_registration_path
-    %p= link_to 'Manage Staff Accounts', staff_accounts_path
+    %h4= link_to 'Edit Account', edit_admin_registration_path
+    %h4= link_to 'Manage Staff Accounts', staff_accounts_path
     
   
