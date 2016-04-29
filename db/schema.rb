@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20160424223106) do
     t.string   "location"
     t.string   "details"
     t.integer  "report_num"
-    t.string   "to_share"
+    t.boolean  "to_share"
     t.string   "creator_name"
     t.string   "creator_email"
     t.string   "creator_number"

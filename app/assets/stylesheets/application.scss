@@ -52,14 +52,17 @@ div.fieldWithErrors {
   padding: 4px;
 }
 
-.btn-primary {
-  background-color: $orange-primary;
-  border:none;
+.btn-primary, .btn-primary:visited {
+  background-color: $orange-primary !important ;
+  border-color: $orange-primary !important;
 }
-
 .btn-primary:hover {
-  background-color: $bernal-orange;
-  border:none;
+  background-color: #ccc !important;
+  border-color: #bbb !important;
+}
+.btn-primary:active {
+  background-color: #aaa !important;
+  border-color: #aaa !important;
 }
 
 body.container-fluid {
@@ -91,8 +94,6 @@ body.container-fluid {
     box-shadow: 3px 3px 5px #ccc;
     margin-bottom: 20px;
 }
-
-
 .card {
     background-color: #FFFFFF;
     padding: 25px;

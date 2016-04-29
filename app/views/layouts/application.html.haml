@@ -48,9 +48,9 @@
               %li= link_to "Admin Sign In", new_admin_session_path
         / /.navbar-collapse
       / /.container-fluid
-      
+    %div
+      = yield :header
     #main
-    
       - if flash[:notice]
         %div#notice.alert.alert-info= flash[:notice]
       - elsif flash[:warning]
