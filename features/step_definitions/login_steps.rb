@@ -1,9 +1,3 @@
-Given /^I am signed in with provider "(.*)"$/ do |provider|
-  # visit "/auth/#{provider.downcase}"
-  #Omniauth is not stubbing. I'm desperate
-  step "I am signed in as an admin"
-end
-
 Given /^I am signed in as an admin$/ do
   admin = FactoryGirl.create(:admin, admin: true)
   step %Q{I am signed in with email: "#{admin.email}" and password: "#{admin.password}"}
@@ -12,6 +6,11 @@ end
 Given /^I am signed in with email: "([^"]*)" and password: "([^"]*)"$/ do |email, password|
   step %Q{I sign in with email: "#{email}" and password: "#{password}"}
   step "I should be on the admin home page"
+end
+
+When /^I sign in as an admin named "([^"]*)"$/ do |name|
+  admin = Admin.where(name: name).first
+  step %Q{I sign in with email: "#{admin.email}" and password: "12345678"}
 end
 
 Given /^I am signed out$/ do

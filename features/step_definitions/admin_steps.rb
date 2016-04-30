@@ -4,6 +4,10 @@ Given /the following admins exist/ do |admin_table|
   end
 end
 
+Given /^I am an admin with name: "([^"]*)"$/ do |name|
+  FactoryGirl.create(:admin, name: name, password: 12345678, password_confirmation: 12345678)
+end
+
 When /^I provide old password "([^"]*)" to update my password to "([^"]*)"$/ do |old_password, new_password|
   visit path_to("the edit account info page")
   fill_in('Password', with: new_password, :match => :prefer_exact)
