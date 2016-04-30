@@ -6,10 +6,10 @@ Feature: administrator login
 
 # Successful log in as an admin and see the admin-control actions on dashboard
 Scenario: Successfully logged on as an administrator
-  Given I am signed in as an admin
+  Given I am an admin with name: "Fantastic Mr. Fox"
+  When I sign in as an admin named "Fantastic Mr. Fox"
   Then I should be on the admin home page
-  And I should see "Confirm New Events"
-  And I should see "View Hotspot Forms"
+  And I should see "Welcome back, Fantastic Mr. Fox!"
   
 Scenario: Unsuccessfully logged in
   Given I am on the sign in page

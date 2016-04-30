@@ -13,8 +13,7 @@
           
             = event.input :start_time, as: :time, label: "Start Time", ampm: true
             
-            = event.label :end_time, "End Time"
-            = event.time_select 'end_time', {ampm: true}
+            = event.input :end_time, as: :time, label: "End Time", ampm: true
             
             = event.input :location, as: :text, label: "Location", hint: "Please type an address or the street intersection, e.g. Andover St and Cortland Ave.", error: "A location is required."
             

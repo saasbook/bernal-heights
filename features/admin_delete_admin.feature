@@ -15,7 +15,7 @@ Background:
 Scenario: Superadmins can have option to delete accounts
   Given I am signed in as an admin
   When I go to the view all admins page
-  And I delete the account for "Orhihara Izaya"
+  And I delete the account for "Orihara Izaya"
   When I go to the view all admins page
   Then I should not see "Orihara Izaya"
 
@@ -30,8 +30,8 @@ Scenario: Cancel deleting account
 Scenario: Superadmins cannot delete their own accounts
   Given I am signed in with email: "dullahan@drrr.com" and password: "headlessrider"
   When I go to the view all admins page
-  Then I should not see "Delete Account" within "#celty_sturlson"
-  And I should see "Delete Account" within "#kishitani_shinra"
+  Then I should not have the option to delete "Celty Sturlson"
+  And I should have the option to delete "Kishitani Shinra"
 
 Scenario: Admins without superadmin permissions cannot delete accounts
   Given I am signed in with email: "shizuchan@drrr.com" and password: "ilovehumans"

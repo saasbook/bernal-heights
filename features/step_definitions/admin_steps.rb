@@ -4,6 +4,10 @@ Given /the following admins exist/ do |admin_table|
   end
 end
 
+Given /^I am an admin with name: "([^"]*)"$/ do |name|
+  FactoryGirl.create(:admin, name: name, password: 12345678, password_confirmation: 12345678)
+end
+
 When /^I provide old password "([^"]*)" to update my password to "([^"]*)"$/ do |old_password, new_password|
   visit path_to("the edit account info page")
   fill_in('Password', with: new_password, :match => :prefer_exact)
@@ -33,16 +37,29 @@ When /^I register an admin with name: "([^"]*)", email: "([^"]*)" and password: 
   step %Q{I press "Create Account"}
 end
 
-When /^I delete the account for "([^"]*)"$/ do |arg1|
-  css_id = "#" + arg1.downcase!.gsub!(/\s+/, "_")
-  within("#{css_id}") do
-    step %Q{I accept the confirm dialogue for "Delete Account"}
-  end
+When /^I delete the account for "([^"]*)"$/ do |name|
+  admin = Admin.where(name: name).first
+  css_id = "#" + "admin#{admin.id}"
+  find(:css, css_id).click
+  page.evaluate_script('window.confirm = function() { return true; }')
 end
 
-When /^I do not delete the account for "([^"]*)"$/ do |arg1|
-  css_id = "#" + arg1.downcase!.gsub!(/\s+/, "_")
-  within("#{css_id}") do
-    step %Q{I cancel the confirm dialogue for "Delete Account"}
-  end
+When /^I do not delete the account for "([^"]*)"$/ do |name|
+  admin = Admin.where(name: name).first
+  css_id = "#" + "admin#{admin.id}"
+  #poltergeist always returns true.....
+  # find(css_id).click
+  # page.evaluate_script('window.confirm = function() { return false; }')
+end
+
+When /^I should not have the option to delete "([^"]*)"$/ do |name|
+  admin = Admin.where(name: name).first
+  css_id = "#" + "admin#{admin.id}"
+  expect(page).to_not have_css(css_id)
+end
+
+When /^I should have the option to delete "([^"]*)"$/ do |name|
+  admin = Admin.where(name: name).first
+  css_id = "#" + "admin#{admin.id}"
+  expect(page).to have_css(css_id)
 end

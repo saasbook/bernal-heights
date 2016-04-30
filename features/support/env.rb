@@ -5,7 +5,14 @@
 # files.
 
 require 'cucumber/rails'
+require "capybara"
+require "capybara/cucumber"
 require 'capybara/poltergeist'
+
+Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, {debug: false})
+end
+
 Capybara.javascript_driver = :poltergeist
 
 # Capybara defaults to CSS3 selectors rather than XPath.
@@ -41,12 +48,12 @@ end
 # You may also want to configure DatabaseCleaner to use different strategies for certain features and scenarios.
 # See the DatabaseCleaner documentation for details. Example:
 #
-#   Before('@no-txn,@selenium,@culerity,@celerity,@javascript') do
-#     # { :except => [:widgets] } may not do what you expect here
-#     # as Cucumber::Rails::Database.javascript_strategy overrides
-#     # this setting.
-#     DatabaseCleaner.strategy = :truncation
-#   end
+  Before('@no-txn,@selenium,@culerity,@celerity,@javascript') do
+    # { :except => [:widgets] } may not do what you expect here
+    # as Cucumber::Rails::Database.javascript_strategy overrides
+    # this setting.
+    DatabaseCleaner.strategy = :truncation
+  end
 #
 #   Before('~@no-txn', '~@selenium', '~@culerity', '~@celerity', '~@javascript') do
 #     DatabaseCleaner.strategy = :transaction
@@ -58,33 +65,3 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 World(FactoryGirl::Syntax::Methods)
-
-# Before('@omniauth_test') do
-#   OmniAuth.config.test_mode = true
-#   OmniAuth.config.add_mock(:facebook, {
-#   'info' => {
-#     'email' => 'example@xample.com' },
-#   'uid' => '123545',
-#   'provider' => 'Facebook'
-# })
-# end
-
-# After('@omniauth_test') do
-#   OmniAuth.config.test_mode = false
-# end
-
-Before('@javascript') do 
-  Capybara.current_driver = :poltergeist
-end
-
-After('@javascript') do
-  Capybara.use_default_driver
-end
-
-Before('@noauth') do
-  $disable_authentication = true
-end
- 
-After('@noauth') do
-  $disable_authentication = false
-end

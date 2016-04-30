@@ -15,8 +15,10 @@
             = hotspot.input :location, as: :text, label: "Location", hint: "Please type an address or the street intersection, e.g. Andover St and Cortland Ave.", error: "A location is required.", :value => params[:location]
                 
           
-            = hotspot.button :button, "Use my current location", :class => 'btn btn-secondary', :type => 'button', :onclick => 'getLocation()'
-            = hotspot.label "(if location services is turned on)"
+            %div#locationbtn-container
+              = hotspot.button :button, "Use my current location", :id => 'mylocation_btn', :type => 'button', :onclick => 'getLocation()'
+              // = hotspot.label "(if location services is turned on)"
+              %div (if location services is turned on)
             
             %div
             = hotspot.submit 'Next', :class => 'btn btn-primary'

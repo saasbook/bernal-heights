@@ -33,6 +33,7 @@
               %li= link_to "Events", events_path
               %li= link_to "Hotspots", hotspots_path
               %li= link_to "Resources", resources_path
+              %li= link_to "Donate", "https://donatenow.networkforgood.org/BHNC?code=Website+button"
           %ul.nav.navbar-nav.navbar-right
             - if current_admin
               %li.dropdown
@@ -52,11 +53,11 @@
       = yield :header
     #main
       - if flash[:notice]
-        #notice.message= flash[:notice]
+        %div#notice.alert.alert-info= flash[:notice]
       - elsif flash[:warning]
-        #warning.message= flash[:warning]
+        %div#warning.alert.alert-warning= flash[:warning]
       - elsif flash[:alert]
-        #alert.message= flash[:alert]
+        %div#alert.alert.alert-danger= flash[:alert]
         
       = yield
   %foot

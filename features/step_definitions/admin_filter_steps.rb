@@ -10,14 +10,31 @@ When /I (un)?check the following regions: (.*)/ do |uncheck, region_list|
   end
 end
 
-Given(/^there is a hotspot for each issue type$/) do
-  pending # will generate factories here
+Given(/^my sample hotspots have been generated$/) do
+  illegal_drug_transactions = FactoryGirl.create(:issue, issue_type: "Illegal Drug Transactions") 
+  car_break_in = FactoryGirl.create(:issue, issue_type: "Car Break-In") 
+  abandoned_car = FactoryGirl.create(:issue, issue_type: "Abandoned Car") 
+  h1 = FactoryGirl.build(:hotspot, location: "479 Prentiss St, San Francisco, CA 94110", region: "South-East")
+  h1.issues << illegal_drug_transactions
+  h1.save!
+  h2 = FactoryGirl.build(:hotspot, location: "219 Richland Ave, San Francisco, CA 94110", region: "South-West")
+  h2.issues << illegal_drug_transactions
+  h2.save!
+  h3 = FactoryGirl.build(:hotspot, location: "25 Eugenia Ave, San Francisco, CA 94110", region: "Central")
+  h3.issues << car_break_in
+  h3.save!
+  h4 = FactoryGirl.build(:hotspot, location: "20 Eugenia Ave, San Francisco, CA 94110", region: "Central")
+  h4.issues << car_break_in
+  h4.issues << illegal_drug_transactions
+  h4.save!
+  h5 = FactoryGirl.build(:hotspot, location: "1561 Treat Ave, San Francisco, CA 94110", region: "North")
+  h5.issues << abandoned_car
+  h5.save!
 end
 
-When(/^I check the following issue types: Car break\-ins$/) do
-  pending # Write code here that turns the phrase above into concrete actions
-end
-
-When(/^I uncheck the following issue types: Car break\-ins,Abandoned Car,Broken Streetlight,Illegal Drug Transactions,Litter\/Dumping Trash,Public Drinking and Noise,Other$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+When /I (un)?check the following issue types: (.*)/ do |uncheck, issues_list|
+  checked_issues = issues_list.split(',')
+  checked_issues.each do |i|
+    uncheck ? uncheck("issues_#{i}") : check("issues_#{i}")
+  end
 end

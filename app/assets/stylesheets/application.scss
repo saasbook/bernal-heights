@@ -20,6 +20,7 @@
 @import "events.scss";
 @import "hotspots.scss";
 @import "simple_calendar";
+@import "admin.scss";
 @import "admin/hotspots.scss";
 
 .errorExplanation {
@@ -51,6 +52,7 @@ div.fieldWithErrors {
   margin: 1em 0;
   padding: 4px;
 }
+
 .btn-primary, .btn-primary:visited {
   background-color: $orange-primary !important ;
   border-color: $orange-primary !important;
@@ -63,6 +65,7 @@ div.fieldWithErrors {
   background-color: #aaa !important;
   border-color: #aaa !important;
 }
+
 body.container-fluid {
   padding: 0px;
   background-color: #F2F3F5;

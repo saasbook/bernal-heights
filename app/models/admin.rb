@@ -4,5 +4,8 @@ class Admin < ActiveRecord::Base
   devise :database_authenticatable, :recoverable,
          :rememberable, :registerable, :validatable
   validates :name, presence: true
-
+  
+  def is_superadmin?
+    return self.admin
+  end
 end
