@@ -1,4 +1,13 @@
 Given /the following events exist/ do |events_table|
+  events_table.map_column!('start_date') do |date| 
+    if date == 'TODAYS_DATE'
+      date = Time.now.strftime("%Y-%m-%d")
+    end
+    if date == 'TOMORROW'
+      date = Date.tomorrow.strftime("%Y-%m-%d")
+    end
+    date
+  end
   events_table.hashes.each do |event|
     new_event = Event.create!(event)
   end
@@ -95,12 +104,17 @@ Then /^I should not be able to delete the event$/ do
 end
   
 
-When (/^I should see the calendar$/) do
-  pending # Write code here that turns the phrase above into concrete actions
+When /^I should see the calendar$/ do
+  page.has_css?('div.simple-calendar')
 end
 
-When /^I click on (\d+), ([a-zA-Z]+), (\d+)$/ do |year, month, day|
-  pending
+When /^I click on (\d+\-\d+\-\d+)$/ do |date|
+  visit "/events?day=" + date
+end
+
+When /^I click on yesterday$/ do
+  yesterday = Date.yesterday.strftime("%Y-%m-%d")
+  visit "/events?day=" + yesterday
 end
 
 When /^I view the ([a-zA-Z]+) (\d+) calendar$/ do |month, year|
