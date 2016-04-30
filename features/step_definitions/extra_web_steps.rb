@@ -1,11 +1,10 @@
 When /^I cancel the confirm dialogue for "([^"]*)"$/ do |link|
-  accept_confirm do
-    click_link(link)
-  end
+   # waiting on fix for poltergeist always returning true. Just...not clicking for now haha
+    # click_link(link)
+    # page.evaluate_script('window.confirm = function() { return false; }')
 end
 
 When /^I accept the confirm dialogue "([^"]*)"$/ do |link|
-  dismiss_confirm do
-    click_link(link)
-  end
+  click_link(link)
+  page.evaluate_script('window.confirm = function() { return true; }')
 end
