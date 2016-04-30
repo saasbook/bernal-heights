@@ -4,7 +4,7 @@ When /^I cancel the confirm dialogue for "([^"]*)"$/ do |link|
     # page.evaluate_script('window.confirm = function() { return false; }')
 end
 
-When /^I accept the confirm dialogue "([^"]*)"$/ do |link|
+When /^I accept the confirm dialogue for "([^"]*)"$/ do |link|
   click_link(link)
   page.evaluate_script('window.confirm = function() { return true; }')
 end

@@ -13,5 +13,5 @@
           %td= admin.name
           %td= admin.email
           - if current_admin.is_superadmin? &&  !(current_admin == admin)
-            %td= link_to "Delete Account", admin, method: :delete, data: { confirm: "Are you sure?" }, id: "delete-admin#{admin.id.to_s}"
+            %td= link_to "Delete Account", admin, method: :delete, data: { confirm: "Are you sure?" }, id: "admin#{admin.id.to_s}"
   = button_to 'Add Staff Account', new_admin_path, method: :get, class: "btn btn-primary"

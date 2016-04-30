@@ -15,7 +15,7 @@ Background:
 Scenario: Superadmins can have option to delete accounts
   Given I am signed in as an admin
   When I go to the view all admins page
-  And I delete the account for "Orhihara Izaya"
+  And I delete the account for "Orihara Izaya"
   When I go to the view all admins page
   Then I should not see "Orihara Izaya"
 
