@@ -6,12 +6,12 @@ Feature: Search for a location on the hotspot map
 Background: 
   Given I am on the Hotspot map page
 
-Scenario: Neighbor searches for a location first to report an issue
-  When I fill in "searchbar" with "Bernal Heights"
-  And I press "Search"
-  Then I should be on the Hotspot map page
-  Given I report issue for Bernal Heights
-  Then location field should be prefilled with Bernal Heights coordinates
+# Scenario: Neighbor searches for a location first to report an issue
+#   When I fill in "searchbar" with "Bernal Heights"
+#   And I press "Search"
+#   Then I should be on the Hotspot map page
+#   Given I report issue for Bernal Heights
+#   Then location field should be prefilled with Bernal Heights coordinates
 
 Scenario: Neighbor clicks on new hotspot form button to report an issue
   When I follow "Create new hotspot"
