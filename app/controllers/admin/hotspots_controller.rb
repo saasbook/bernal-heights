@@ -14,7 +14,7 @@ class Admin::HotspotsController < ApplicationController
       @selected_issues = Hash[@all_issues.map {|issue| [issue, issue]}]
     end
     
-    @hotspots = Hotspot.where(region: @selected_regions.keys, archive: false).joins(:issues).where(:issues => { :issue_type => @selected_issues.keys}).references(:issues).distinct()
+    @hotspots = Hotspot.where(region: @selected_regions.keys, archive: false, status: "active").joins(:issues).where(:issues => { :issue_type => @selected_issues.keys}).references(:issues).distinct()
     
     @hash = Gmaps4rails.build_markers(@hotspots) do |hotspot, marker|
       marker.lat hotspot.latitude
