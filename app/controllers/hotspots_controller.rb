@@ -7,7 +7,7 @@ class HotspotsController < ApplicationController
   end
   
   def index
-    @hotspots = Hotspot.where(status: "active")
+    @hotspots = Hotspot.all
   end
   
   def gps
@@ -28,7 +28,7 @@ class HotspotsController < ApplicationController
   end
   
   def index
-    @hotspots = Hotspot.where(status: "active")
+    @hotspots = Hotspot.all
     @hash = Gmaps4rails.build_markers(@hotspots) do |hotspot, marker|
       marker.lat hotspot.latitude
       marker.lng hotspot.longitude
