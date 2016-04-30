@@ -33,16 +33,29 @@ When /^I register an admin with name: "([^"]*)", email: "([^"]*)" and password: 
   step %Q{I press "Create Account"}
 end
 
-When /^I delete the account for "([^"]*)"$/ do |arg1|
-  css_id = "#" + arg1.downcase!.gsub!(/\s+/, "_")
-  within("#{css_id}") do
-    step %Q{I accept the confirm dialogue for "Delete Account"}
-  end
+When /^I delete the account for "([^"]*)"$/ do |name|
+  admin = Admin.where(name: name).first
+  css_id = "#" + "admin#{admin.id}"
+  find(:css, css_id).click
+  page.evaluate_script('window.confirm = function() { return true; }')
 end
 
-When /^I do not delete the account for "([^"]*)"$/ do |arg1|
-  css_id = "#" + arg1.downcase!.gsub!(/\s+/, "_")
-  within("#{css_id}") do
-    step %Q{I cancel the confirm dialogue for "Delete Account"}
-  end
+When /^I do not delete the account for "([^"]*)"$/ do |name|
+  admin = Admin.where(name: name).first
+  css_id = "#" + "admin#{admin.id}"
+  #poltergeist always returns true.....
+  # find(css_id).click
+  # page.evaluate_script('window.confirm = function() { return false; }')
+end
+
+When /^I should not have the option to delete "([^"]*)"$/ do |name|
+  admin = Admin.where(name: name).first
+  css_id = "#" + "admin#{admin.id}"
+  expect(page).to_not have_css(css_id)
+end
+
+When /^I should have the option to delete "([^"]*)"$/ do |name|
+  admin = Admin.where(name: name).first
+  css_id = "#" + "admin#{admin.id}"
+  expect(page).to have_css(css_id)
 end

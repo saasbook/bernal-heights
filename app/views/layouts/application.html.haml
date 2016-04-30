@@ -52,11 +52,11 @@
       = yield :header
     #main
       - if flash[:notice]
-        #notice.message= flash[:notice]
+        %div#notice.alert.alert-info= flash[:notice]
       - elsif flash[:warning]
-        #warning.message= flash[:warning]
+        %div#warning.alert.alert-warning= flash[:warning]
       - elsif flash[:alert]
-        #alert.message= flash[:alert]
+        %div#alert.alert.alert-danger= flash[:alert]
         
       = yield
   %foot

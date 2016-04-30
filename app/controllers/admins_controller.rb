@@ -22,13 +22,18 @@ class AdminsController < ApplicationController
   
   
   def destroy
-    @admin = Admin.find(params[:id])
-    name = @admin.name
-    if @admin.destroy
-      flash[:notice] = "Account for #{name} removed."
-      redirect_to staff_accounts_path
+    if current_admin.is_superadmin?
+      @admin = Admin.find(params[:id])
+      name = @admin.name
+      if @admin.destroy
+        flash[:notice] = "Account for #{name} removed."
+        redirect_to staff_accounts_path
+      else
+        flash[:error] = @admin.errors
+        render :index
+      end
     else
-      flash[:error] = @admin.errors
+      flash[:notice] = "You must be a superadmin to delete this account"
       render :index
     end
   end
@@ -38,5 +43,4 @@ class AdminsController < ApplicationController
   def admin_params
     params.require(:admin).permit(:name, :email, :password, :password_confirmation)
   end
-  
 end

@@ -31,6 +31,7 @@ Scenario: Cancel deleting pending event
 Scenario: Successfully delete existing event
   Given I am signed in as an admin
   When I go to the events page
+  And I follow "Library Movie Night"
   And I delete event "Library Movie Night"
   
   When I go to the events page
