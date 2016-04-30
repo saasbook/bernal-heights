@@ -2,7 +2,7 @@ class EventsController < ApplicationController
 
   def index
       @events = Event.where(approved: true)
-      @todays_events = Event.getEventsForDay(Date.today.strftime("%F"))
+      @todays_events = Event.getEventsForDay(Time.zone.now.to_date.strftime("%F"))
     if request.xhr?
       @todays_events = Event.getEventsForDay(params[:day])
       render :partial => 'layouts/event_list'
