@@ -26,7 +26,6 @@ Rails.application.configure do
 
   #heroku: precompile assets at deploy time
   config.assets.initialize_on_precompile = false
-  config.serve_static_assets = true
   config.assets.compile = true
 
   # Compress JavaScripts and CSS.
