@@ -29,6 +29,16 @@ class Hotspots::BuildController < ApplicationController
                 end
             end
         end
+        if step == steps.last and @hotspot.save
+            flash[:notice] = "You have successfully reported an issue. Thank you!"
+            redirect_to hotspots_path and return
+        elsif not @hotspot.save
+            if @hotspot.errors.any? 
+              flash.now[:warning] = @hotspot.errors.full_messages.first 
+            else
+              flash.now[:warning] = "You have not filled out all required fields."
+            end
+        end
         render_wizard @hotspot
     end
     
