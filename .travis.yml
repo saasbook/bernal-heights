@@ -4,6 +4,7 @@ rvm:
 before_install:
 - echo $CONFIG_PASSWORD | gpg --passphrase-fd 0 config/application.yml.gpg
 script:
+- bundle update
 - bundle exec rake db:test:prepare
 - bundle exec rspec spec
 - bundle exec cucumber
