@@ -30,7 +30,6 @@ Given(/^my sample hotspots have been generated$/) do
   h5 = FactoryGirl.build(:hotspot, location: "1561 Treat Ave, San Francisco, CA 94110", region: "North")
   h5.issues << abandoned_car
   h5.save!
-  #pending # will generate factories here
 end
 
 When /I (un)?check the following issue types: (.*)/ do |uncheck, issues_list|
