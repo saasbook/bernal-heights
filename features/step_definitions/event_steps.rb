@@ -72,6 +72,12 @@ When /^I cancel deleting event "([^"]*)"$/ do |name|
   dismiss_confirm
 end
 
+When /^I approve event "([^"]*)"$/ do |name|
+  event = Event.where(name: name).first
+  css_id = "#" + "approve#{event.id.to_s}"
+  find(css_id).click
+end
+ 
 Given /^an event titled "([^"]*)" exists$/ do |name|
   FactoryGirl.create(:event, name: name, start_date: Date.today, approved: true)
 end
