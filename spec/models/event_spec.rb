@@ -140,4 +140,25 @@ describe Event do
       expect(Event.get_all_approved).to_not include(@event_a, @event_b)
     end
   end
+  
+  describe "@@get_events_for_day" do
+    before do
+      @event_a = FactoryGirl.create(:event, approved: true, start_date: Date.parse("2016-4-10"))
+      @event_b = FactoryGirl.create(:event, approved: true, start_date: Date.parse("2016-4-11"))
+      @event_c = FactoryGirl.create(:event, approved: false, start_date: Date.parse("2016-4-10"))
+      @event_d = FactoryGirl.create(:event, approved: true, start_date: Date.parse("2016-4-11"))
+    end
+    
+    it "returns approved events for selected day" do
+      expect(Event.getEventsForDay("2016-4-10")).to include(@event_a)
+    end
+    
+    it "does not return unapproved events for selected day" do
+      expect(Event.getEventsForDay("2016-4-10")).to_not include(@event_b)
+    end
+    
+    it "does not return events not on selected day" do
+      expect(Event.getEventsForDay("2016-4-10")).to_not include(@event_d)
+    end
+  end
 end
