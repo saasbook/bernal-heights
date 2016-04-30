@@ -1,8 +1,27 @@
-%h1 Welcome back, #{@admin.name}!
+%div.jumbotron.admin-hero
+  %div.container-fluid
+    %h1 Welcome back, #{@admin.name}!
 
-%div
-  %ul
-    = link_to 'Confirm New Events', admin_events_path
-    = link_to 'View Hotspot Forms', admin_hotspots_path
+%div.container
+  %h2 Updates
+  %div.col-md-8
+    %div.row.update
+      %div.update-icon
+        = image_tag "calendar_icon.svg", class: "center-block"
+      %div.col-md-6.update-text
+        - if (@event_count > 1)
+          %h3= link_to "#{@event_count} new events to review", admin_unapproved_events_path
+        - elsif (@event_count == 1)
+          %h3= link_to "#{@event_count} new event to review", admin_unapproved_events_path
+        - else
+          %h3= link_to "See All Events", admin_events_path
+    %div.row.update
+      %div.update-icon
+        =image_tag "location_icon.svg", class: "center-block"
+      %div.col-md-6.update-text
+        %h3= link_to 'View Hotspot Forms', admin_hotspots_path
+  %div.col-md-4
+    %h4= link_to 'Edit Account', edit_admin_registration_path
+    %h4= link_to 'Manage Staff Accounts', staff_accounts_path
     
   

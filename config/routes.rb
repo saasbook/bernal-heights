@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'home#index'
+   
   resources :resources
   devise_for :admins, path: "admin", singular: :admin, module: "admin"
   resources :admins, path: "staff", except: [:index, :update, :edit]
@@ -35,7 +37,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-   root :to => redirect('/events')
+  # root :to => redirect('/events')
    # currently putting admin home page route under app controller // FIX
   # get 'admin/dashboard' => 'application#admin_dashboard', as: :admin_dashboard
 
