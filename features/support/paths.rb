@@ -37,7 +37,7 @@ module NavigationHelpers
       '/hotspots'
     
     when /^the Hotspot form page$/
-      '/hotspots/new'
+      "/hotspots/1/build/basic_issue"
     
     when /^the home page$/
       '/events'
