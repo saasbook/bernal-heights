@@ -112,9 +112,9 @@ When /^I click on (\d+\-\d+\-\d+)$/ do |date|
   visit "/events?day=" + date
 end
 
-When /^I click on yesterday$/ do
-  yesterday = Date.yesterday.strftime("%Y-%m-%d")
-  visit "/events?day=" + yesterday
+When /^I click on two days ago$/ do
+  two = ((Date.today) - 2).strftime("%Y-%m-%d")
+  visit "/events/#{two}"
 end
 
 When /^I view the ([a-zA-Z]+) (\d+) calendar$/ do |month, year|
