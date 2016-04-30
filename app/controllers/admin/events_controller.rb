@@ -13,7 +13,6 @@ class Admin::EventsController < EventsController
 
   def unapproved
     @unapproved = Event.get_all_unconfirmed
-    session[:return_to] ||= request.referer
   end
   
   def new
@@ -23,7 +22,6 @@ class Admin::EventsController < EventsController
   
   def edit
     @event = Event.find(params[:id])
-    session[:return_to] ||= request.referer
   end
   
   def create
@@ -60,9 +58,11 @@ class Admin::EventsController < EventsController
   end
 
   def destroy
+    session[:return_to] ||= request.referer
     @event = Event.find(params[:id])
     @event.destroy
     flash[:notice] = "Event Destroyed"
     redirect_to session.delete(:return_to)
+      
   end
 end

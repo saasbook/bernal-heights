@@ -5,7 +5,7 @@ Given /^I am signed in with provider "(.*)"$/ do |provider|
 end
 
 Given /^I am signed in as an admin$/ do
-  admin = FactoryGirl.create(:admin)
+  admin = FactoryGirl.create(:admin, admin: true)
   step %Q{I am signed in with email: "#{admin.email}" and password: "#{admin.password}"}
 end
 

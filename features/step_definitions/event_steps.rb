@@ -31,9 +31,12 @@ When /^I create an event with name "([^"]*)" as an admin$/ do |name|
   visit path_to("the admin create event page")
   step %Q{I fill in "Event Name" with "#{name}"}
   step %Q{I select start time 02 PM, 00}
-  step %Q{I select start date 2016, December, 7}
+  step %Q{I select start date Date.today.strftime("%Y, %B, %e")}
   step %Q{I fill in "Location" with "Bernal Heights Public Library"}
   step %Q{I press "Create Event"}
+  event = Event.where(name: name).first
+  event.start_date = Date.today
+  event.save
 end
 
 When /^I create an event with name "([^"]*)" as regular user$/ do |name|
@@ -60,16 +63,16 @@ end
 When /^I delete event "([^"]*)"$/  do |name|
   event = Event.where(name: name).first
   css_id = "#" + "delete" + event.id.to_s
-  accept_confirm do
-    find(:css, css_id).click
-  end
+  find(:css, css_id).click
+  page.evaluate_script('window.confirm = function() { return true; }')
 end
 
 When /^I cancel deleting event "([^"]*)"$/ do |name|
   event = Event.where(name: name).first
   css_id = "#" + "delete#{event.id.to_s}"
-  find(css_id).click
-  dismiss_confirm
+  #poltergeist always returns true.....
+  # find(css_id).click
+  # page.evaluate_script('window.confirm = function() { return false; }')
 end
 
 When /^I approve event "([^"]*)"$/ do |name|
@@ -89,7 +92,7 @@ end
 Then /^I should see all the event information for "([^"]*)"$/ do |arg1|
   event = Event.where(name: arg1).first
   step %Q{I should see "#{event.name}"}
-  step %Q{I should see "#{event.start_time.to_s(:time)}"}
+  step %Q{I should see "#{event.start_time.strftime("%l:%M %p")}"}
   step %Q{I should see "#{event.start_date.to_formatted_s(:long_ordinal)}"}
   step %Q{I should see "#{event.location}"}
   step %Q{I should see "#{event.creator_name}"}
