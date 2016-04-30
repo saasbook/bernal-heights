@@ -3,8 +3,8 @@ rvm:
 - 2.2.2
 before_install:
 - echo $CONFIG_PASSWORD | gpg --passphrase-fd 0 config/application.yml.gpg
+- require 'bundler/setup'
 script:
-- bundle update
 - bundle exec rake db:test:prepare
 - bundle exec rspec spec
 - bundle exec cucumber
