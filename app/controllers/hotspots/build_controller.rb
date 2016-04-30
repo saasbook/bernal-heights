@@ -29,7 +29,12 @@ class Hotspots::BuildController < ApplicationController
                 end
             end
         end
-        render_wizard @hotspot
+        if step == steps.last and @hotspot.save
+            flash[:notice] = "You have successfully reported an issue. Thank you!"
+            redirect_to hotspots_path
+        else 
+            render_wizard @hotspot
+        end
     end
     
     def create 
