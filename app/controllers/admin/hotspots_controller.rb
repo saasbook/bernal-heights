@@ -20,12 +20,12 @@ class Admin::HotspotsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@hotspots) do |hotspot, marker|
       marker.lat hotspot.latitude
       marker.lng hotspot.longitude
-      marker.infowindow render_to_string(:partial => "/admin/hotspots/info_window", :locals => { hotspot: hotspot })
+      marker.infowindow render_to_string(:partial => "info_window", :formats => [:html], :locals => { hotspot: hotspot })
     end
     
     respond_to do |format|
       format.html
-      format.csv { send_data Hotspot.to_csv(@hotspots), filename: "hotspots-data-#{Date.today}.csv" }
+      format.csv { send_data Hotspot.to_csv(@hotspots), filename: "hotspots-data-#{Date.today}.csv" } 
     end
   end
   
