@@ -12,10 +12,6 @@ Background:
 #   Then I should be on the Hotspot map page
 #   Given I report issue for Bernal Heights
 #   Then location field should be prefilled with Bernal Heights coordinates
-
-Scenario: Neighbor clicks on new hotspot form button to report an issue
-  When I follow "Create new hotspot"
-  Then I should be on the Hotspot form page
   
 Scenario: Neighbor leaves search field blank
   When I press "Search"

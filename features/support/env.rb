@@ -55,9 +55,9 @@ end
     DatabaseCleaner.strategy = :truncation
   end
 #
-#   Before('~@no-txn', '~@selenium', '~@culerity', '~@celerity', '~@javascript') do
-#     DatabaseCleaner.strategy = :transaction
-#   end
+  Before('~@no-txn', '~@selenium', '~@culerity', '~@celerity', '~@javascript') do
+    DatabaseCleaner.strategy = :transaction
+  end
 #
 
 # Possible values are :truncation and :transaction
@@ -65,3 +65,7 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 World(FactoryGirl::Syntax::Methods)
+
+Before ('@load_issues') do
+  load "#{Rails.root}/db/test_seeds.rb"
+end

@@ -37,7 +37,7 @@ module NavigationHelpers
       '/hotspots'
     
     when /^the Hotspot form page$/
-      "/hotspots/1/build/basic_issue"
+      hotspot_build_index_path(:hotspot_id => "building")
     
     when /^the home page$/
       '/events'
