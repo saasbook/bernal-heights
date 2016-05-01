@@ -36,7 +36,7 @@ class Hotspot < ActiveRecord::Base
     end
     
     def self.clean
-      incomplete_hotspots = Hotspot.where("status is not 'active'")
+      incomplete_hotspots = Hotspot.where.not(status: "active")
       incomplete_hotspots.map(&:destroy)
     end
     
