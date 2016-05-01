@@ -20,7 +20,8 @@ Then /location field should be prefilled with Bernal Heights coordinates/ do
 end
 
 When /I report issue for Bernal Heights/ do
-    # visit "/hotspots/new?location=37.7411622, -122.4178378"
+    expect(page).to have_link("Report Issue")
+    click_link("Report Issue")
 end
 
 When /I (un)?check the following issues: (.*)/ do |uncheck, issue_list|
