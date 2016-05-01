@@ -20,7 +20,7 @@ class Admin::HotspotsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@hotspots) do |hotspot, marker|
       marker.lat hotspot.latitude
       marker.lng hotspot.longitude
-      marker.infowindow hotspot.issue_types
+      marker.infowindow render_to_string(:partial => "/admin/hotspots/info_window", :locals => { hotspot: hotspot })
     end
     
     respond_to do |format|
