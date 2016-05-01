@@ -45,6 +45,6 @@ Scenario: location not in Bernal Heights Neighborhood
   And I follow "Create new hotspot"
   Then I should see "New Hotspot Form - Issue Type and Location"
   When I select the issues: Broken Streetlight
-  And I fill in "Location" with "1988 Martin Luther King Jr. Way, Berkeley, CA 94704"
+  And I fill in "Location" with "1932 Hearst Ave. Berkeley, CA"
   And I press "Next"
   Then I should see "Region : Invalid address - not in Bernal Heights Neighborhood."

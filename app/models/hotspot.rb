@@ -13,7 +13,8 @@ class Hotspot < ActiveRecord::Base
     
     geocoded_by :location
     reverse_geocoded_by :latitude, :longitude, :address => :location
-    after_validation :geocode, :reverse_geocode, :add_region, :if => lambda{ |obj| obj.location_changed? }
+    # after_validation :geocode, :reverse_geocode, :add_region, :if => lambda{ |obj| obj.location_changed? }
+    validate :geocode, :reverse_geocode, :add_region, on: :update, :if => lambda{ |obj| obj.location_changed? }
     
     def active?
       status == 'active'

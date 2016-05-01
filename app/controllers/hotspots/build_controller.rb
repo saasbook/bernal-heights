@@ -19,19 +19,6 @@ class Hotspots::BuildController < ApplicationController
         params[:hotspot][:status] = step.to_s
         params[:hotspot][:status] = 'active' if step == steps.last
         @hotspot.update_attributes(hotspot_params)
-        # if step == steps.first
-        #     @selected_issues = params[:issues] || {}
-        #     if @selected_issues == {}
-        #         flash.now[:warning] = "You have not selected an issue type."
-        #         render_wizard
-        #         return
-        #     else
-        #         @selected_issues.each do |issue|
-        #             @hotspot.issues << Issue.where(issue_type: issue)
-        #             @hotspot.save
-        #         end
-        #     end
-        # end
         if step == steps.last and @hotspot.save
             flash[:notice] = "You have successfully reported an issue. Thank you!"
             redirect_to hotspots_path and return
