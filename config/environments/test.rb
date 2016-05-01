@@ -39,4 +39,20 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  Geocoder.configure(:lookup => :test)
+
+  Geocoder::Lookup::Test.add_stub(
+  "Bernal Heights", [
+    {
+      'latitude'     => 37.7411622,
+      'longitude'    => -122.4178378,
+      'address'      => 'Bernal Heights, CA, USA',
+      'state'        => 'California',
+      'state_code'   => 'CA',
+      'country'      => 'United States',
+      'country_code' => 'US'
+    }
+  ]
+)
 end
