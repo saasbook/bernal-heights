@@ -35,7 +35,7 @@ class Hotspots::BuildController < ApplicationController
         if params[:location]
             @hotspot = Hotspot.create(:status => 'new', :location => params[:location])
         else
-            @hotspot = Hotspots.create(:status => 'new')
+            @hotspot = Hotspot.create(:status => 'new')
         end
         redirect_to wizard_path(steps.first, :hotspot_id => @hotspot.id)
     end
