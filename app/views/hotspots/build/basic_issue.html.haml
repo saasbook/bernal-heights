@@ -18,7 +18,7 @@
             //     = check_box_tag "issues[#{issue_id}]", 1, false, :id => "issues_#{issue_id}"
             //     = issue
             
-            = hotspot.input :location, as: :text, label: "Location", hint: "Please type an address or the street intersection, e.g. Andover St and Cortland Ave.", error: "A location is required.", :value => params[:location]
+            = hotspot.input :location, as: :text, label: "Location", hint: "Please type an address or the street intersection, e.g. Andover St and Cortland Ave.", error: "A location is required.", :value => @location
                 
           
             %div#locationbtn-container

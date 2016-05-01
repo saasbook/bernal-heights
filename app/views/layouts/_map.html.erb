@@ -212,7 +212,7 @@
                         // marker appears with infowindow
                         var location_str = "" + data.lat + ', ' + data.lng;
                         // have to use String.replace to insert actual value of location_str into erb
-                        var reportIssueLink = '<%= link_to 'Report Issue', new_hotspot_path(:location => 'location_str') %>';
+                        var reportIssueLink = '<%= link_to 'Report Issue', hotspot_build_index_path(:hotspot_id => "building", :location => 'location_str'), :method => :post %>';
                         reportIssueLink = reportIssueLink.replace('location_str', location_str);
                         infowindow = new google.maps.InfoWindow({
                           content: reportIssueLink

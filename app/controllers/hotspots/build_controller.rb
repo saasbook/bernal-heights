@@ -9,13 +9,12 @@ class Hotspots::BuildController < ApplicationController
   
     def show
         @hotspot = Hotspot.find(params[:hotspot_id])
-        @all_issues = Hotspot.all_issues
         render_wizard
     end
     
     def update
         @hotspot = Hotspot.find(params[:hotspot_id])
-        @all_issues = Hotspot.all_issues
+
         params[:hotspot][:status] = step.to_s
         params[:hotspot][:status] = 'active' if step == steps.last
         @hotspot.update_attributes(hotspot_params)
@@ -33,8 +32,11 @@ class Hotspots::BuildController < ApplicationController
     end
     
     def create 
-        @hotspot = Hotspot.create(:status => 'new')
-        @all_issues = Hotspot.all_issues
+        if params[:location]
+            @hotspot = Hotspot.create(:status => 'new', :location => params[:location])
+        else
+            @hotspot = Hotspot.create(:status => 'new')
+        end
         redirect_to wizard_path(steps.first, :hotspot_id => @hotspot.id)
     end
 end
