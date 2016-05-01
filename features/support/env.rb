@@ -69,3 +69,35 @@ World(FactoryGirl::Syntax::Methods)
 Before ('@load_issues') do
   load "#{Rails.root}/db/test_seeds.rb"
 end
+
+Before ('@outofbounds') do
+  Geocoder::Lookup::Test.set_default_stub(
+    [
+      {
+        'latitude'     => 37.8764984,
+        'longitude'    => -122.2804342,
+        'address'      => 'California St, Berkeley, CA, USA',
+        'state'        => 'Berkeley',
+        'state_code'   => 'CA',
+        'country'      => 'United States',
+        'country_code' => 'US'
+      }
+    ]
+  )
+end
+
+After('@outofbounds') do
+    Geocoder::Lookup::Test.set_default_stub(
+      [
+        {
+          'latitude'     => 37.7411622,
+          'longitude'    => -122.4178378,
+          'address'      => 'Bernal Heights, CA, USA',
+          'state'        => 'California',
+          'state_code'   => 'CA',
+          'country'      => 'United States',
+          'country_code' => 'US'
+        }
+      ]
+    )
+end

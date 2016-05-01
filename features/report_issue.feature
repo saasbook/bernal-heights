@@ -39,12 +39,13 @@ Scenario: reporting an issue without "Details" filled out
   And I select occurred date 2016, March, 7
   And I press "Next"
   Then I should see "Details can't be blank"
-
+  
+@outofbounds
 Scenario: location not in Bernal Heights Neighborhood
   Given I am on the Hotspot map page
   And I follow "Create new hotspot"
   Then I should see "New Hotspot Form - Issue Type and Location"
   When I select the issues: Broken Streetlight
-  And I fill in "Location" with "1932 Hearst Ave. Berkeley, CA"
+  And I fill in "Location" with "New York, NY"
   And I press "Next"
   Then I should see "Region : Invalid address - not in Bernal Heights Neighborhood."
