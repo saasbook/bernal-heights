@@ -20,7 +20,7 @@ Then /location field should be prefilled with Bernal Heights coordinates/ do
 end
 
 When /I report issue for Bernal Heights/ do
-    visit "/hotspots/new?location=37.7411622, -122.4178378"
+    # visit "/hotspots/new?location=37.7411622, -122.4178378"
 end
 
 When /I (un)?check the following issues: (.*)/ do |uncheck, issue_list|
@@ -29,11 +29,20 @@ When /I (un)?check the following issues: (.*)/ do |uncheck, issue_list|
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
   list_of_issues = issue_list.split(', ')
   list_of_issues.each do |issue|
+    issue_id = issue.gsub(/\s+/, "_")
     if uncheck
-      uncheck("issues_#{issue}")
+      uncheck("issues_#{issue_id}")
     else
-      check("issues_#{issue}")
+      check("issues_#{issue_id}")
     end
   end
 end
 
+When /^I select the issues: (.*)$/ do |issues|
+  list_of_issues = issues.split(', ')
+  list_of_issues.each do |issue_name|
+    check(issue_name)
+  end
+end
+      
+  

@@ -2,6 +2,7 @@ class Admin::HotspotsController < ApplicationController
   before_filter :is_admin
   
   def index
+    Hotspot.clean
     @all_regions = Hotspot.all_regions
     @selected_regions = params[:regions] || {}
     if @selected_regions == {}

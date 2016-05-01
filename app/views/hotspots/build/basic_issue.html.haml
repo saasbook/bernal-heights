@@ -7,10 +7,16 @@
           = simple_form_for(@hotspot, html: { class: '' },:url => wizard_path, :method => :put) do |hotspot|
               
             = hotspot.label "Issue" 
-            - @all_issues.each do |issue|
+            - Issue.all.each do |issue|
               %div
-                = check_box_tag "issues[#{issue}]", 1, false, :id => "issues_#{issue}"
-                = issue
+                = check_box_tag "hotspot[issue_ids][]", issue.id, false, :id => "issues#{issue.id}"
+                = label_tag "issues#{issue.id}", issue.issue_type
+                
+            // - @all_issues.each do |issue|
+            //   %div
+            //     - issue_id = issue.gsub(/\s+/, "_")
+            //     = check_box_tag "issues[#{issue_id}]", 1, false, :id => "issues_#{issue_id}"
+            //     = issue
             
             = hotspot.input :location, as: :text, label: "Location", hint: "Please type an address or the street intersection, e.g. Andover St and Cortland Ave.", error: "A location is required.", :value => params[:location]
                 

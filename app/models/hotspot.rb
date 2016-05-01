@@ -1,8 +1,8 @@
 class Hotspot < ActiveRecord::Base
     has_many :hotspotissues
     has_many :issues, -> {uniq}, :through => :hotspotissues
-    
-    validates_presence_of :issues, :if => :active_or_basic_issue?
+
+    validates :issues, presence: true, :if => :active_or_basic_issue?
     validates :location, presence: true, :if => :active_or_basic_issue?
     validates :occurred_time, presence: true, :if => :active_or_issue_description?
     validates :occurred_date, presence: true, :if => :active_or_issue_description?
@@ -32,6 +32,11 @@ class Hotspot < ActiveRecord::Base
     end
     def self.all_issues
         ['Car Break-In', 'Abandoned Car','Broken Streetlight', 'Illegal Drug Transactions','Litter/Dumping Trash','Public Drinking and Noise','Other']
+    end
+    
+    def self.clean
+      incomplete_hotspots = Hotspot.where("status is not 'active'")
+      incomplete_hotspots.map(&:destroy)
     end
     
     def issue_types
