@@ -72,6 +72,8 @@ module NavigationHelpers
     when /^the resources page$/
       '/resources'
       
+    when /^the admin resource page$/
+      '/admin/resources'
     else
       begin
         page_name =~ /^the (.*) page$/

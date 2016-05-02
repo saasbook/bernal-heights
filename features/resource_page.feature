@@ -13,13 +13,14 @@ Scenario: clicking on the wrong resource link
   Given I am on the resources page
   Then I should not see "create a new hotspot"
   
-Scenario: adding a new resource 
-  Given I am on the resources page
-  When I follow "Add a New Resource"
-  And I am on the add resource path
-  And I fill in "Title" with "Neighborhood Emergency Response Team (NERT)"
-  And I fill in "Description" with "Learn hands-on skills to prepare for and help after disasters"
-  And I fill in "Link" with "http://www.sf-fire.org/index.aspx?page=859"
-  When I press "Create Resource"
-  Then I should see "Resource was successfully created."
+# Scenario: adding a new resource 
+#   Given I am signed in as an admin
+#   Given I am on the admin resource page
+#   When I press "Add a new resource"
+#   And I am on the add resource path
+#   And I fill in "Title" with "Neighborhood Emergency Response Team (NERT)"
+#   And I fill in "Description" with "Learn hands-on skills to prepare for and help after disasters"
+#   And I fill in "Link" with "http://www.sf-fire.org/index.aspx?page=859"
+#   When I press "Create Resource"
+#   Then I should see "Resource was successfully created."
   
