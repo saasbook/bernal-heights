@@ -37,3 +37,8 @@ width: 100%;
    padding-right: 5px;
    float: left;
 }
+
+.archive:hover {
+    background-color: $orange-primary;
+    color: white;
+}

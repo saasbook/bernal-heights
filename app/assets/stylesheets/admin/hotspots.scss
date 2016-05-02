@@ -10,7 +10,7 @@
 }
 
 #exportcsvbtn {
-    margin: 20px;
+    margin-bottom: 20px;
     background-color: $orange-primary;
     border-color: $orange-primary;
 }
@@ -18,3 +18,16 @@
 h4.filter{
     color: $purple-primary;
 }
+
+
+@media only screen and (max-width: 768px) {
+	tr td:nth-child(6)		{ display:none; visibility:hidden; }
+	tr td:nth-child(5)		{ display:none; visibility:hidden; }	
+}
+
+
+@media only screen and (max-width: 420px) {
+	tr td:nth-child(3)		{ display:none; visibility:hidden; }
+}
+
+		
