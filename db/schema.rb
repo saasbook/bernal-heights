@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160424223106) do
+ActiveRecord::Schema.define(version: 20160502180118) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",                  default: "",    null: false
@@ -60,7 +60,7 @@ ActiveRecord::Schema.define(version: 20160424223106) do
     t.string   "location"
     t.string   "details"
     t.integer  "report_num"
-    t.boolean  "to_share"
+    t.boolean  "to_share",       default: false
     t.string   "creator_name"
     t.string   "creator_email"
     t.string   "creator_number"
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(version: 20160424223106) do
     t.datetime "updated_at",                     null: false
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "walk"
+    t.boolean  "walk",           default: false
     t.date     "occurred_date"
     t.time     "occurred_time"
     t.string   "region"
