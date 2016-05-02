@@ -2,40 +2,47 @@
   - content_for :header do
     %h1.pg-header All Hotspots
   
-  = form_tag admin_hotspots_path, :id => "hotspotFilters", :method => :get do
-    Show hotspots with issue type of: 
-    - @all_issues.each do |issue|
-      = check_box_tag "issues[#{issue}]", 1, @selected_issues.include?(issue), :id => "issues_#{issue}"
-      = issue
-    %br
-    Show hotspots within: 
-    - @all_regions.each do |region|
-      = check_box_tag "regions[#{region}]", 1, @selected_regions.include?(region), :id => "regions_#{region}"
-      = region + " Region"
-    = submit_tag 'Filter', :id => 'filter_submit', :class => 'btn btn-sm btn-secondary'
-  
-  
   = render 'layouts/map'
   
   .row
     .col-xs-12.col-sm-3
       %a#exportcsvbtn.btn.btn-primary.btn-block{:href => admin_hotspots_path(params.merge(format: :csv)), :role => "button"} Export Hotspot Data
   
-  %div{:class => "col-md-8"}
-    %table#hotspots{:class => "table table-striped"}
-      %thead
-        %tr
-          %th ID#
-          %th Issue Type
-          %th Location
-      %tbody
-        - if @hotspots
-          - @hotspots.each do |hotspot|
-            %tr
-              %td= hotspot.id
-              %td= hotspot.issue_types
-              %td= hotspot.location
-              - if admin_signed_in?
-                %td= link_to "View Details", admin_hotspot_path(hotspot)
-                %td= link_to "Archive Hotspot", admin_hotspot_path(hotspot.id), { method: :put }
-                %td= link_to "Delete Hotspot", admin_hotspot_path(hotspot.id), { method: :delete }
+  .row
+    %div.col-md-3
+      %ul.list-group
+      = form_tag admin_hotspots_path, :id => "hotspotFilters", :method => :get do
+        %h4.filter Issues
+        - @all_issues.each do |issue|
+          %a.list-group-item
+            %label{ :for => "issues_#{issue}" }
+              = check_box_tag "issues[#{issue}]", 1, @selected_issues.include?(issue), :id => "issues_#{issue}"
+              #{issue}
+        %br
+        %h4.filter Regions
+        %ul.list-group
+        - @all_regions.each do |region|
+          %a.list-group-item
+            %label{ :for => "regions_#{region}" }
+              = check_box_tag "regions[#{region}]", 1, @selected_regions.include?(region), :id => "regions_#{region}"
+              #{region  + " Region"}
+        = submit_tag 'Filter', :id => 'filter_submit', :class => 'btn btn-sm btn-default'
+    %div.col-md-9
+      %table#hotspots{:class => "table table-striped"}
+        %thead
+          %tr
+            %th ID#
+            %th Issue Type
+            %th Location
+        %tbody
+          - if @hotspots
+            - @hotspots.each do |hotspot|
+              %tr
+                %td= hotspot.id
+                %td= hotspot.issue_types
+                %td= hotspot.location
+                - if admin_signed_in?
+                  %td= link_to "View Details", admin_hotspot_path(hotspot)
+                  %td= link_to "Archive Hotspot", admin_hotspot_path(hotspot.id), { method: :put }
+                  %td= link_to "Delete Hotspot", admin_hotspot_path(hotspot.id), { method: :delete }
+      

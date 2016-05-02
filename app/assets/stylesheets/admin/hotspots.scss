@@ -4,11 +4,17 @@
 #hotspotFilters {
     margin-bottom: 20px;
 }
-#filter_submit {
-    margin-left: 10px;
+
+#filter_submit{
+    margin-top: 20px;
 }
+
 #exportcsvbtn {
     margin: 20px;
     background-color: $orange-primary;
     border-color: $orange-primary;
+}
+
+h4.filter{
+    color: $purple-primary;
 }
