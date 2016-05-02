@@ -1,3 +1,45 @@
 // Place all the styles related to the resources controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+h2 { padding: .5cm .5cm .5cm; color: orange; font-family: 'Open Sans', sans-serif; letter-spacing: 2px; font-size: 34px; font-weight: 300; line-height: 40px; margin: 0 0 16px; }
+
+h3 { color: orange; font-family: 'Open Sans', sans-serif;letter-spacing: 2px; font-size: 34px; font-weight: 300; line-height: 40px; margin: 0 0 16px; }
+h4 {padding: .5cm .5cm .5cm;}
+
+p { color: #222; font-family: 'Open Sans', sans-serif; font-size: 15px; font-weight: 400; line-height: 24px; margin: 0 0 14px; }
+
+
+a { font-weight: bold; text-decoration: none; }
+
+#link { color: #0000EE; text-decoration: none; }
+
+
+a:hover { color: #551A8B; text-decoration: none; }
+
+ul {list-style-type: none; padding: 4; margin: 0; }
+
+body {margin-left: 10px}
+
+div#one {padding-left: 5em; }
+div#two {padding-left: 2em; width:500px;}
+
+
+
+	
+table { border-collapse: separate; border-spacing: 10px;}
+
+td { padding-top: .5em; padding-bottom: .5em;}
+// td:nth-child(1) { column-width: 400px;}
+#num { color: #686868 ; white-space:nowrap; font-weight: bold;}
+#Rbtn {margin-top: 10px; margin-bottom: 15px; background-color: $orange-primary; border-color: $orange-primary;}
+
+
+.block_radio_button_collection {
+  display: block;
+}
+
+h3 {
+    color: green;
+    font-family: "Times New Roman", Times, serif;
+}
