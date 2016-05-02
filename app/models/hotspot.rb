@@ -31,6 +31,23 @@ class Hotspot < ActiveRecord::Base
     def active_or_personal_information?
       status.include?('personal_information') || active?
     end
+    
+    def share_info?
+      if to_share
+        return "Yes"
+      else
+        return "No"
+      end
+    end
+    
+    def to_walk?
+      if walk
+        return "Yes"
+      else
+        return "No"
+      end
+    end
+
     def self.all_issues
         ['Car Break-In', 'Abandoned Car','Broken Streetlight', 'Illegal Drug Transactions','Litter/Dumping Trash','Public Drinking and Noise','Other']
     end

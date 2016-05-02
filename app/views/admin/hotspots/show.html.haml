@@ -38,7 +38,7 @@
     %h4 Phone Number
     %p #{@hotspot.creator_number}
     %h4 Can share info with SFPD?
-    %p #{@hotspot.to_share}
+    %p #{@hotspot.share_info?}
     %h4 Willing to go on hotspot walk?
-    %p #{@hotspot.walk}
+    %p #{@hotspot.to_walk?}
   
