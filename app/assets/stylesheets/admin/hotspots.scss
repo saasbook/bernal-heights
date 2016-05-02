@@ -10,11 +10,41 @@
 }
 
 #exportcsvbtn {
-    margin: 20px;
+    margin-bottom: 20px;
     background-color: $orange-primary;
     border-color: $orange-primary;
 }
 
 h4.filter{
     color: $purple-primary;
+}
+
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		border: none;
+		border-bottom: 1px dotted $purple-primary; 
+		position: relative;
+		padding-left: 50%;
+		margin-top: -1px;
+		margin-bottom: -1px;
+	}
+	
 }
