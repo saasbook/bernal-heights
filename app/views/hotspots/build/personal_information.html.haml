@@ -14,7 +14,7 @@
             
             = hotspot.input :creator_email, as: :email, label: "Your Email", error: "Your e-mail is required."
             
-            = hotspot.input :creator_number, as: :tel, label: "Your Phone Number", error: "Your phone number is required."
+            = hotspot.input :creator_number, as: :tel, label: "Your Phone Number", hint: "Use the following format: xxx-xxx-xxxx.", error: "Your phone number is required."
             
             = hotspot.label "Will you go on a hotspot walk with us?"
             = hotspot.collection_radio_buttons :walk, [[true, 'Yes'] ,[false, 'No']], :first, :last
