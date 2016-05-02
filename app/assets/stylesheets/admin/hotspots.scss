@@ -21,13 +21,13 @@ h4.filter{
 
 
 @media only screen and (max-width: 768px) {
-	tr td:nth-child(6)		{ display:none; visibility:hidden; }
-	tr td:nth-child(5)		{ display:none; visibility:hidden; }	
+	#hotspots tr td:nth-child(6)		{ display:none; visibility:hidden; }
+	#hotspots tr td:nth-child(5)		{ display:none; visibility:hidden; }	
 }
 
 
 @media only screen and (max-width: 420px) {
-	tr td:nth-child(3)		{ display:none; visibility:hidden; }
+	#hotspots tr td:nth-child(3)		{ display:none; visibility:hidden; }
 }
 
 		
