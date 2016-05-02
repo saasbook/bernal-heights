@@ -1,0 +1,17 @@
+:css
+  #a {display: block;}
+%h1.pg-header Resources
+%div{:class => "container fixed-width"}
+  .row
+    %div{:class => "col-md-6"}
+      %div{:class => "form-border panel"}
+        %div{:class => "form-heading panel-heading"} New a New Resource
+        %div{:class => "panel-body"}
+          = simple_form_for(@resource, html: { class: '' }) do |f| 
+
+            = f.input :title, label: "Title", error: "A title is required."
+            = f.input :description, as: :text, label: "Description"
+            = f.input :link, label: "Link"
+            = f.input :phone, label: "Title"
+            #a= f.collection_radio_buttons :kind, [[1, " Non Emergency Police"] ,[2, " Be Informed"], [3, " Get Involved"], [4, " Other Contacts"]],:first, :last
+            = f.submit 'Submit', :class => 'btn btn-primary'

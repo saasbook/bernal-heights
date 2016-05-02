@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'home#index'
-   
   resources :resources
+  # get '/resources/new', to: 'resources#new', as: 'addResource'
   devise_for :admins, path: "admin", singular: :admin, module: "admin"
   resources :admins, path: "staff", except: [:index, :update, :edit]
   get '/staff' => 'admins#index', as: :staff_accounts
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
       post 'confirm'
     end
     resources :hotspots
+    resources :resources
   end
 
   #mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
