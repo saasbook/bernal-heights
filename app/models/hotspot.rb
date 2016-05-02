@@ -8,8 +8,9 @@ class Hotspot < ActiveRecord::Base
     validates :occurred_date, presence: true, :if => :active_or_issue_description?
     validates :details, presence: true, :if => :active_or_issue_description?
     validates :creator_name, presence: true, :if => :active_or_personal_information?
-    validates :creator_email, presence: true, :if => :active_or_personal_information?
-    validates :creator_number, presence: true, :if => :active_or_personal_information?
+    validates :creator_email, presence: true, format: { with: /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i , message: "must be valid email"}, :if => :active_or_personal_information?
+    validates :creator_number, presence: true, format: { with: /\A(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}\z/ , message: "must be valid phone number"}, :if => :active_or_personal_information?
+
     
     geocoded_by :location
     reverse_geocoded_by :latitude, :longitude, :address => :location
