@@ -17,7 +17,7 @@ Scenario: all required fields filled out
   And I select start date 2013, December, 7
   And I fill in "Location" with "Bernal Heights Public Library"
   And I fill in "Your Name" with "Tiffany"
-  And I fill in "Your E-mail" with "thlam@berkeley"
+  And I fill in "Your E-mail" with "thlam@berkeley.com"
   And I press "Create Event"
   Then I should see "Pottery Painting Night was successfully created."
   
