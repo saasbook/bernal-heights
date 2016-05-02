@@ -1,6 +1,9 @@
 %h1 
 
 %div.container.card
+  %div.pull-right
+    =render partial: 'layouts/manage_hotspots', locals: {hotspot: @hotspot}
+    
   %h3 Form ##{@hotspot.id}
   %div.divider
   %div.col-sm-4.card-panel-left
@@ -23,6 +26,9 @@
   %div.col-sm-6
     %h4 Details
     %p #{@hotspot.details}
+  
+  
+  
       
 %br
 %br 
@@ -41,4 +47,3 @@
     %p #{@hotspot.to_share}
     %h4 Willing to go on hotspot walk?
     %p #{@hotspot.walk}
-  

@@ -1,0 +1,6 @@
+
+=link_to admin_hotspot_path(hotspot.id), :method => :put, :data => { confirm: "Are you sure you want to archive this hotspot?" }, :class => "btn btn-default archive", :id => "archive#{hotspot.id.to_s}" do
+  %span{:class => "glyphicon glyphicon-time"}
+
+=link_to admin_hotspot_path(hotspot.id), :method => :delete, :data => { confirm: "Are you sure you want to delete this hotspot?" }, :class => "btn btn-default delete", :id => "delete#{hotspot.id.to_s}" do
+  %span{:class => "glyphicon glyphicon-remove"}
