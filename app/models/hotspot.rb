@@ -48,6 +48,14 @@ class Hotspot < ActiveRecord::Base
         return "No"
       end
     end
+    
+    def self.all_unarchived
+      Hotspot.where(archive: false)
+    end
+    
+    def self.all_archived
+      Hotspot.where(archive: true)
+    end
 
     def self.all_issues
         ['Car Break-In', 'Abandoned Car','Broken Streetlight', 'Illegal Drug Transactions','Litter/Dumping Trash','Public Drinking and Noise','Other']
