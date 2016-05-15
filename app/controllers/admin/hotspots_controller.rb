@@ -37,7 +37,7 @@ class Admin::HotspotsController < ApplicationController
   
   def update
     @hotspot = Hotspot.find(params[:id])
-    if @hotspot.update(archive: true)
+    if @hotspot.update_attribute(:archive, true)
       flash[:notice] = "You have successfully archived hotspot #{params[:id]}."
     else
       flash[:notice] = "Fail attempt to archive hotspot #{params[:id]}."
