@@ -25,7 +25,7 @@ class HotspotsController < ApplicationController
   
   def index
     Hotspot.clean
-    @hotspots = Hotspot.all
+    @hotspots = Hotspot.all_unarchived
     @hash = Gmaps4rails.build_markers(@hotspots) do |hotspot, marker|
       marker.lat hotspot.latitude
       marker.lng hotspot.longitude
