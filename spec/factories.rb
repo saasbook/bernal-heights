@@ -39,10 +39,14 @@ FactoryGirl.define do
       hotspot.class.skip_callback(:validation, :after, :geocode)
       hotspot.class.skip_callback(:validation, :after, :reverse_geocode)
       hotspot.class.skip_callback(:validation, :after, :add_region)
+      hotspot.issues << create(:issue)
     end
-    # before(:create) do |hotspot| 
-    #   hotspot.issues << FactoryGirl.create(:issue, issue_type: issue_type)
-    # end
+    
+    factory :hotspot_without_issue do
+      after(:build) do |hotspot|
+        hotspot.issues.clear
+      end
+    end
   end
   
   factory :issue do
